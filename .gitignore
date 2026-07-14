@@ -1,0 +1,29 @@
+# ── Data: raw datasets and everything generated from them (huge, not for git) ──
+dataset/
+crops/
+output/
+yolov5_data/
+
+# ── Model weights (downloaded pretrained or trained checkpoints) ───────────────
+*.pt
+*.pth
+
+# ── Reference paper / large binaries ──────────────────────────────────────────
+*.pdf
+
+# ── Python ────────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+.ipynb_checkpoints/
+.pytest_cache/
+*.egg-info/
+
+# ── Editor / tooling (machine-specific) ───────────────────────────────────────
+.vscode/
+.claude/
+.idea/
+
+# ── OS ────────────────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
