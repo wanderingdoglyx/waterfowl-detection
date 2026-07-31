@@ -3,6 +3,12 @@ dataset/
 crops/
 output/
 yolov5_data/
+# OWL point-CSV mirror of the crops (symlinks + gt.csv)
+mdo_data/
+
+# ── Third-party research repos cloned locally (MegaDetector-Overhead + its .venv,
+#    vendored DINOv3, and multi-GB Zenodo weights) ──────────────────────────────
+third_party/
 
 # ── Model weights (downloaded pretrained or trained checkpoints) ───────────────
 *.pt

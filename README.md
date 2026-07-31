@@ -1,14 +1,26 @@
-# Waterfowl Detection — Faster R-CNN, YOLO-NAS & YOLOv5
+# Waterfowl Detection — Faster R-CNN, YOLO-NAS, YOLOv5 & MegaDetector-Overhead
 
-Three models share the same data pipeline and evaluation protocol (mAP30, IoU = 0.30):
+Four models share the same 512×512 COCO crops produced by `data_prep/`, so data
+preparation only needs to be run once:
 
 - **Faster R-CNN** (Detectron2) — `faster_rcnn/`
 - **YOLO-NAS** (super-gradients) — `yolo_nas/`
 - **YOLOv5** (Ultralytics) — `yolov5/`
+- **MegaDetector-Overhead / OWL** (Microsoft AI for Good) — `megadetector_overhead/`
+  — three variants via `--model`: **OWL-C** (DLA-34), **OWL-T** (DLA-34 + Swin),
+  **OWL-D** (DINOv3 ViT-H+)
 
-All three consume the identical 512×512 COCO crops produced by `data_prep/`, so data
-preparation only needs to be run once. YOLOv5 additionally mirrors those crops into
-the Ultralytics YOLO layout (see below), built automatically from the same crops.
+The first three are **box** detectors compared on a single protocol (mAP30, IoU = 0.30).
+YOLOv5 mirrors the crops into the Ultralytics YOLO layout; MegaDetector-Overhead mirrors
+them into a point-CSV layout (both built automatically from the same crops).
+
+**MegaDetector-Overhead is different in kind** — it is a *point* detector (formerly "OWL",
+Overhead Wildlife Locator): it localises each bird as a point, not a box. It therefore
+cannot use the box-IoU mAP30 protocol directly, and it needs its own Python 3.11
+environment (vendored DINOv3, incompatible with the detectron2/super-gradients/ultralytics
+stack). It is scored two ways — a native point precision/recall/F1 and a bridging
+"pseudo-box" mAP30 — and runs in a separate interpreter. See
+[Running the Pipeline (MegaDetector-Overhead)](#running-the-pipeline-megadetector-overhead).
 
 ---
 
@@ -51,6 +63,16 @@ rebuild/
 │   ├── train.py                # Ultralytics YOLO.train() wrapper + per-run checkpoints
 │   └── main.py                 # Entry point for this model
 │
+├── megadetector_overhead/      # MegaDetector-Overhead / OWL package (point detector)
+│   ├── dataset.py              # Mirrors the COCO crops → OWL point-CSV layout (box centres)
+│   ├── train.py                # Generates a Hydra config + drives the OWL repo's trainer
+│   ├── _eval_owl.py            # Runs UNDER the OWL .venv: point metric + detections
+│   ├── evaluate.py             # Pseudo-box mAP30 via the same COCOeval (IoU = 0.30)
+│   └── main.py                 # Entry point (shells into the OWL Python 3.11 env)
+│
+├── third_party/                # Gitignored — cloned research repos
+│   └── MegaDetector-Overhead/  # `git clone` + `uv sync` (.venv, vendored DINOv3, weights/)
+│
 ├── crops/                      # Created automatically — crop images, organised by dataset
 │   ├── Bird_A/
 │   │   ├── A_DJI_0001_0_0.JPG
@@ -63,6 +85,11 @@ rebuild/
 │   ├── data.yaml               # Dataset descriptor consumed by Ultralytics
 │   ├── images/{train,val,test}/  # Symlinks back to crops/ (no images duplicated)
 │   └── labels/{train,val,test}/  # YOLO txt labels (one "0 cx cy w h" line per box)
+│
+├── mdo_data/                   # Created automatically — OWL point-CSV mirror of the crops
+│   └── {train,val,test}/
+│       ├── images/             # Symlinks back to crops/ (flat; no images duplicated)
+│       └── gt.csv              # Point labels: images,x,y,labels (box centre per bird)
 │
 └── output/                     # Created automatically — model artefacts only
     ├── crops_json/             # COCO annotation files (no images)
@@ -86,14 +113,25 @@ rebuild/
         │           ├── ckpt_best.pth   # Best checkpoint (by val mAP30)
         │           ├── ckpt_latest.pth
         │           └── average_model.pth
-        └── yolov5/                     # All YOLOv5 runs live here
-            └── 2026-07-11_12-00-00/   # One timestamped folder per training run
-                ├── weights/            # Ultralytics writes checkpoints here
-                │   ├── best.pt         # Best checkpoint (by Ultralytics fitness)
-                │   └── last.pt
+        ├── yolov5/                     # All YOLOv5 runs live here
+        │   └── 2026-07-11_12-00-00/   # One timestamped folder per training run
+        │       ├── weights/            # Ultralytics writes checkpoints here
+        │       │   ├── best.pt         # Best checkpoint (by Ultralytics fitness)
+        │       │   └── last.pt
+        │       ├── run_info.json
+        │       ├── results.csv         # Per-epoch Ultralytics metrics
+        │       └── examples/           # Written by --eval
+        └── mdo_owl_c/                  # MegaDetector-Overhead runs, one folder per model
+            │                           # (mdo_owl_c / mdo_owl_t / mdo_owl_d — see --model)
+            └── 2026-07-21_20-55-09/   # One timestamped folder per training run
+                ├── weights/best.pth    # Best checkpoint (by val point-F1), stable handle
+                ├── best_model.pth       # Raw checkpoint written by the OWL trainer
+                ├── mdo_train_config.yaml # Generated Hydra config for this run
                 ├── run_info.json
-                ├── results.csv         # Per-epoch Ultralytics metrics
-                └── examples/           # Written by --eval
+                └── eval/                # Written by --eval
+                    ├── owl_eval.json    # Point metric + per-point detections
+                    ├── metrics.json     # Point P/R/F1 + pseudo-box mAP30
+                    └── ../examples/     # GT boxes | predicted points panels
 ```
 
 Each dataset sub-folder contains:
@@ -106,18 +144,25 @@ Each dataset sub-folder contains:
 
 ## Environment
 
-All three models run in a single conda environment, `waterfowl`:
+The three **box** models run in a single conda environment, `waterfowl`. MegaDetector-
+Overhead runs in its **own** Python 3.11 environment (`third_party/MegaDetector-Overhead/.venv`,
+created by `uv`) — its vendored DINOv3 + geospatial stack cannot coexist with
+detectron2/super-gradients/ultralytics. See
+[Running the Pipeline (MegaDetector-Overhead)](#running-the-pipeline-megadetector-overhead)
+for its setup.
 
 | Package         | Version           | Used by       |
 | --------------- | ----------------- | ------------- |
-| Python          | 3.10.20           | all           |
-| PyTorch         | 2.1.2 + CUDA 12.1 | all           |
+| Python          | 3.10.20           | box models    |
+| PyTorch         | 2.1.2 + CUDA 12.1 | box models    |
 | Detectron2      | 0.6               | Faster R-CNN  |
 | super-gradients | 3.7.1             | YOLO-NAS      |
 | ultralytics     | 8.4.82            | YOLOv5        |
 | pycocotools     | 2.0.11            | all (mAP30)   |
-| Pillow          | 12.2.0            | all           |
+| Pillow          | 12.2.0            | box models    |
 | opencv-python   | 4.11.0.86         | all           |
+| _(separate env)_ PyTorch | 2.5.1 + CUDA 12.1 | MegaDetector-Overhead |
+| _(separate env)_ Python  | 3.11              | MegaDetector-Overhead |
 
 Create and populate it with:
 
@@ -282,6 +327,117 @@ a YOLO-format mirror of the crops under `yolov5_data/` (symlinked images + txt l
 
 ---
 
+## Running the Pipeline (MegaDetector-Overhead)
+
+MegaDetector-Overhead / OWL is a **point** detector, so it does not fit the box-IoU
+protocol the same way. Its entry point still follows the **same `--prepare / --train /
+--eval`** interface and reuses the **same crops**, but it runs in a **separate Python
+3.11 environment** and is scored two ways.
+
+### One-time setup (separate environment + weights)
+
+```bash
+# 1. Clone the repo into third_party/ (gitignored)
+mkdir -p third_party && cd third_party
+git clone https://github.com/microsoft/MegaDetector-Overhead
+cd MegaDetector-Overhead
+
+# 2. Build its Python 3.11 GPU environment (installs torch 2.5.1+cu121, animaloc,
+#    vendored DINOv3). Needs `uv` (curl -LsSf https://astral.sh/uv/install.sh | sh)
+uv sync --no-default-groups --group gpu
+
+# 3. Download the pretrained weights from Zenodo into weights/ — either per model via
+#    the pipeline (recommended):
+cd ../..
+./megadetector_overhead/main.py --fetch-weights --model OWLC     # OWL-C.pth  (~216 MB)
+./megadetector_overhead/main.py --fetch-weights --model OWLT     # OWL-T.pth  (~355 MB)
+./megadetector_overhead/main.py --fetch-weights --model OWLD_H   # OWL-D.pth  (~3.5 GB)
+#    or manually:
+#    curl -L -o weights/OWL-C.pth "https://zenodo.org/records/20802844/files/OWL-C.pth?download=1"
+```
+
+Paths for all of the above live in `data_prep/config.py` (`MDO_REPO_DIR`, `MDO_PYTHON`,
+`MDO_PRETRAINED`, `MDO_MODELS`). The main entry point runs under the `waterfowl` env like
+the others and shells into `MDO_PYTHON` (`.venv/bin/python`) for training and inference.
+
+### OWL model variants (`--model`)
+
+Three OWL architectures are wired up. Each fine-tunes from its released overhead-benchmark
+checkpoint (Zenodo [record 20802844](https://zenodo.org/records/20802844), **CC BY-NC-SA
+4.0** — non-commercial) and writes to its **own** checkpoint folder, so runs never mix:
+
+| `--model` | Architecture | Start checkpoint | Params (trainable) | Runs folder |
+|---|---|---|---|---|
+| `OWLC` *(default)* | HerdNet detection branch, DLA-34 | `OWL-C.pth` | 18M (18M) | `output/checkpoints/mdo_owl_c/` |
+| `OWLT` | DLA-34 + Swin multiscale residual | `OWL-T.pth` | 30M (30M) | `output/checkpoints/mdo_owl_t/` |
+| `OWLD_H` | DINOv3 ViT-H+/16 + DPT decoder | `OWL-D.pth` | 855M (15M) | `output/checkpoints/mdo_owl_d/` |
+
+Notes:
+
+- All three share the same data, losses, LMDS post-processing, and both evaluation metrics —
+  only the network (and its start weights) differs.
+- `OWLD_H`'s checkpoint bundles its **frozen** DINOv3 backbone, so it needs no separate
+  (license-gated) Meta DINOv3 download; only the DPT decoder + head (~15M params) train.
+  A training step at batch 8 peaks at ~8.3 GiB GPU memory, but the big backbone makes it
+  markedly slower per epoch than OWL-C/T.
+- The registry (`MDO_MODELS` in `data_prep/config.py`) defines each variant's constructor
+  kwargs, start checkpoint, and folder; `megadetector_overhead/fetch_dinov3_weights.py`
+  exists only for the advanced case of training an OWL-D variant from scratch.
+
+### Run
+
+```bash
+# Step 1 — prepare: shared COCO crops + OWL point-CSV mirror (mdo_data/)
+./megadetector_overhead/main.py --prepare
+
+# Step 2 — fine-tune from pretrained weights (output/checkpoints/mdo_owl_{c,t,d}/<timestamp>/)
+./megadetector_overhead/main.py --train                      # OWL-C (default)
+./megadetector_overhead/main.py --train --model OWLT         # OWL-T
+./megadetector_overhead/main.py --train --model OWLD_H       # OWL-D (ViT-H+)
+
+# Step 3 — evaluate best checkpoint on the test set (point P/R/F1 + pseudo-box mAP30)
+./megadetector_overhead/main.py --eval                       # latest OWL-C run
+./megadetector_overhead/main.py --eval --model OWLT          # latest OWL-T run
+./megadetector_overhead/main.py --eval --run 2026-07-21_20-55-09
+
+# All-in-one
+./megadetector_overhead/main.py --prepare --train --eval
+```
+
+- **Model**: selected with `--model` (see the variants table above; default `OWLC`),
+  fine-tuned from its pretrained overhead-benchmark weights. Each box in the shared crops
+  becomes one **point** at the box centre (`megadetector_overhead/dataset.py`).
+- **Epochs**: 100 cap; the OWL trainer keeps the best checkpoint by **validation point-F1**
+  and decays the LR on plateau (`auto_lr`) — this plays the role Faster R-CNN's
+  early-stopping hook plays for the other models.
+- **Learning rate**: 0.0005 (Adam), batch size 8, image size 512 — matched to YOLO-NAS/YOLOv5.
+- **Two evaluation metrics** (`--eval` prints both and writes `eval/metrics.json`):
+  1. **Point precision / recall / F1** — a prediction is a true positive when it lands
+     within `MDO_POINT_RADIUS` of a ground-truth point (≈20 px full-res at `down_ratio` 2).
+     This is the honest metric for a point model, computed by the OWL repo's own evaluator.
+  2. **Pseudo-box mAP30** — each detected point is wrapped in an `MDO_PSEUDO_BOX`-px box and
+     run through the **identical** `COCOeval`@IoU=0.30 as the other three, so OWL lands in
+     the same table. Read it as an approximate bridge: a point has no real extent, so the
+     absolute value depends on the (fixed) pseudo-box size.
+- `--eval` also writes `N` example panels (`--examples N`, default 40; left = GT **boxes**,
+  right = predicted **points**).
+- OWL hyperparameters live in `data_prep/config.py` (`MDO_MODEL`, `MDO_MODELS`,
+  `MDO_BATCH_SIZE`, `MDO_LR`, `MDO_POINT_RADIUS`, `MDO_PSEUDO_BOX`, `MDO_LMDS_*`, …).
+
+> **Protocol caveats** specific to MegaDetector-Overhead:
+>
+> 1. **It is a point detector.** The point metric (1 above) is the faithful score; the
+>    pseudo-box mAP30 (2) exists only to place it on the same axis as the box models and
+>    is sensitive to `MDO_PSEUDO_BOX`. Don't read the two models' mAP30 as strictly
+>    like-for-like.
+> 2. **Separate environment.** Unlike the other three, its weights, deps, and interpreter
+>    live under `third_party/MegaDetector-Overhead/` (all gitignored). The `waterfowl` env
+>    is untouched.
+> 3. **License.** The OWL pretrained weights are **CC-BY-NC-SA 4.0 (non-commercial)** —
+>    stricter than the other models' weights; check before any commercial use.
+
+---
+
 ## Key Hyperparameters (from the paper, Section 4.1)
 
 | Parameter             | Paper value                                   | Location                |
@@ -302,7 +458,9 @@ a YOLO-format mirror of the crops under `yolov5_data/` (symlinked images + txt l
 ## Adding a New Model
 
 The `data_prep/` package is model-agnostic — `yolo_nas/` and `yolov5/` are worked
-examples of adding models alongside `faster_rcnn/`. To add another:
+examples of adding **box** models alongside `faster_rcnn/`, and `megadetector_overhead/`
+is a worked example of a **point** model that needs its own environment and a second
+(point-based) metric alongside the shared mAP30. To add another:
 
 1. Create a new package folder (e.g. `retinanet/`)
 2. Import `data_prep.config` and `data_prep.prepare_data` as needed
