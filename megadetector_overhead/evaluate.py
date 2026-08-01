@@ -104,10 +104,14 @@ def points_to_coco(detections: list, coco_gt_path: str,
 
 def evaluate_from_json(owl_eval_json: str, test_coco_path: str) -> dict:
     """
-    Read _eval_owl.py's output and produce both metrics.
+    Read _eval_owl.py's output and produce all three metric blocks.
 
-    Returns {point: {...}, pseudo_box_map30: {ap30, ar30, box_size}, n_detections}.
+    Returns {point: {...}, pseudo_box_map30: {ap30, ar30, box_size},
+             paper_point_metrics: {...}, n_detections}.
     """
+    from data_prep.point_metrics import (gt_points_from_coco, dets_from_owl_points,
+                                         paper_point_metrics)
+
     with open(owl_eval_json) as f:
         data = json.load(f)
 
@@ -115,10 +119,19 @@ def evaluate_from_json(owl_eval_json: str, test_coco_path: str) -> dict:
     coco_results = points_to_coco(detections, test_coco_path)
     ap30, ar30 = coco_map30(test_coco_path, coco_results)
 
+    # OWL-paper protocol (Section 4.3): the model's native points score directly
+    # against GT box centres — no pseudo-box approximation involved.
+    pm = paper_point_metrics(
+        gt_points_from_coco(test_coco_path),
+        dets_from_owl_points(detections, test_coco_path),
+        tau=config.PAPER_TAU, bootstrap=config.PAPER_BOOTSTRAP,
+    )
+
     return {
         "point": data.get("point_metrics", {}),
         "pseudo_box_map30": {
             "ap30": ap30, "ar30": ar30, "box_size": config.MDO_PSEUDO_BOX,
         },
+        "paper_point_metrics": pm,
         "n_detections": len(detections),
     }

@@ -115,7 +115,8 @@ def _save_examples(model, eval_dir: str, n: int) -> None:
         # model.predict() on a single image returns one ImageDetectionPrediction
         # (not an iterable) in this super-gradients version.
         pred_panel = img_bgr.copy()
-        pred = model.predict(path, conf=config.DISPLAY_CONF_THRESHOLD)
+        pred = model.predict(path, conf=config.DISPLAY_CONF_THRESHOLD,
+                             fuse_model=False)  # avoid re-fusing per example image
         _draw_boxes(pred_panel, pred.prediction.bboxes_xyxy,
                     pred.prediction.confidence, color=(0, 0, 255))
 
@@ -236,6 +237,49 @@ def main() -> None:
         ar30 = float(results.get(AR_KEY, 0.0)) * 100.0
         print(f"\nTest mAP30 : {ap30:.2f}%")
         print(f"Test mAR30 : {ar30:.2f}%")
+
+        # ── OWL-paper point metrics (shared protocol, Section 4.3) ────────────
+        # trainer.test only returns aggregates, so run a chunked predict pass to
+        # collect per-detection boxes, then score their centres against the GT
+        # box centres (MAE/RMSE, AP/AUC-PR, P/R/F1 at t*, bootstrap CIs).
+        from data_prep.point_metrics import (gt_points_from_coco, paper_point_metrics,
+                                             format_report)
+
+        test_json = os.path.join(config.CROPS_JSON_DIR, "test", "coco.json")
+        with open(test_json) as f:
+            test_coco = json.load(f)
+        paths = [os.path.join(config.CROPS_IMG_DIR, im["file_name"])
+                 for im in test_coco["images"]]
+        ids = [im["id"] for im in test_coco["images"]]
+
+        print(f"\nCollecting detections for point metrics ({len(paths)} crops)...")
+        dets_by_image = {}
+        chunk = 64  # keep preprocessing memory bounded (cf. yolov5/evaluate.py)
+        for i in range(0, len(paths), chunk):
+            # fuse_model=False: each predict() call builds a fresh pipeline, and the
+            # default fuse_model=True deep-copies + layer-fuses the model EVERY call —
+            # ~400 re-fuses over the test set (and a "Fusing some of the model's
+            # layers" INFO line per chunk). Skipping fusion is far cheaper here.
+            preds = model.predict(paths[i:i + chunk], conf=config.CONF_THRESHOLD,
+                                  iou=config.YOLONAS_NMS_IOU,
+                                  max_predictions=config.YOLONAS_MAX_PRED,
+                                  fuse_model=False)
+            preds = preds if hasattr(preds, "__iter__") else [preds]
+            for image_id, pred in zip(ids[i:i + chunk], preds):
+                boxes = pred.prediction.bboxes_xyxy
+                scores = pred.prediction.confidence
+                dets_by_image[image_id] = [
+                    (float((x1 + x2) / 2), float((y1 + y2) / 2), float(s))
+                    for (x1, y1, x2, y2), s in zip(boxes, scores)
+                ]
+
+        pm = paper_point_metrics(
+            gt_points_from_coco(test_json), dets_by_image,
+            tau=config.PAPER_TAU, bootstrap=config.PAPER_BOOTSTRAP,
+        )
+        print("\n" + format_report(pm, "YOLO-NAS"))
+        with open(os.path.join(eval_dir, "paper_point_metrics.json"), "w") as f:
+            json.dump(pm, f, indent=2)
 
         if args.examples > 0:
             print(f"\nSaving {args.examples} example images...")

@@ -268,6 +268,29 @@ def main() -> None:
         else:
             print("No bbox results returned.")
 
+        # ── OWL-paper point metrics (shared protocol, Section 4.3) ────────────
+        # Box centres vs GT box centres: MAE/RMSE, AP/AUC-PR, P/R/F1 at t*,
+        # bootstrap CIs.  Reads the per-detection dump COCOEvaluator just wrote.
+        import torch as _torch
+        from data_prep.point_metrics import (gt_points_from_coco, dets_from_coco_results,
+                                             paper_point_metrics, format_report)
+
+        preds_pth = os.path.join(eval_dir, "test_inference", "instances_predictions.pth")
+        test_json = os.path.join(config.CROPS_JSON_DIR, "test", "coco.json")
+        if os.path.exists(preds_pth) and os.path.exists(test_json):
+            flat = []
+            for p in _torch.load(preds_pth):
+                flat.extend(p["instances"])
+            pm = paper_point_metrics(
+                gt_points_from_coco(test_json), dets_from_coco_results(flat),
+                tau=config.PAPER_TAU, bootstrap=config.PAPER_BOOTSTRAP,
+            )
+            print("\n" + format_report(pm, "Faster R-CNN"))
+            with open(os.path.join(eval_dir, "paper_point_metrics.json"), "w") as f:
+                json.dump(pm, f, indent=2)
+        else:
+            print(f"\n(point metrics skipped — {preds_pth} not found)")
+
         if args.examples > 0:
             print(f"\nSaving {args.examples} example images...")
             _save_examples(cfg, eval_dir=eval_dir, n=args.examples)

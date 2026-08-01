@@ -438,6 +438,36 @@ Notes:
 
 ---
 
+## OWL-Paper Point Metrics (all four models)
+
+Every model's `--eval` additionally reports the evaluation protocol of the OWL paper
+(Chacón et al., Section 4.3), implemented once in `data_prep/point_metrics.py` and
+shared by all four pipelines so the numbers are directly comparable:
+
+| Block | Metrics |
+|---|---|
+| **Counting** | MAE, RMSE over per-image counts; total predicted vs GT count with signed % error |
+| **Detection** | AP (threshold-free, primary), AUC-PR, and precision / recall / F1 at the counting threshold `t*` |
+| **Confidence** | Bootstrap 95% CIs (B = `PAPER_BOOTSTRAP` = 1,000 image-level resamples) for MAE, RMSE, AP |
+
+Protocol details (matching the paper):
+
+- A prediction is a **TP** if within `PAPER_TAU` = **40 px** of an unmatched GT point;
+  greedy one-to-one nearest-neighbour matching (score-ordered, COCO-style).
+- Box models participate through their **box centres** (score = box confidence);
+  OWL scores its native points (score = heatmap peak). Ground truth for everyone is
+  the box centre of the shared test COCO annotations.
+- The counting threshold `t*` minimises MAE **on the test set** — the paper does the
+  same and flags the optimistic bias; it is uniform across models, so relative
+  comparisons stand.
+- Background-only crops count toward MAE/RMSE, as in the paper.
+
+Results are printed at the end of `--eval` and saved to
+`<run_dir>/paper_point_metrics.json` (for OWL: inside `eval/metrics.json` under
+`paper_point_metrics`).
+
+---
+
 ## Key Hyperparameters (from the paper, Section 4.1)
 
 | Parameter             | Paper value                                   | Location                |

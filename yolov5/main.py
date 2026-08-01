@@ -232,6 +232,20 @@ def main() -> None:
         print(f"\nTest mAP30 : {ap30:.2f}%")
         print(f"Test mAR30 : {ar30:.2f}%")
 
+        # ── OWL-paper point metrics (shared protocol, Section 4.3) ────────────
+        # Box centres vs GT box centres: MAE/RMSE, AP/AUC-PR, P/R/F1 at t*,
+        # bootstrap CIs — reuses the COCO result list already in memory.
+        from data_prep.point_metrics import (gt_points_from_coco, dets_from_coco_results,
+                                             paper_point_metrics, format_report)
+
+        pm = paper_point_metrics(
+            gt_points_from_coco(test_json), dets_from_coco_results(coco_results),
+            tau=config.PAPER_TAU, bootstrap=config.PAPER_BOOTSTRAP,
+        )
+        print("\n" + format_report(pm, "YOLOv5"))
+        with open(os.path.join(eval_dir, "paper_point_metrics.json"), "w") as f:
+            json.dump(pm, f, indent=2)
+
         if args.examples > 0:
             print(f"\nSaving {args.examples} example images...")
             _save_examples(model, eval_dir=eval_dir, n=args.examples)

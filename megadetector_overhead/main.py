@@ -351,6 +351,9 @@ def main() -> None:
               "COCOeval@IoU=0.30) ──")
         print(f"  mAP30 : {pb['ap30']:.2f}%")
         print(f"  mAR30 : {pb['ar30']:.2f}%")
+
+        from data_prep.point_metrics import format_report
+        print("\n" + format_report(metrics["paper_point_metrics"], model_spec["name"]))
         print(f"\n  ({metrics['n_detections']} detections total)")
 
         with open(os.path.join(eval_out_dir, "metrics.json"), "w") as f:

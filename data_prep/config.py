@@ -217,6 +217,13 @@ MDO_STITCH_OVERLAP = 160  # patch stitching overlap in px (repo default for 512 
 MDO_POINT_RADIUS = 10    # TP match radius in heatmap px (down_ratio=2 → ≈20 px full-res)
 MDO_PSEUDO_BOX   = 28    # side length (full-res px) of the box drawn around each point
 
+# ── OWL-paper point metrics (Chacón et al., Section 4.3) ──────────────────────
+# Shared protocol reported by every model's --eval (data_prep/point_metrics.py):
+# MAE/RMSE per-image counting errors, AP / AUC-PR / P / R / F1 with greedy point
+# matching, and bootstrap 95% CIs.  Box models participate via box centres.
+PAPER_TAU        = 40    # TP matching radius in full-res px (paper: 40; sens. {20,40,60})
+PAPER_BOOTSTRAP  = 1000  # image-level bootstrap resamples (paper: B = 1,000)
+
 # ── Evaluation (Section 4.4) ──────────────────────────────────────────────────
 IOU_THRESHOLD_MAP = 0.30     # mAP30: IoU threshold = 0.30
 # Keep the *scoring* threshold low so the full precision/recall curve is available
