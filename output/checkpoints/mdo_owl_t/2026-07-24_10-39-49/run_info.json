@@ -1,0 +1,9 @@
+{
+  "timestamp": "2026-07-24_10-39-49",
+  "model": "OWLT",
+  "pretrained": "/home/zygfd/waterflow/rebuild/third_party/MegaDetector-Overhead/weights/OWL-T.pth",
+  "n_train": 75664,
+  "n_val": 24374,
+  "n_test": 25708,
+  "epochs": 100
+}

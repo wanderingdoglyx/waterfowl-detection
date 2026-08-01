@@ -1,0 +1,518 @@
+26-07-2026 18:41:09 - [MDO-EVAL] [    1/25708] eta: 2:10:44 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.3051 data: 0.0784 max mem: 346
+26-07-2026 18:41:09 - [MDO-EVAL] [   51/25708] eta: 0:07:51 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0090 data: 0.0005 max mem: 346
+26-07-2026 18:41:10 - [MDO-EVAL] [  101/25708] eta: 0:05:52 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0090 data: 0.0004 max mem: 346
+26-07-2026 18:41:10 - [MDO-EVAL] [  151/25708] eta: 0:05:16 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0092 data: 0.0004 max mem: 346
+26-07-2026 18:41:11 - [MDO-EVAL] [  201/25708] eta: 0:04:54 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0090 data: 0.0004 max mem: 346
+26-07-2026 18:41:11 - [MDO-EVAL] [  251/25708] eta: 0:04:43 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0094 data: 0.0004 max mem: 346
+26-07-2026 18:41:12 - [MDO-EVAL] [  301/25708] eta: 0:04:34 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0090 data: 0.0004 max mem: 346
+26-07-2026 18:41:12 - [MDO-EVAL] [  351/25708] eta: 0:04:27 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0090 data: 0.0004 max mem: 346
+26-07-2026 18:41:13 - [MDO-EVAL] [  401/25708] eta: 0:04:22 n: 12 recall: 0.83 precision: 0.77 f1-score: 0.8 MAE: 1.0 MSE: 1.0 RMSE: 1.0 time: 0.0092 data: 0.0004 max mem: 346
+26-07-2026 18:41:13 - [MDO-EVAL] [  451/25708] eta: 0:04:19 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 2.0 MSE: 4.0 RMSE: 2.0 time: 0.0091 data: 0.0004 max mem: 346
+26-07-2026 18:41:14 - [MDO-EVAL] [  501/25708] eta: 0:04:16 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0094 data: 0.0004 max mem: 346
+26-07-2026 18:41:14 - [MDO-EVAL] [  551/25708] eta: 0:04:14 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0090 data: 0.0004 max mem: 346
+26-07-2026 18:41:14 - [MDO-EVAL] [  601/25708] eta: 0:04:12 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0094 data: 0.0004 max mem: 346
+26-07-2026 18:41:15 - [MDO-EVAL] [  651/25708] eta: 0:04:10 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0090 data: 0.0004 max mem: 346
+26-07-2026 18:41:15 - [MDO-EVAL] [  701/25708] eta: 0:04:08 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 1.0 MSE: 1.0 RMSE: 1.0 time: 0.0096 data: 0.0004 max mem: 346
+26-07-2026 18:41:16 - [MDO-EVAL] [  751/25708] eta: 0:04:06 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 3.0 MSE: 9.0 RMSE: 3.0 time: 0.0090 data: 0.0004 max mem: 346
+26-07-2026 18:41:16 - [MDO-EVAL] [  801/25708] eta: 0:04:05 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0106 data: 0.0005 max mem: 346
+26-07-2026 18:41:17 - [MDO-EVAL] [  851/25708] eta: 0:04:04 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0095 data: 0.0004 max mem: 346
+26-07-2026 18:41:17 - [MDO-EVAL] [  901/25708] eta: 0:04:03 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 3.0 MSE: 9.0 RMSE: 3.0 time: 0.0095 data: 0.0005 max mem: 346
+26-07-2026 18:41:18 - [MDO-EVAL] [  951/25708] eta: 0:04:02 n: 1 recall: 1.0 precision: 0.5 f1-score: 0.67 MAE: 1.0 MSE: 1.0 RMSE: 1.0 time: 0.0093 data: 0.0005 max mem: 346
+26-07-2026 18:41:18 - [MDO-EVAL] [ 1001/25708] eta: 0:04:01 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0098 data: 0.0005 max mem: 346
+26-07-2026 18:41:19 - [MDO-EVAL] [ 1051/25708] eta: 0:04:02 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 1.0 MSE: 1.0 RMSE: 1.0 time: 0.0112 data: 0.0005 max mem: 346
+26-07-2026 18:41:19 - [MDO-EVAL] [ 1101/25708] eta: 0:04:04 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0150 data: 0.0008 max mem: 346
+26-07-2026 18:41:20 - [MDO-EVAL] [ 1151/25708] eta: 0:04:04 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0102 data: 0.0005 max mem: 346
+26-07-2026 18:41:20 - [MDO-EVAL] [ 1201/25708] eta: 0:04:04 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0102 data: 0.0005 max mem: 346
+26-07-2026 18:41:21 - [MDO-EVAL] [ 1251/25708] eta: 0:04:03 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 3.0 MSE: 9.0 RMSE: 3.0 time: 0.0096 data: 0.0005 max mem: 346
+26-07-2026 18:41:21 - [MDO-EVAL] [ 1301/25708] eta: 0:04:02 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0095 data: 0.0005 max mem: 346
+26-07-2026 18:41:22 - [MDO-EVAL] [ 1351/25708] eta: 0:04:03 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0117 data: 0.0006 max mem: 346
+26-07-2026 18:41:22 - [MDO-EVAL] [ 1401/25708] eta: 0:04:02 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0090 data: 0.0004 max mem: 346
+26-07-2026 18:41:23 - [MDO-EVAL] [ 1451/25708] eta: 0:04:01 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0094 data: 0.0004 max mem: 346
+26-07-2026 18:41:23 - [MDO-EVAL] [ 1501/25708] eta: 0:04:01 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0095 data: 0.0004 max mem: 346
+26-07-2026 18:41:24 - [MDO-EVAL] [ 1551/25708] eta: 0:04:00 n: 2 recall: 1.0 precision: 1.0 f1-score: 1.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0092 data: 0.0004 max mem: 346
+26-07-2026 18:41:24 - [MDO-EVAL] [ 1601/25708] eta: 0:04:00 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0094 data: 0.0004 max mem: 346
+26-07-2026 18:41:25 - [MDO-EVAL] [ 1651/25708] eta: 0:03:59 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0102 data: 0.0004 max mem: 346
+26-07-2026 18:41:25 - [MDO-EVAL] [ 1701/25708] eta: 0:03:58 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0094 data: 0.0004 max mem: 346
+26-07-2026 18:41:26 - [MDO-EVAL] [ 1751/25708] eta: 0:03:58 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0094 data: 0.0004 max mem: 346
+26-07-2026 18:41:26 - [MDO-EVAL] [ 1801/25708] eta: 0:03:57 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0090 data: 0.0004 max mem: 346
+26-07-2026 18:41:27 - [MDO-EVAL] [ 1851/25708] eta: 0:03:56 n: 2 recall: 1.0 precision: 0.67 f1-score: 0.8 MAE: 1.0 MSE: 1.0 RMSE: 1.0 time: 0.0096 data: 0.0005 max mem: 346
+26-07-2026 18:41:27 - [MDO-EVAL] [ 1901/25708] eta: 0:03:56 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 1.0 MSE: 1.0 RMSE: 1.0 time: 0.0091 data: 0.0005 max mem: 346
+26-07-2026 18:41:28 - [MDO-EVAL] [ 1951/25708] eta: 0:03:55 n: 5 recall: 1.0 precision: 0.83 f1-score: 0.91 MAE: 1.0 MSE: 1.0 RMSE: 1.0 time: 0.0103 data: 0.0005 max mem: 346
+26-07-2026 18:41:28 - [MDO-EVAL] [ 2001/25708] eta: 0:03:55 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0098 data: 0.0004 max mem: 346
+26-07-2026 18:41:29 - [MDO-EVAL] [ 2051/25708] eta: 0:03:54 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0108 data: 0.0006 max mem: 346
+26-07-2026 18:41:29 - [MDO-EVAL] [ 2101/25708] eta: 0:03:54 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0101 data: 0.0005 max mem: 346
+26-07-2026 18:41:30 - [MDO-EVAL] [ 2151/25708] eta: 0:03:55 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0112 data: 0.0006 max mem: 346
+26-07-2026 18:41:30 - [MDO-EVAL] [ 2201/25708] eta: 0:03:54 n: 1 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 1.0 MSE: 1.0 RMSE: 1.0 time: 0.0097 data: 0.0005 max mem: 346
+26-07-2026 18:41:31 - [MDO-EVAL] [ 2251/25708] eta: 0:03:53 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0115 data: 0.0006 max mem: 346
+26-07-2026 18:41:31 - [MDO-EVAL] [ 2301/25708] eta: 0:03:53 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 1.0 MSE: 1.0 RMSE: 1.0 time: 0.0098 data: 0.0004 max mem: 346
+26-07-2026 18:41:32 - [MDO-EVAL] [ 2351/25708] eta: 0:03:53 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0107 data: 0.0006 max mem: 346
+26-07-2026 18:41:32 - [MDO-EVAL] [ 2401/25708] eta: 0:03:52 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0101 data: 0.0005 max mem: 346
+26-07-2026 18:41:33 - [MDO-EVAL] [ 2451/25708] eta: 0:03:52 n: 2 recall: 1.0 precision: 1.0 f1-score: 1.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0113 data: 0.0008 max mem: 346
+26-07-2026 18:41:33 - [MDO-EVAL] [ 2501/25708] eta: 0:03:51 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 2.0 MSE: 4.0 RMSE: 2.0 time: 0.0098 data: 0.0005 max mem: 346
+26-07-2026 18:41:34 - [MDO-EVAL] [ 2551/25708] eta: 0:03:51 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0092 data: 0.0004 max mem: 346
+26-07-2026 18:41:34 - [MDO-EVAL] [ 2601/25708] eta: 0:03:50 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0091 data: 0.0004 max mem: 346
+26-07-2026 18:41:35 - [MDO-EVAL] [ 2651/25708] eta: 0:03:49 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0092 data: 0.0004 max mem: 346
+26-07-2026 18:41:35 - [MDO-EVAL] [ 2701/25708] eta: 0:03:48 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0090 data: 0.0004 max mem: 346
+26-07-2026 18:41:36 - [MDO-EVAL] [ 2751/25708] eta: 0:03:47 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0091 data: 0.0004 max mem: 346
+26-07-2026 18:41:36 - [MDO-EVAL] [ 2801/25708] eta: 0:03:47 n: 11 recall: 1.0 precision: 0.92 f1-score: 0.96 MAE: 1.0 MSE: 1.0 RMSE: 1.0 time: 0.0098 data: 0.0005 max mem: 346
+26-07-2026 18:41:37 - [MDO-EVAL] [ 2851/25708] eta: 0:03:46 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 1.0 MSE: 1.0 RMSE: 1.0 time: 0.0090 data: 0.0004 max mem: 346
+26-07-2026 18:41:37 - [MDO-EVAL] [ 2901/25708] eta: 0:03:45 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0092 data: 0.0004 max mem: 346
+26-07-2026 18:41:38 - [MDO-EVAL] [ 2951/25708] eta: 0:03:44 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0091 data: 0.0005 max mem: 346
+26-07-2026 18:41:38 - [MDO-EVAL] [ 3001/25708] eta: 0:03:44 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 2.0 MSE: 4.0 RMSE: 2.0 time: 0.0095 data: 0.0005 max mem: 346
+26-07-2026 18:41:39 - [MDO-EVAL] [ 3051/25708] eta: 0:03:43 n: 1 recall: 1.0 precision: 1.0 f1-score: 1.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0093 data: 0.0004 max mem: 346
+26-07-2026 18:41:39 - [MDO-EVAL] [ 3101/25708] eta: 0:03:42 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0093 data: 0.0004 max mem: 346
+26-07-2026 18:41:39 - [MDO-EVAL] [ 3151/25708] eta: 0:03:42 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0090 data: 0.0004 max mem: 346
+26-07-2026 18:41:40 - [MDO-EVAL] [ 3201/25708] eta: 0:03:41 n: 4 recall: 0.75 precision: 1.0 f1-score: 0.86 MAE: 1.0 MSE: 1.0 RMSE: 1.0 time: 0.0103 data: 0.0005 max mem: 346
+26-07-2026 18:41:40 - [MDO-EVAL] [ 3251/25708] eta: 0:03:41 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0090 data: 0.0004 max mem: 346
+26-07-2026 18:41:41 - [MDO-EVAL] [ 3301/25708] eta: 0:03:40 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0092 data: 0.0004 max mem: 346
+26-07-2026 18:41:41 - [MDO-EVAL] [ 3351/25708] eta: 0:03:40 n: 1 recall: 1.0 precision: 1.0 f1-score: 1.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0109 data: 0.0006 max mem: 346
+26-07-2026 18:41:42 - [MDO-EVAL] [ 3401/25708] eta: 0:03:39 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0100 data: 0.0005 max mem: 346
+26-07-2026 18:41:42 - [MDO-EVAL] [ 3451/25708] eta: 0:03:39 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 2.0 MSE: 4.0 RMSE: 2.0 time: 0.0096 data: 0.0005 max mem: 346
+26-07-2026 18:41:43 - [MDO-EVAL] [ 3501/25708] eta: 0:03:38 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0093 data: 0.0005 max mem: 346
+26-07-2026 18:41:43 - [MDO-EVAL] [ 3551/25708] eta: 0:03:38 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0101 data: 0.0005 max mem: 346
+26-07-2026 18:41:44 - [MDO-EVAL] [ 3601/25708] eta: 0:03:37 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0095 data: 0.0004 max mem: 346
+26-07-2026 18:41:44 - [MDO-EVAL] [ 3651/25708] eta: 0:03:36 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0090 data: 0.0004 max mem: 346
+26-07-2026 18:41:45 - [MDO-EVAL] [ 3701/25708] eta: 0:03:36 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 1.0 MSE: 1.0 RMSE: 1.0 time: 0.0103 data: 0.0005 max mem: 346
+26-07-2026 18:41:45 - [MDO-EVAL] [ 3751/25708] eta: 0:03:35 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0096 data: 0.0005 max mem: 346
+26-07-2026 18:41:46 - [MDO-EVAL] [ 3801/25708] eta: 0:03:35 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0090 data: 0.0004 max mem: 346
+26-07-2026 18:41:46 - [MDO-EVAL] [ 3851/25708] eta: 0:03:34 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0091 data: 0.0004 max mem: 346
+26-07-2026 18:41:47 - [MDO-EVAL] [ 3901/25708] eta: 0:03:33 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0090 data: 0.0004 max mem: 346
+26-07-2026 18:41:47 - [MDO-EVAL] [ 3951/25708] eta: 0:03:33 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0091 data: 0.0005 max mem: 346
+26-07-2026 18:41:48 - [MDO-EVAL] [ 4001/25708] eta: 0:03:32 n: 4 recall: 1.0 precision: 1.0 f1-score: 1.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0115 data: 0.0006 max mem: 346
+26-07-2026 18:41:48 - [MDO-EVAL] [ 4051/25708] eta: 0:03:32 n: 17 recall: 0.59 precision: 0.91 f1-score: 0.71 MAE: 6.0 MSE: 36.0 RMSE: 6.0 time: 0.0111 data: 0.0005 max mem: 346
+26-07-2026 18:41:49 - [MDO-EVAL] [ 4101/25708] eta: 0:03:32 n: 2 recall: 0.5 precision: 0.33 f1-score: 0.4 MAE: 1.0 MSE: 1.0 RMSE: 1.0 time: 0.0100 data: 0.0005 max mem: 346
+26-07-2026 18:41:49 - [MDO-EVAL] [ 4151/25708] eta: 0:03:32 n: 1 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 1.0 MSE: 1.0 RMSE: 1.0 time: 0.0107 data: 0.0006 max mem: 346
+26-07-2026 18:41:50 - [MDO-EVAL] [ 4201/25708] eta: 0:03:32 n: 2 recall: 1.0 precision: 0.67 f1-score: 0.8 MAE: 1.0 MSE: 1.0 RMSE: 1.0 time: 0.0114 data: 0.0007 max mem: 346
+26-07-2026 18:41:50 - [MDO-EVAL] [ 4251/25708] eta: 0:03:31 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0093 data: 0.0004 max mem: 346
+26-07-2026 18:41:51 - [MDO-EVAL] [ 4301/25708] eta: 0:03:31 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 2.0 MSE: 4.0 RMSE: 2.0 time: 0.0109 data: 0.0006 max mem: 346
+26-07-2026 18:41:51 - [MDO-EVAL] [ 4351/25708] eta: 0:03:30 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0091 data: 0.0004 max mem: 346
+26-07-2026 18:41:52 - [MDO-EVAL] [ 4401/25708] eta: 0:03:29 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0093 data: 0.0004 max mem: 346
+26-07-2026 18:41:52 - [MDO-EVAL] [ 4451/25708] eta: 0:03:29 n: 1 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 1.0 MSE: 1.0 RMSE: 1.0 time: 0.0092 data: 0.0004 max mem: 346
+26-07-2026 18:41:53 - [MDO-EVAL] [ 4501/25708] eta: 0:03:28 n: 1 recall: 1.0 precision: 0.5 f1-score: 0.67 MAE: 1.0 MSE: 1.0 RMSE: 1.0 time: 0.0096 data: 0.0004 max mem: 346
+26-07-2026 18:41:53 - [MDO-EVAL] [ 4551/25708] eta: 0:03:28 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 28.0 MSE: 784.0 RMSE: 28.0 time: 0.0094 data: 0.0004 max mem: 346
+26-07-2026 18:41:54 - [MDO-EVAL] [ 4601/25708] eta: 0:03:28 n: 1 recall: 1.0 precision: 1.0 f1-score: 1.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0109 data: 0.0005 max mem: 346
+26-07-2026 18:41:54 - [MDO-EVAL] [ 4651/25708] eta: 0:03:28 n: 2 recall: 1.0 precision: 0.67 f1-score: 0.8 MAE: 1.0 MSE: 1.0 RMSE: 1.0 time: 0.0130 data: 0.0006 max mem: 346
+26-07-2026 18:41:55 - [MDO-EVAL] [ 4701/25708] eta: 0:03:27 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0098 data: 0.0005 max mem: 346
+26-07-2026 18:41:55 - [MDO-EVAL] [ 4751/25708] eta: 0:03:27 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 4.0 MSE: 16.0 RMSE: 4.0 time: 0.0091 data: 0.0004 max mem: 346
+26-07-2026 18:41:56 - [MDO-EVAL] [ 4801/25708] eta: 0:03:26 n: 5 recall: 0.6 precision: 0.75 f1-score: 0.67 MAE: 1.0 MSE: 1.0 RMSE: 1.0 time: 0.0113 data: 0.0006 max mem: 346
+26-07-2026 18:41:57 - [MDO-EVAL] [ 4851/25708] eta: 0:03:26 n: 6 recall: 0.83 precision: 1.0 f1-score: 0.91 MAE: 1.0 MSE: 1.0 RMSE: 1.0 time: 0.0121 data: 0.0006 max mem: 346
+26-07-2026 18:41:57 - [MDO-EVAL] [ 4901/25708] eta: 0:03:26 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0121 data: 0.0007 max mem: 346
+26-07-2026 18:41:58 - [MDO-EVAL] [ 4951/25708] eta: 0:03:26 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0099 data: 0.0005 max mem: 346
+26-07-2026 18:41:58 - [MDO-EVAL] [ 5001/25708] eta: 0:03:25 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0110 data: 0.0005 max mem: 346
+26-07-2026 18:41:59 - [MDO-EVAL] [ 5051/25708] eta: 0:03:25 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0117 data: 0.0006 max mem: 346
+26-07-2026 18:41:59 - [MDO-EVAL] [ 5101/25708] eta: 0:03:25 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0112 data: 0.0006 max mem: 346
+26-07-2026 18:42:00 - [MDO-EVAL] [ 5151/25708] eta: 0:03:25 n: 1 recall: 1.0 precision: 1.0 f1-score: 1.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0097 data: 0.0004 max mem: 346
+26-07-2026 18:42:00 - [MDO-EVAL] [ 5201/25708] eta: 0:03:25 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0109 data: 0.0006 max mem: 346
+26-07-2026 18:42:01 - [MDO-EVAL] [ 5251/25708] eta: 0:03:24 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0093 data: 0.0004 max mem: 346
+26-07-2026 18:42:02 - [MDO-EVAL] [ 5301/25708] eta: 0:03:24 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0130 data: 0.0006 max mem: 346
+26-07-2026 18:42:02 - [MDO-EVAL] [ 5351/25708] eta: 0:03:24 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0113 data: 0.0005 max mem: 346
+26-07-2026 18:42:03 - [MDO-EVAL] [ 5401/25708] eta: 0:03:23 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0098 data: 0.0005 max mem: 346
+26-07-2026 18:42:03 - [MDO-EVAL] [ 5451/25708] eta: 0:03:23 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0091 data: 0.0004 max mem: 346
+26-07-2026 18:42:04 - [MDO-EVAL] [ 5501/25708] eta: 0:03:22 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 4.0 MSE: 16.0 RMSE: 4.0 time: 0.0110 data: 0.0006 max mem: 346
+26-07-2026 18:42:04 - [MDO-EVAL] [ 5551/25708] eta: 0:03:22 n: 2 recall: 1.0 precision: 1.0 f1-score: 1.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0116 data: 0.0005 max mem: 346
+26-07-2026 18:42:05 - [MDO-EVAL] [ 5601/25708] eta: 0:03:21 n: 4 recall: 1.0 precision: 1.0 f1-score: 1.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0102 data: 0.0005 max mem: 346
+26-07-2026 18:42:05 - [MDO-EVAL] [ 5651/25708] eta: 0:03:21 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0126 data: 0.0008 max mem: 346
+26-07-2026 18:42:06 - [MDO-EVAL] [ 5701/25708] eta: 0:03:21 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 6.0 MSE: 36.0 RMSE: 6.0 time: 0.0098 data: 0.0004 max mem: 346
+26-07-2026 18:42:06 - [MDO-EVAL] [ 5751/25708] eta: 0:03:21 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 3.0 MSE: 9.0 RMSE: 3.0 time: 0.0103 data: 0.0005 max mem: 346
+26-07-2026 18:42:07 - [MDO-EVAL] [ 5801/25708] eta: 0:03:20 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0112 data: 0.0005 max mem: 346
+26-07-2026 18:42:08 - [MDO-EVAL] [ 5851/25708] eta: 0:03:20 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0100 data: 0.0004 max mem: 346
+26-07-2026 18:42:08 - [MDO-EVAL] [ 5901/25708] eta: 0:03:19 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0091 data: 0.0004 max mem: 346
+26-07-2026 18:42:08 - [MDO-EVAL] [ 5951/25708] eta: 0:03:19 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0095 data: 0.0004 max mem: 346
+26-07-2026 18:42:09 - [MDO-EVAL] [ 6001/25708] eta: 0:03:18 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0094 data: 0.0004 max mem: 346
+26-07-2026 18:42:09 - [MDO-EVAL] [ 6051/25708] eta: 0:03:17 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0092 data: 0.0004 max mem: 346
+26-07-2026 18:42:10 - [MDO-EVAL] [ 6101/25708] eta: 0:03:17 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0091 data: 0.0005 max mem: 346
+26-07-2026 18:42:10 - [MDO-EVAL] [ 6151/25708] eta: 0:03:16 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0110 data: 0.0006 max mem: 346
+26-07-2026 18:42:11 - [MDO-EVAL] [ 6201/25708] eta: 0:03:16 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0098 data: 0.0005 max mem: 346
+26-07-2026 18:42:11 - [MDO-EVAL] [ 6251/25708] eta: 0:03:15 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0092 data: 0.0005 max mem: 346
+26-07-2026 18:42:12 - [MDO-EVAL] [ 6301/25708] eta: 0:03:15 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0093 data: 0.0004 max mem: 346
+26-07-2026 18:42:12 - [MDO-EVAL] [ 6351/25708] eta: 0:03:14 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0092 data: 0.0004 max mem: 346
+26-07-2026 18:42:13 - [MDO-EVAL] [ 6401/25708] eta: 0:03:13 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0099 data: 0.0005 max mem: 346
+26-07-2026 18:42:13 - [MDO-EVAL] [ 6451/25708] eta: 0:03:13 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 1.0 MSE: 1.0 RMSE: 1.0 time: 0.0098 data: 0.0004 max mem: 346
+26-07-2026 18:42:14 - [MDO-EVAL] [ 6501/25708] eta: 0:03:12 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 3.0 MSE: 9.0 RMSE: 3.0 time: 0.0091 data: 0.0004 max mem: 346
+26-07-2026 18:42:14 - [MDO-EVAL] [ 6551/25708] eta: 0:03:12 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0090 data: 0.0004 max mem: 346
+26-07-2026 18:42:15 - [MDO-EVAL] [ 6601/25708] eta: 0:03:11 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0092 data: 0.0004 max mem: 346
+26-07-2026 18:42:15 - [MDO-EVAL] [ 6651/25708] eta: 0:03:10 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0091 data: 0.0004 max mem: 346
+26-07-2026 18:42:16 - [MDO-EVAL] [ 6701/25708] eta: 0:03:10 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0093 data: 0.0005 max mem: 346
+26-07-2026 18:42:16 - [MDO-EVAL] [ 6751/25708] eta: 0:03:09 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0097 data: 0.0005 max mem: 346
+26-07-2026 18:42:17 - [MDO-EVAL] [ 6801/25708] eta: 0:03:09 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0096 data: 0.0005 max mem: 346
+26-07-2026 18:42:17 - [MDO-EVAL] [ 6851/25708] eta: 0:03:08 n: 1 recall: 1.0 precision: 1.0 f1-score: 1.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0127 data: 0.0007 max mem: 346
+26-07-2026 18:42:18 - [MDO-EVAL] [ 6901/25708] eta: 0:03:08 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0091 data: 0.0004 max mem: 346
+26-07-2026 18:42:18 - [MDO-EVAL] [ 6951/25708] eta: 0:03:07 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0097 data: 0.0004 max mem: 346
+26-07-2026 18:42:19 - [MDO-EVAL] [ 7001/25708] eta: 0:03:07 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0092 data: 0.0005 max mem: 346
+26-07-2026 18:42:19 - [MDO-EVAL] [ 7051/25708] eta: 0:03:06 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0091 data: 0.0004 max mem: 346
+26-07-2026 18:42:19 - [MDO-EVAL] [ 7101/25708] eta: 0:03:06 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 2.0 MSE: 4.0 RMSE: 2.0 time: 0.0091 data: 0.0005 max mem: 346
+26-07-2026 18:42:20 - [MDO-EVAL] [ 7151/25708] eta: 0:03:05 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0094 data: 0.0005 max mem: 346
+26-07-2026 18:42:20 - [MDO-EVAL] [ 7201/25708] eta: 0:03:04 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0091 data: 0.0004 max mem: 346
+26-07-2026 18:42:21 - [MDO-EVAL] [ 7251/25708] eta: 0:03:04 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0091 data: 0.0004 max mem: 346
+26-07-2026 18:42:21 - [MDO-EVAL] [ 7301/25708] eta: 0:03:03 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0100 data: 0.0005 max mem: 346
+26-07-2026 18:42:22 - [MDO-EVAL] [ 7351/25708] eta: 0:03:03 n: 30 recall: 0.97 precision: 0.64 f1-score: 0.77 MAE: 15.0 MSE: 225.0 RMSE: 15.0 time: 0.0104 data: 0.0005 max mem: 346
+26-07-2026 18:42:22 - [MDO-EVAL] [ 7401/25708] eta: 0:03:02 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 3.0 MSE: 9.0 RMSE: 3.0 time: 0.0094 data: 0.0004 max mem: 346
+26-07-2026 18:42:23 - [MDO-EVAL] [ 7451/25708] eta: 0:03:02 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0095 data: 0.0004 max mem: 346
+26-07-2026 18:42:23 - [MDO-EVAL] [ 7501/25708] eta: 0:03:01 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0095 data: 0.0004 max mem: 346
+26-07-2026 18:42:24 - [MDO-EVAL] [ 7551/25708] eta: 0:03:00 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0090 data: 0.0004 max mem: 346
+26-07-2026 18:42:24 - [MDO-EVAL] [ 7601/25708] eta: 0:03:00 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0099 data: 0.0005 max mem: 346
+26-07-2026 18:42:25 - [MDO-EVAL] [ 7651/25708] eta: 0:02:59 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0096 data: 0.0005 max mem: 346
+26-07-2026 18:42:25 - [MDO-EVAL] [ 7701/25708] eta: 0:02:59 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0091 data: 0.0005 max mem: 346
+26-07-2026 18:42:26 - [MDO-EVAL] [ 7751/25708] eta: 0:02:58 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0092 data: 0.0004 max mem: 346
+26-07-2026 18:42:26 - [MDO-EVAL] [ 7801/25708] eta: 0:02:58 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0100 data: 0.0005 max mem: 346
+26-07-2026 18:42:27 - [MDO-EVAL] [ 7851/25708] eta: 0:02:57 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0094 data: 0.0004 max mem: 346
+26-07-2026 18:42:27 - [MDO-EVAL] [ 7901/25708] eta: 0:02:57 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0096 data: 0.0005 max mem: 346
+26-07-2026 18:42:28 - [MDO-EVAL] [ 7951/25708] eta: 0:02:56 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0092 data: 0.0005 max mem: 346
+26-07-2026 18:42:28 - [MDO-EVAL] [ 8001/25708] eta: 0:02:56 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0091 data: 0.0005 max mem: 346
+26-07-2026 18:42:29 - [MDO-EVAL] [ 8051/25708] eta: 0:02:55 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0092 data: 0.0005 max mem: 346
+26-07-2026 18:42:29 - [MDO-EVAL] [ 8101/25708] eta: 0:02:54 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0092 data: 0.0004 max mem: 346
+26-07-2026 18:42:29 - [MDO-EVAL] [ 8151/25708] eta: 0:02:54 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0091 data: 0.0005 max mem: 346
+26-07-2026 18:42:30 - [MDO-EVAL] [ 8201/25708] eta: 0:02:53 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0104 data: 0.0005 max mem: 346
+26-07-2026 18:42:30 - [MDO-EVAL] [ 8251/25708] eta: 0:02:53 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0101 data: 0.0005 max mem: 346
+26-07-2026 18:42:31 - [MDO-EVAL] [ 8301/25708] eta: 0:02:52 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0101 data: 0.0006 max mem: 346
+26-07-2026 18:42:31 - [MDO-EVAL] [ 8351/25708] eta: 0:02:52 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0093 data: 0.0004 max mem: 346
+26-07-2026 18:42:32 - [MDO-EVAL] [ 8401/25708] eta: 0:02:51 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 2.0 MSE: 4.0 RMSE: 2.0 time: 0.0100 data: 0.0005 max mem: 346
+26-07-2026 18:42:32 - [MDO-EVAL] [ 8451/25708] eta: 0:02:51 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0093 data: 0.0004 max mem: 346
+26-07-2026 18:42:33 - [MDO-EVAL] [ 8501/25708] eta: 0:02:50 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0099 data: 0.0005 max mem: 346
+26-07-2026 18:42:33 - [MDO-EVAL] [ 8551/25708] eta: 0:02:50 n: 43 recall: 0.98 precision: 0.89 f1-score: 0.93 MAE: 4.0 MSE: 16.0 RMSE: 4.0 time: 0.0108 data: 0.0005 max mem: 346
+26-07-2026 18:42:34 - [MDO-EVAL] [ 8601/25708] eta: 0:02:49 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 1.0 MSE: 1.0 RMSE: 1.0 time: 0.0110 data: 0.0005 max mem: 346
+26-07-2026 18:42:34 - [MDO-EVAL] [ 8651/25708] eta: 0:02:49 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0094 data: 0.0004 max mem: 346
+26-07-2026 18:42:35 - [MDO-EVAL] [ 8701/25708] eta: 0:02:48 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0091 data: 0.0004 max mem: 346
+26-07-2026 18:42:35 - [MDO-EVAL] [ 8751/25708] eta: 0:02:48 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0093 data: 0.0005 max mem: 346
+26-07-2026 18:42:36 - [MDO-EVAL] [ 8801/25708] eta: 0:02:47 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 9.0 MSE: 81.0 RMSE: 9.0 time: 0.0125 data: 0.0007 max mem: 346
+26-07-2026 18:42:37 - [MDO-EVAL] [ 8851/25708] eta: 0:02:47 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0119 data: 0.0007 max mem: 346
+26-07-2026 18:42:37 - [MDO-EVAL] [ 8901/25708] eta: 0:02:47 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 2.0 MSE: 4.0 RMSE: 2.0 time: 0.0099 data: 0.0005 max mem: 346
+26-07-2026 18:42:38 - [MDO-EVAL] [ 8951/25708] eta: 0:02:46 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0091 data: 0.0004 max mem: 346
+26-07-2026 18:42:38 - [MDO-EVAL] [ 9001/25708] eta: 0:02:46 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0098 data: 0.0004 max mem: 346
+26-07-2026 18:42:39 - [MDO-EVAL] [ 9051/25708] eta: 0:02:45 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0106 data: 0.0005 max mem: 346
+26-07-2026 18:42:39 - [MDO-EVAL] [ 9101/25708] eta: 0:02:45 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0092 data: 0.0004 max mem: 346
+26-07-2026 18:42:39 - [MDO-EVAL] [ 9151/25708] eta: 0:02:44 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0098 data: 0.0005 max mem: 346
+26-07-2026 18:42:40 - [MDO-EVAL] [ 9201/25708] eta: 0:02:44 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0101 data: 0.0005 max mem: 346
+26-07-2026 18:42:41 - [MDO-EVAL] [ 9251/25708] eta: 0:02:43 n: 7 recall: 0.71 precision: 1.0 f1-score: 0.83 MAE: 2.0 MSE: 4.0 RMSE: 2.0 time: 0.0113 data: 0.0005 max mem: 346
+26-07-2026 18:42:41 - [MDO-EVAL] [ 9301/25708] eta: 0:02:43 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0113 data: 0.0005 max mem: 346
+26-07-2026 18:42:42 - [MDO-EVAL] [ 9351/25708] eta: 0:02:42 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0101 data: 0.0004 max mem: 346
+26-07-2026 18:42:42 - [MDO-EVAL] [ 9401/25708] eta: 0:02:42 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0103 data: 0.0004 max mem: 346
+26-07-2026 18:42:43 - [MDO-EVAL] [ 9451/25708] eta: 0:02:42 n: 29 recall: 1.0 precision: 1.0 f1-score: 1.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0107 data: 0.0005 max mem: 346
+26-07-2026 18:42:43 - [MDO-EVAL] [ 9501/25708] eta: 0:02:41 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 4.0 MSE: 16.0 RMSE: 4.0 time: 0.0099 data: 0.0004 max mem: 346
+26-07-2026 18:42:44 - [MDO-EVAL] [ 9551/25708] eta: 0:02:41 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0098 data: 0.0004 max mem: 346
+26-07-2026 18:42:44 - [MDO-EVAL] [ 9601/25708] eta: 0:02:40 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0091 data: 0.0004 max mem: 346
+26-07-2026 18:42:45 - [MDO-EVAL] [ 9651/25708] eta: 0:02:39 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0090 data: 0.0004 max mem: 346
+26-07-2026 18:42:45 - [MDO-EVAL] [ 9701/25708] eta: 0:02:39 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0091 data: 0.0005 max mem: 346
+26-07-2026 18:42:46 - [MDO-EVAL] [ 9751/25708] eta: 0:02:38 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0097 data: 0.0005 max mem: 346
+26-07-2026 18:42:46 - [MDO-EVAL] [ 9801/25708] eta: 0:02:38 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0094 data: 0.0004 max mem: 346
+26-07-2026 18:42:47 - [MDO-EVAL] [ 9851/25708] eta: 0:02:37 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0110 data: 0.0006 max mem: 346
+26-07-2026 18:42:47 - [MDO-EVAL] [ 9901/25708] eta: 0:02:37 n: 3 recall: 1.0 precision: 0.75 f1-score: 0.86 MAE: 1.0 MSE: 1.0 RMSE: 1.0 time: 0.0106 data: 0.0005 max mem: 346
+26-07-2026 18:42:48 - [MDO-EVAL] [ 9951/25708] eta: 0:02:37 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0090 data: 0.0004 max mem: 346
+26-07-2026 18:42:48 - [MDO-EVAL] [10001/25708] eta: 0:02:36 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0090 data: 0.0005 max mem: 346
+26-07-2026 18:42:49 - [MDO-EVAL] [10051/25708] eta: 0:02:35 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0091 data: 0.0004 max mem: 346
+26-07-2026 18:42:49 - [MDO-EVAL] [10101/25708] eta: 0:02:35 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0090 data: 0.0004 max mem: 346
+26-07-2026 18:42:50 - [MDO-EVAL] [10151/25708] eta: 0:02:34 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0093 data: 0.0004 max mem: 346
+26-07-2026 18:42:50 - [MDO-EVAL] [10201/25708] eta: 0:02:34 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0117 data: 0.0007 max mem: 346
+26-07-2026 18:42:51 - [MDO-EVAL] [10251/25708] eta: 0:02:33 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0104 data: 0.0006 max mem: 346
+26-07-2026 18:42:51 - [MDO-EVAL] [10301/25708] eta: 0:02:33 n: 1 recall: 1.0 precision: 1.0 f1-score: 1.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0150 data: 0.0008 max mem: 346
+26-07-2026 18:42:52 - [MDO-EVAL] [10351/25708] eta: 0:02:33 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0103 data: 0.0005 max mem: 346
+26-07-2026 18:42:52 - [MDO-EVAL] [10401/25708] eta: 0:02:32 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0091 data: 0.0004 max mem: 346
+26-07-2026 18:42:53 - [MDO-EVAL] [10451/25708] eta: 0:02:32 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0091 data: 0.0004 max mem: 346
+26-07-2026 18:42:53 - [MDO-EVAL] [10501/25708] eta: 0:02:31 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0095 data: 0.0004 max mem: 346
+26-07-2026 18:42:54 - [MDO-EVAL] [10551/25708] eta: 0:02:31 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0091 data: 0.0004 max mem: 346
+26-07-2026 18:42:54 - [MDO-EVAL] [10601/25708] eta: 0:02:30 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0093 data: 0.0004 max mem: 346
+26-07-2026 18:42:55 - [MDO-EVAL] [10651/25708] eta: 0:02:30 n: 10 recall: 1.0 precision: 1.0 f1-score: 1.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0118 data: 0.0006 max mem: 346
+26-07-2026 18:42:55 - [MDO-EVAL] [10701/25708] eta: 0:02:29 n: 5 recall: 1.0 precision: 1.0 f1-score: 1.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0135 data: 0.0007 max mem: 346
+26-07-2026 18:42:56 - [MDO-EVAL] [10751/25708] eta: 0:02:29 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0109 data: 0.0005 max mem: 346
+26-07-2026 18:42:56 - [MDO-EVAL] [10801/25708] eta: 0:02:28 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0100 data: 0.0005 max mem: 346
+26-07-2026 18:42:57 - [MDO-EVAL] [10851/25708] eta: 0:02:28 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0091 data: 0.0004 max mem: 346
+26-07-2026 18:42:57 - [MDO-EVAL] [10901/25708] eta: 0:02:27 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0096 data: 0.0005 max mem: 346
+26-07-2026 18:42:58 - [MDO-EVAL] [10951/25708] eta: 0:02:27 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 6.0 MSE: 36.0 RMSE: 6.0 time: 0.0103 data: 0.0005 max mem: 346
+26-07-2026 18:42:58 - [MDO-EVAL] [11001/25708] eta: 0:02:26 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0112 data: 0.0005 max mem: 346
+26-07-2026 18:42:59 - [MDO-EVAL] [11051/25708] eta: 0:02:26 n: 106 recall: 0.98 precision: 0.88 f1-score: 0.93 MAE: 12.0 MSE: 144.0 RMSE: 12.0 time: 0.0115 data: 0.0005 max mem: 346
+26-07-2026 18:43:00 - [MDO-EVAL] [11101/25708] eta: 0:02:26 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0100 data: 0.0005 max mem: 346
+26-07-2026 18:43:00 - [MDO-EVAL] [11151/25708] eta: 0:02:25 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0101 data: 0.0005 max mem: 346
+26-07-2026 18:43:01 - [MDO-EVAL] [11201/25708] eta: 0:02:25 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 3.0 MSE: 9.0 RMSE: 3.0 time: 0.0097 data: 0.0005 max mem: 346
+26-07-2026 18:43:01 - [MDO-EVAL] [11251/25708] eta: 0:02:24 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0102 data: 0.0005 max mem: 346
+26-07-2026 18:43:02 - [MDO-EVAL] [11301/25708] eta: 0:02:24 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0114 data: 0.0005 max mem: 346
+26-07-2026 18:43:02 - [MDO-EVAL] [11351/25708] eta: 0:02:23 n: 2 recall: 1.0 precision: 1.0 f1-score: 1.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0109 data: 0.0005 max mem: 346
+26-07-2026 18:43:03 - [MDO-EVAL] [11401/25708] eta: 0:02:23 n: 2 recall: 1.0 precision: 1.0 f1-score: 1.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0120 data: 0.0006 max mem: 346
+26-07-2026 18:43:03 - [MDO-EVAL] [11451/25708] eta: 0:02:22 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0119 data: 0.0006 max mem: 346
+26-07-2026 18:43:04 - [MDO-EVAL] [11501/25708] eta: 0:02:22 n: 2 recall: 1.0 precision: 1.0 f1-score: 1.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0117 data: 0.0006 max mem: 346
+26-07-2026 18:43:04 - [MDO-EVAL] [11551/25708] eta: 0:02:22 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0117 data: 0.0006 max mem: 346
+26-07-2026 18:43:05 - [MDO-EVAL] [11601/25708] eta: 0:02:21 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0109 data: 0.0005 max mem: 346
+26-07-2026 18:43:06 - [MDO-EVAL] [11651/25708] eta: 0:02:21 n: 4 recall: 1.0 precision: 1.0 f1-score: 1.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0121 data: 0.0006 max mem: 346
+26-07-2026 18:43:06 - [MDO-EVAL] [11701/25708] eta: 0:02:20 n: 13 recall: 1.0 precision: 1.0 f1-score: 1.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0115 data: 0.0005 max mem: 346
+26-07-2026 18:43:07 - [MDO-EVAL] [11751/25708] eta: 0:02:20 n: 54 recall: 0.89 precision: 0.98 f1-score: 0.93 MAE: 5.0 MSE: 25.0 RMSE: 5.0 time: 0.0112 data: 0.0005 max mem: 346
+26-07-2026 18:43:07 - [MDO-EVAL] [11801/25708] eta: 0:02:19 n: 79 recall: 0.97 precision: 0.99 f1-score: 0.98 MAE: 1.0 MSE: 1.0 RMSE: 1.0 time: 0.0126 data: 0.0006 max mem: 346
+26-07-2026 18:43:08 - [MDO-EVAL] [11851/25708] eta: 0:02:19 n: 5 recall: 1.0 precision: 1.0 f1-score: 1.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0116 data: 0.0005 max mem: 346
+26-07-2026 18:43:08 - [MDO-EVAL] [11901/25708] eta: 0:02:19 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0113 data: 0.0005 max mem: 346
+26-07-2026 18:43:09 - [MDO-EVAL] [11951/25708] eta: 0:02:18 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0095 data: 0.0004 max mem: 346
+26-07-2026 18:43:10 - [MDO-EVAL] [12001/25708] eta: 0:02:18 n: 2 recall: 1.0 precision: 1.0 f1-score: 1.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0120 data: 0.0006 max mem: 346
+26-07-2026 18:43:10 - [MDO-EVAL] [12051/25708] eta: 0:02:17 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0109 data: 0.0005 max mem: 346
+26-07-2026 18:43:11 - [MDO-EVAL] [12101/25708] eta: 0:02:17 n: 1 recall: 1.0 precision: 1.0 f1-score: 1.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0115 data: 0.0005 max mem: 346
+26-07-2026 18:43:11 - [MDO-EVAL] [12151/25708] eta: 0:02:16 n: 1 recall: 1.0 precision: 1.0 f1-score: 1.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0112 data: 0.0006 max mem: 346
+26-07-2026 18:43:12 - [MDO-EVAL] [12201/25708] eta: 0:02:16 n: 1 recall: 1.0 precision: 1.0 f1-score: 1.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0138 data: 0.0007 max mem: 346
+26-07-2026 18:43:12 - [MDO-EVAL] [12251/25708] eta: 0:02:16 n: 1 recall: 1.0 precision: 1.0 f1-score: 1.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0122 data: 0.0006 max mem: 346
+26-07-2026 18:43:13 - [MDO-EVAL] [12301/25708] eta: 0:02:15 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0120 data: 0.0006 max mem: 346
+26-07-2026 18:43:14 - [MDO-EVAL] [12351/25708] eta: 0:02:15 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 6.0 MSE: 36.0 RMSE: 6.0 time: 0.0100 data: 0.0005 max mem: 346
+26-07-2026 18:43:14 - [MDO-EVAL] [12401/25708] eta: 0:02:14 n: 12 recall: 1.0 precision: 1.0 f1-score: 1.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0109 data: 0.0005 max mem: 346
+26-07-2026 18:43:15 - [MDO-EVAL] [12451/25708] eta: 0:02:14 n: 4 recall: 1.0 precision: 1.0 f1-score: 1.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0120 data: 0.0006 max mem: 346
+26-07-2026 18:43:15 - [MDO-EVAL] [12501/25708] eta: 0:02:13 n: 12 recall: 0.92 precision: 0.92 f1-score: 0.92 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0113 data: 0.0006 max mem: 346
+26-07-2026 18:43:16 - [MDO-EVAL] [12551/25708] eta: 0:02:13 n: 1 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 1.0 MSE: 1.0 RMSE: 1.0 time: 0.0119 data: 0.0006 max mem: 346
+26-07-2026 18:43:17 - [MDO-EVAL] [12601/25708] eta: 0:02:13 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0107 data: 0.0005 max mem: 346
+26-07-2026 18:43:17 - [MDO-EVAL] [12651/25708] eta: 0:02:12 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0119 data: 0.0006 max mem: 346
+26-07-2026 18:43:18 - [MDO-EVAL] [12701/25708] eta: 0:02:12 n: 3 recall: 1.0 precision: 1.0 f1-score: 1.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0124 data: 0.0006 max mem: 346
+26-07-2026 18:43:18 - [MDO-EVAL] [12751/25708] eta: 0:02:11 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0111 data: 0.0006 max mem: 346
+26-07-2026 18:43:19 - [MDO-EVAL] [12801/25708] eta: 0:02:11 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0130 data: 0.0008 max mem: 346
+26-07-2026 18:43:20 - [MDO-EVAL] [12851/25708] eta: 0:02:11 n: 16 recall: 0.81 precision: 0.68 f1-score: 0.74 MAE: 3.0 MSE: 9.0 RMSE: 3.0 time: 0.0108 data: 0.0005 max mem: 346
+26-07-2026 18:43:20 - [MDO-EVAL] [12901/25708] eta: 0:02:10 n: 12 recall: 1.0 precision: 0.71 f1-score: 0.83 MAE: 5.0 MSE: 25.0 RMSE: 5.0 time: 0.0123 data: 0.0006 max mem: 346
+26-07-2026 18:43:21 - [MDO-EVAL] [12951/25708] eta: 0:02:10 n: 12 recall: 1.0 precision: 1.0 f1-score: 1.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0111 data: 0.0006 max mem: 346
+26-07-2026 18:43:21 - [MDO-EVAL] [13001/25708] eta: 0:02:09 n: 13 recall: 1.0 precision: 1.0 f1-score: 1.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0111 data: 0.0005 max mem: 346
+26-07-2026 18:43:22 - [MDO-EVAL] [13051/25708] eta: 0:02:09 n: 4 recall: 1.0 precision: 0.8 f1-score: 0.89 MAE: 1.0 MSE: 1.0 RMSE: 1.0 time: 0.0113 data: 0.0005 max mem: 346
+26-07-2026 18:43:22 - [MDO-EVAL] [13101/25708] eta: 0:02:08 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0111 data: 0.0005 max mem: 346
+26-07-2026 18:43:23 - [MDO-EVAL] [13151/25708] eta: 0:02:08 n: 6 recall: 1.0 precision: 0.86 f1-score: 0.92 MAE: 1.0 MSE: 1.0 RMSE: 1.0 time: 0.0113 data: 0.0005 max mem: 346
+26-07-2026 18:43:24 - [MDO-EVAL] [13201/25708] eta: 0:02:07 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0100 data: 0.0005 max mem: 346
+26-07-2026 18:43:24 - [MDO-EVAL] [13251/25708] eta: 0:02:07 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0096 data: 0.0005 max mem: 346
+26-07-2026 18:43:25 - [MDO-EVAL] [13301/25708] eta: 0:02:06 n: 6 recall: 1.0 precision: 1.0 f1-score: 1.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0113 data: 0.0005 max mem: 346
+26-07-2026 18:43:25 - [MDO-EVAL] [13351/25708] eta: 0:02:06 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0106 data: 0.0005 max mem: 346
+26-07-2026 18:43:26 - [MDO-EVAL] [13401/25708] eta: 0:02:05 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0113 data: 0.0005 max mem: 346
+26-07-2026 18:43:26 - [MDO-EVAL] [13451/25708] eta: 0:02:05 n: 2 recall: 1.0 precision: 0.5 f1-score: 0.67 MAE: 2.0 MSE: 4.0 RMSE: 2.0 time: 0.0124 data: 0.0006 max mem: 346
+26-07-2026 18:43:27 - [MDO-EVAL] [13501/25708] eta: 0:02:05 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0145 data: 0.0008 max mem: 346
+26-07-2026 18:43:28 - [MDO-EVAL] [13551/25708] eta: 0:02:04 n: 17 recall: 0.94 precision: 0.7 f1-score: 0.8 MAE: 6.0 MSE: 36.0 RMSE: 6.0 time: 0.0110 data: 0.0005 max mem: 346
+26-07-2026 18:43:28 - [MDO-EVAL] [13601/25708] eta: 0:02:04 n: 1 recall: 1.0 precision: 1.0 f1-score: 1.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0123 data: 0.0006 max mem: 346
+26-07-2026 18:43:29 - [MDO-EVAL] [13651/25708] eta: 0:02:03 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0110 data: 0.0005 max mem: 346
+26-07-2026 18:43:29 - [MDO-EVAL] [13701/25708] eta: 0:02:03 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0106 data: 0.0005 max mem: 346
+26-07-2026 18:43:30 - [MDO-EVAL] [13751/25708] eta: 0:02:02 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 3.0 MSE: 9.0 RMSE: 3.0 time: 0.0105 data: 0.0006 max mem: 346
+26-07-2026 18:43:30 - [MDO-EVAL] [13801/25708] eta: 0:02:02 n: 33 recall: 0.97 precision: 1.0 f1-score: 0.98 MAE: 1.0 MSE: 1.0 RMSE: 1.0 time: 0.0097 data: 0.0005 max mem: 346
+26-07-2026 18:43:31 - [MDO-EVAL] [13851/25708] eta: 0:02:01 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0101 data: 0.0005 max mem: 346
+26-07-2026 18:43:31 - [MDO-EVAL] [13901/25708] eta: 0:02:01 n: 1 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 34.0 MSE: 1156.0 RMSE: 34.0 time: 0.0101 data: 0.0005 max mem: 346
+26-07-2026 18:43:32 - [MDO-EVAL] [13951/25708] eta: 0:02:00 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 4.0 MSE: 16.0 RMSE: 4.0 time: 0.0096 data: 0.0005 max mem: 346
+26-07-2026 18:43:32 - [MDO-EVAL] [14001/25708] eta: 0:02:00 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0104 data: 0.0005 max mem: 346
+26-07-2026 18:43:33 - [MDO-EVAL] [14051/25708] eta: 0:01:59 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0091 data: 0.0004 max mem: 346
+26-07-2026 18:43:33 - [MDO-EVAL] [14101/25708] eta: 0:01:59 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0091 data: 0.0004 max mem: 346
+26-07-2026 18:43:34 - [MDO-EVAL] [14151/25708] eta: 0:01:58 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0092 data: 0.0004 max mem: 346
+26-07-2026 18:43:34 - [MDO-EVAL] [14201/25708] eta: 0:01:58 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0121 data: 0.0006 max mem: 346
+26-07-2026 18:43:35 - [MDO-EVAL] [14251/25708] eta: 0:01:57 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0109 data: 0.0006 max mem: 346
+26-07-2026 18:43:36 - [MDO-EVAL] [14301/25708] eta: 0:01:57 n: 11 recall: 0.82 precision: 1.0 f1-score: 0.9 MAE: 2.0 MSE: 4.0 RMSE: 2.0 time: 0.0109 data: 0.0005 max mem: 346
+26-07-2026 18:43:36 - [MDO-EVAL] [14351/25708] eta: 0:01:56 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0095 data: 0.0005 max mem: 346
+26-07-2026 18:43:37 - [MDO-EVAL] [14401/25708] eta: 0:01:56 n: 3 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 3.0 MSE: 9.0 RMSE: 3.0 time: 0.0098 data: 0.0005 max mem: 346
+26-07-2026 18:43:37 - [MDO-EVAL] [14451/25708] eta: 0:01:55 n: 11 recall: 0.82 precision: 1.0 f1-score: 0.9 MAE: 2.0 MSE: 4.0 RMSE: 2.0 time: 0.0106 data: 0.0005 max mem: 346
+26-07-2026 18:43:38 - [MDO-EVAL] [14501/25708] eta: 0:01:55 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 5.0 MSE: 25.0 RMSE: 5.0 time: 0.0114 data: 0.0006 max mem: 346
+26-07-2026 18:43:38 - [MDO-EVAL] [14551/25708] eta: 0:01:54 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 1.0 MSE: 1.0 RMSE: 1.0 time: 0.0099 data: 0.0005 max mem: 346
+26-07-2026 18:43:39 - [MDO-EVAL] [14601/25708] eta: 0:01:54 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 7.0 MSE: 49.0 RMSE: 7.0 time: 0.0122 data: 0.0006 max mem: 346
+26-07-2026 18:43:39 - [MDO-EVAL] [14651/25708] eta: 0:01:53 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0094 data: 0.0004 max mem: 346
+26-07-2026 18:43:40 - [MDO-EVAL] [14701/25708] eta: 0:01:53 n: 5 recall: 0.4 precision: 1.0 f1-score: 0.57 MAE: 3.0 MSE: 9.0 RMSE: 3.0 time: 0.0100 data: 0.0004 max mem: 346
+26-07-2026 18:43:40 - [MDO-EVAL] [14751/25708] eta: 0:01:52 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0103 data: 0.0005 max mem: 346
+26-07-2026 18:43:41 - [MDO-EVAL] [14801/25708] eta: 0:01:52 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0095 data: 0.0005 max mem: 346
+26-07-2026 18:43:41 - [MDO-EVAL] [14851/25708] eta: 0:01:51 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0092 data: 0.0004 max mem: 346
+26-07-2026 18:43:42 - [MDO-EVAL] [14901/25708] eta: 0:01:51 n: 1 recall: 1.0 precision: 0.5 f1-score: 0.67 MAE: 1.0 MSE: 1.0 RMSE: 1.0 time: 0.0115 data: 0.0006 max mem: 346
+26-07-2026 18:43:42 - [MDO-EVAL] [14951/25708] eta: 0:01:50 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0104 data: 0.0006 max mem: 346
+26-07-2026 18:43:43 - [MDO-EVAL] [15001/25708] eta: 0:01:50 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 3.0 MSE: 9.0 RMSE: 3.0 time: 0.0112 data: 0.0006 max mem: 346
+26-07-2026 18:43:43 - [MDO-EVAL] [15051/25708] eta: 0:01:49 n: 2 recall: 1.0 precision: 0.4 f1-score: 0.57 MAE: 3.0 MSE: 9.0 RMSE: 3.0 time: 0.0115 data: 0.0006 max mem: 346
+26-07-2026 18:43:44 - [MDO-EVAL] [15101/25708] eta: 0:01:49 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0106 data: 0.0006 max mem: 346
+26-07-2026 18:43:45 - [MDO-EVAL] [15151/25708] eta: 0:01:48 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0118 data: 0.0005 max mem: 346
+26-07-2026 18:43:45 - [MDO-EVAL] [15201/25708] eta: 0:01:48 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0104 data: 0.0005 max mem: 346
+26-07-2026 18:43:46 - [MDO-EVAL] [15251/25708] eta: 0:01:47 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 2.0 MSE: 4.0 RMSE: 2.0 time: 0.0099 data: 0.0005 max mem: 346
+26-07-2026 18:43:46 - [MDO-EVAL] [15301/25708] eta: 0:01:47 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0091 data: 0.0004 max mem: 346
+26-07-2026 18:43:47 - [MDO-EVAL] [15351/25708] eta: 0:01:46 n: 6 recall: 1.0 precision: 1.0 f1-score: 1.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0120 data: 0.0006 max mem: 346
+26-07-2026 18:43:47 - [MDO-EVAL] [15401/25708] eta: 0:01:46 n: 3 recall: 1.0 precision: 0.75 f1-score: 0.86 MAE: 1.0 MSE: 1.0 RMSE: 1.0 time: 0.0109 data: 0.0006 max mem: 346
+26-07-2026 18:43:48 - [MDO-EVAL] [15451/25708] eta: 0:01:45 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0132 data: 0.0006 max mem: 346
+26-07-2026 18:43:49 - [MDO-EVAL] [15501/25708] eta: 0:01:45 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0139 data: 0.0008 max mem: 346
+26-07-2026 18:43:49 - [MDO-EVAL] [15551/25708] eta: 0:01:44 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 3.0 MSE: 9.0 RMSE: 3.0 time: 0.0108 data: 0.0006 max mem: 346
+26-07-2026 18:43:50 - [MDO-EVAL] [15601/25708] eta: 0:01:44 n: 6 recall: 0.67 precision: 0.8 f1-score: 0.73 MAE: 1.0 MSE: 1.0 RMSE: 1.0 time: 0.0114 data: 0.0006 max mem: 346
+26-07-2026 18:43:50 - [MDO-EVAL] [15651/25708] eta: 0:01:43 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0094 data: 0.0005 max mem: 346
+26-07-2026 18:43:51 - [MDO-EVAL] [15701/25708] eta: 0:01:43 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0091 data: 0.0004 max mem: 346
+26-07-2026 18:43:51 - [MDO-EVAL] [15751/25708] eta: 0:01:42 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0105 data: 0.0006 max mem: 346
+26-07-2026 18:43:52 - [MDO-EVAL] [15801/25708] eta: 0:01:42 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0120 data: 0.0007 max mem: 346
+26-07-2026 18:43:52 - [MDO-EVAL] [15851/25708] eta: 0:01:41 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0100 data: 0.0005 max mem: 346
+26-07-2026 18:43:53 - [MDO-EVAL] [15901/25708] eta: 0:01:41 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0110 data: 0.0006 max mem: 346
+26-07-2026 18:43:53 - [MDO-EVAL] [15951/25708] eta: 0:01:40 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0096 data: 0.0004 max mem: 346
+26-07-2026 18:43:54 - [MDO-EVAL] [16001/25708] eta: 0:01:40 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0092 data: 0.0005 max mem: 346
+26-07-2026 18:43:54 - [MDO-EVAL] [16051/25708] eta: 0:01:39 n: 1 recall: 1.0 precision: 1.0 f1-score: 1.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0124 data: 0.0006 max mem: 346
+26-07-2026 18:43:55 - [MDO-EVAL] [16101/25708] eta: 0:01:39 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0106 data: 0.0005 max mem: 346
+26-07-2026 18:43:56 - [MDO-EVAL] [16151/25708] eta: 0:01:38 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0115 data: 0.0006 max mem: 346
+26-07-2026 18:43:56 - [MDO-EVAL] [16201/25708] eta: 0:01:38 n: 7 recall: 0.57 precision: 1.0 f1-score: 0.73 MAE: 3.0 MSE: 9.0 RMSE: 3.0 time: 0.0114 data: 0.0006 max mem: 346
+26-07-2026 18:43:57 - [MDO-EVAL] [16251/25708] eta: 0:01:37 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0116 data: 0.0006 max mem: 346
+26-07-2026 18:43:57 - [MDO-EVAL] [16301/25708] eta: 0:01:37 n: 4 recall: 1.0 precision: 1.0 f1-score: 1.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0098 data: 0.0005 max mem: 346
+26-07-2026 18:43:58 - [MDO-EVAL] [16351/25708] eta: 0:01:36 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0126 data: 0.0006 max mem: 346
+26-07-2026 18:43:58 - [MDO-EVAL] [16401/25708] eta: 0:01:36 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0094 data: 0.0004 max mem: 346
+26-07-2026 18:43:59 - [MDO-EVAL] [16451/25708] eta: 0:01:35 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0092 data: 0.0004 max mem: 346
+26-07-2026 18:44:00 - [MDO-EVAL] [16501/25708] eta: 0:01:35 n: 4 recall: 1.0 precision: 1.0 f1-score: 1.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0129 data: 0.0007 max mem: 346
+26-07-2026 18:44:00 - [MDO-EVAL] [16551/25708] eta: 0:01:34 n: 1 recall: 1.0 precision: 1.0 f1-score: 1.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0181 data: 0.0010 max mem: 346
+26-07-2026 18:44:01 - [MDO-EVAL] [16601/25708] eta: 0:01:34 n: 3 recall: 1.0 precision: 1.0 f1-score: 1.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0123 data: 0.0007 max mem: 346
+26-07-2026 18:44:01 - [MDO-EVAL] [16651/25708] eta: 0:01:34 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0124 data: 0.0006 max mem: 346
+26-07-2026 18:44:02 - [MDO-EVAL] [16701/25708] eta: 0:01:33 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0106 data: 0.0005 max mem: 346
+26-07-2026 18:44:03 - [MDO-EVAL] [16751/25708] eta: 0:01:32 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0095 data: 0.0005 max mem: 346
+26-07-2026 18:44:03 - [MDO-EVAL] [16801/25708] eta: 0:01:32 n: 9 recall: 0.44 precision: 0.57 f1-score: 0.5 MAE: 2.0 MSE: 4.0 RMSE: 2.0 time: 0.0101 data: 0.0005 max mem: 346
+26-07-2026 18:44:04 - [MDO-EVAL] [16851/25708] eta: 0:01:31 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 2.0 MSE: 4.0 RMSE: 2.0 time: 0.0097 data: 0.0005 max mem: 346
+26-07-2026 18:44:04 - [MDO-EVAL] [16901/25708] eta: 0:01:31 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0095 data: 0.0005 max mem: 346
+26-07-2026 18:44:04 - [MDO-EVAL] [16951/25708] eta: 0:01:30 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0097 data: 0.0005 max mem: 346
+26-07-2026 18:44:05 - [MDO-EVAL] [17001/25708] eta: 0:01:30 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0093 data: 0.0005 max mem: 346
+26-07-2026 18:44:05 - [MDO-EVAL] [17051/25708] eta: 0:01:29 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0092 data: 0.0004 max mem: 346
+26-07-2026 18:44:06 - [MDO-EVAL] [17101/25708] eta: 0:01:29 n: 2 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 2.0 MSE: 4.0 RMSE: 2.0 time: 0.0103 data: 0.0005 max mem: 346
+26-07-2026 18:44:06 - [MDO-EVAL] [17151/25708] eta: 0:01:28 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0092 data: 0.0004 max mem: 346
+26-07-2026 18:44:07 - [MDO-EVAL] [17201/25708] eta: 0:01:28 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0092 data: 0.0005 max mem: 346
+26-07-2026 18:44:07 - [MDO-EVAL] [17251/25708] eta: 0:01:27 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0093 data: 0.0005 max mem: 346
+26-07-2026 18:44:08 - [MDO-EVAL] [17301/25708] eta: 0:01:27 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0092 data: 0.0005 max mem: 346
+26-07-2026 18:44:08 - [MDO-EVAL] [17351/25708] eta: 0:01:26 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0093 data: 0.0004 max mem: 346
+26-07-2026 18:44:09 - [MDO-EVAL] [17401/25708] eta: 0:01:25 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0092 data: 0.0005 max mem: 346
+26-07-2026 18:44:09 - [MDO-EVAL] [17451/25708] eta: 0:01:25 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0096 data: 0.0005 max mem: 346
+26-07-2026 18:44:10 - [MDO-EVAL] [17501/25708] eta: 0:01:24 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0102 data: 0.0005 max mem: 346
+26-07-2026 18:44:10 - [MDO-EVAL] [17551/25708] eta: 0:01:24 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0096 data: 0.0005 max mem: 346
+26-07-2026 18:44:11 - [MDO-EVAL] [17601/25708] eta: 0:01:23 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0093 data: 0.0004 max mem: 346
+26-07-2026 18:44:11 - [MDO-EVAL] [17651/25708] eta: 0:01:23 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0098 data: 0.0005 max mem: 346
+26-07-2026 18:44:12 - [MDO-EVAL] [17701/25708] eta: 0:01:22 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0101 data: 0.0005 max mem: 346
+26-07-2026 18:44:12 - [MDO-EVAL] [17751/25708] eta: 0:01:22 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0105 data: 0.0005 max mem: 346
+26-07-2026 18:44:13 - [MDO-EVAL] [17801/25708] eta: 0:01:21 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0097 data: 0.0005 max mem: 346
+26-07-2026 18:44:13 - [MDO-EVAL] [17851/25708] eta: 0:01:21 n: 1 recall: 1.0 precision: 1.0 f1-score: 1.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0120 data: 0.0006 max mem: 346
+26-07-2026 18:44:14 - [MDO-EVAL] [17901/25708] eta: 0:01:20 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0126 data: 0.0007 max mem: 346
+26-07-2026 18:44:15 - [MDO-EVAL] [17951/25708] eta: 0:01:20 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0099 data: 0.0004 max mem: 346
+26-07-2026 18:44:15 - [MDO-EVAL] [18001/25708] eta: 0:01:19 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0092 data: 0.0005 max mem: 346
+26-07-2026 18:44:16 - [MDO-EVAL] [18051/25708] eta: 0:01:19 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0097 data: 0.0005 max mem: 346
+26-07-2026 18:44:16 - [MDO-EVAL] [18101/25708] eta: 0:01:18 n: 1 recall: 1.0 precision: 1.0 f1-score: 1.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0104 data: 0.0006 max mem: 346
+26-07-2026 18:44:17 - [MDO-EVAL] [18151/25708] eta: 0:01:18 n: 1 recall: 1.0 precision: 0.2 f1-score: 0.33 MAE: 4.0 MSE: 16.0 RMSE: 4.0 time: 0.0113 data: 0.0006 max mem: 346
+26-07-2026 18:44:17 - [MDO-EVAL] [18201/25708] eta: 0:01:17 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0127 data: 0.0006 max mem: 346
+26-07-2026 18:44:18 - [MDO-EVAL] [18251/25708] eta: 0:01:17 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0095 data: 0.0005 max mem: 346
+26-07-2026 18:44:18 - [MDO-EVAL] [18301/25708] eta: 0:01:16 n: 1 recall: 1.0 precision: 1.0 f1-score: 1.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0097 data: 0.0004 max mem: 346
+26-07-2026 18:44:19 - [MDO-EVAL] [18351/25708] eta: 0:01:16 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0097 data: 0.0005 max mem: 346
+26-07-2026 18:44:19 - [MDO-EVAL] [18401/25708] eta: 0:01:15 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0106 data: 0.0005 max mem: 346
+26-07-2026 18:44:20 - [MDO-EVAL] [18451/25708] eta: 0:01:15 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0120 data: 0.0006 max mem: 346
+26-07-2026 18:44:20 - [MDO-EVAL] [18501/25708] eta: 0:01:14 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0091 data: 0.0004 max mem: 346
+26-07-2026 18:44:21 - [MDO-EVAL] [18551/25708] eta: 0:01:14 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0091 data: 0.0004 max mem: 346
+26-07-2026 18:44:21 - [MDO-EVAL] [18601/25708] eta: 0:01:13 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0097 data: 0.0005 max mem: 346
+26-07-2026 18:44:22 - [MDO-EVAL] [18651/25708] eta: 0:01:13 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0094 data: 0.0004 max mem: 346
+26-07-2026 18:44:22 - [MDO-EVAL] [18701/25708] eta: 0:01:12 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0121 data: 0.0006 max mem: 346
+26-07-2026 18:44:23 - [MDO-EVAL] [18751/25708] eta: 0:01:12 n: 1 recall: 1.0 precision: 1.0 f1-score: 1.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0137 data: 0.0007 max mem: 346
+26-07-2026 18:44:23 - [MDO-EVAL] [18801/25708] eta: 0:01:11 n: 8 recall: 0.75 precision: 0.67 f1-score: 0.71 MAE: 1.0 MSE: 1.0 RMSE: 1.0 time: 0.0105 data: 0.0005 max mem: 346
+26-07-2026 18:44:24 - [MDO-EVAL] [18851/25708] eta: 0:01:11 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0091 data: 0.0004 max mem: 346
+26-07-2026 18:44:24 - [MDO-EVAL] [18901/25708] eta: 0:01:10 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0091 data: 0.0004 max mem: 346
+26-07-2026 18:44:25 - [MDO-EVAL] [18951/25708] eta: 0:01:09 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 3.0 MSE: 9.0 RMSE: 3.0 time: 0.0091 data: 0.0004 max mem: 346
+26-07-2026 18:44:25 - [MDO-EVAL] [19001/25708] eta: 0:01:09 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 4.0 MSE: 16.0 RMSE: 4.0 time: 0.0091 data: 0.0005 max mem: 346
+26-07-2026 18:44:26 - [MDO-EVAL] [19051/25708] eta: 0:01:08 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 2.0 MSE: 4.0 RMSE: 2.0 time: 0.0091 data: 0.0004 max mem: 346
+26-07-2026 18:44:26 - [MDO-EVAL] [19101/25708] eta: 0:01:08 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0091 data: 0.0004 max mem: 346
+26-07-2026 18:44:27 - [MDO-EVAL] [19151/25708] eta: 0:01:07 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0091 data: 0.0004 max mem: 346
+26-07-2026 18:44:27 - [MDO-EVAL] [19201/25708] eta: 0:01:07 n: 2 recall: 0.5 precision: 0.2 f1-score: 0.29 MAE: 3.0 MSE: 9.0 RMSE: 3.0 time: 0.0124 data: 0.0006 max mem: 346
+26-07-2026 18:44:28 - [MDO-EVAL] [19251/25708] eta: 0:01:06 n: 2 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0105 data: 0.0005 max mem: 346
+26-07-2026 18:44:28 - [MDO-EVAL] [19301/25708] eta: 0:01:06 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0100 data: 0.0005 max mem: 346
+26-07-2026 18:44:29 - [MDO-EVAL] [19351/25708] eta: 0:01:05 n: 7 recall: 1.0 precision: 0.88 f1-score: 0.93 MAE: 1.0 MSE: 1.0 RMSE: 1.0 time: 0.0108 data: 0.0006 max mem: 346
+26-07-2026 18:44:29 - [MDO-EVAL] [19401/25708] eta: 0:01:05 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 2.0 MSE: 4.0 RMSE: 2.0 time: 0.0091 data: 0.0004 max mem: 346
+26-07-2026 18:44:30 - [MDO-EVAL] [19451/25708] eta: 0:01:04 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0092 data: 0.0004 max mem: 346
+26-07-2026 18:44:30 - [MDO-EVAL] [19501/25708] eta: 0:01:04 n: 2 recall: 1.0 precision: 1.0 f1-score: 1.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0123 data: 0.0007 max mem: 346
+26-07-2026 18:44:31 - [MDO-EVAL] [19551/25708] eta: 0:01:03 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0126 data: 0.0007 max mem: 346
+26-07-2026 18:44:32 - [MDO-EVAL] [19601/25708] eta: 0:01:03 n: 1 recall: 1.0 precision: 1.0 f1-score: 1.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0126 data: 0.0006 max mem: 346
+26-07-2026 18:44:32 - [MDO-EVAL] [19651/25708] eta: 0:01:02 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0113 data: 0.0006 max mem: 346
+26-07-2026 18:44:33 - [MDO-EVAL] [19701/25708] eta: 0:01:02 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0096 data: 0.0005 max mem: 346
+26-07-2026 18:44:33 - [MDO-EVAL] [19751/25708] eta: 0:01:01 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0093 data: 0.0004 max mem: 346
+26-07-2026 18:44:34 - [MDO-EVAL] [19801/25708] eta: 0:01:01 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0098 data: 0.0005 max mem: 346
+26-07-2026 18:44:34 - [MDO-EVAL] [19851/25708] eta: 0:01:00 n: 1 recall: 1.0 precision: 1.0 f1-score: 1.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0098 data: 0.0005 max mem: 346
+26-07-2026 18:44:35 - [MDO-EVAL] [19901/25708] eta: 0:01:00 n: 1 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 1.0 MSE: 1.0 RMSE: 1.0 time: 0.0101 data: 0.0005 max mem: 346
+26-07-2026 18:44:35 - [MDO-EVAL] [19951/25708] eta: 0:00:59 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 2.0 MSE: 4.0 RMSE: 2.0 time: 0.0091 data: 0.0004 max mem: 346
+26-07-2026 18:44:36 - [MDO-EVAL] [20001/25708] eta: 0:00:59 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0091 data: 0.0005 max mem: 346
+26-07-2026 18:44:36 - [MDO-EVAL] [20051/25708] eta: 0:00:58 n: 1 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 1.0 MSE: 1.0 RMSE: 1.0 time: 0.0113 data: 0.0006 max mem: 346
+26-07-2026 18:44:37 - [MDO-EVAL] [20101/25708] eta: 0:00:58 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0099 data: 0.0005 max mem: 346
+26-07-2026 18:44:37 - [MDO-EVAL] [20151/25708] eta: 0:00:57 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0102 data: 0.0005 max mem: 346
+26-07-2026 18:44:38 - [MDO-EVAL] [20201/25708] eta: 0:00:56 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0091 data: 0.0004 max mem: 346
+26-07-2026 18:44:38 - [MDO-EVAL] [20251/25708] eta: 0:00:56 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0094 data: 0.0005 max mem: 346
+26-07-2026 18:44:39 - [MDO-EVAL] [20301/25708] eta: 0:00:55 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0092 data: 0.0004 max mem: 346
+26-07-2026 18:44:39 - [MDO-EVAL] [20351/25708] eta: 0:00:55 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0098 data: 0.0005 max mem: 346
+26-07-2026 18:44:40 - [MDO-EVAL] [20401/25708] eta: 0:00:54 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0095 data: 0.0005 max mem: 346
+26-07-2026 18:44:40 - [MDO-EVAL] [20451/25708] eta: 0:00:54 n: 3 recall: 0.67 precision: 1.0 f1-score: 0.8 MAE: 1.0 MSE: 1.0 RMSE: 1.0 time: 0.0114 data: 0.0006 max mem: 346
+26-07-2026 18:44:41 - [MDO-EVAL] [20501/25708] eta: 0:00:53 n: 1 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 1.0 MSE: 1.0 RMSE: 1.0 time: 0.0095 data: 0.0005 max mem: 346
+26-07-2026 18:44:41 - [MDO-EVAL] [20551/25708] eta: 0:00:53 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0116 data: 0.0007 max mem: 346
+26-07-2026 18:44:42 - [MDO-EVAL] [20601/25708] eta: 0:00:52 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0117 data: 0.0006 max mem: 346
+26-07-2026 18:44:42 - [MDO-EVAL] [20651/25708] eta: 0:00:52 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 4.0 MSE: 16.0 RMSE: 4.0 time: 0.0111 data: 0.0006 max mem: 346
+26-07-2026 18:44:43 - [MDO-EVAL] [20701/25708] eta: 0:00:51 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 2.0 MSE: 4.0 RMSE: 2.0 time: 0.0115 data: 0.0007 max mem: 346
+26-07-2026 18:44:43 - [MDO-EVAL] [20751/25708] eta: 0:00:51 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0091 data: 0.0004 max mem: 346
+26-07-2026 18:44:44 - [MDO-EVAL] [20801/25708] eta: 0:00:50 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0112 data: 0.0005 max mem: 346
+26-07-2026 18:44:44 - [MDO-EVAL] [20851/25708] eta: 0:00:50 n: 7 recall: 1.0 precision: 0.88 f1-score: 0.93 MAE: 1.0 MSE: 1.0 RMSE: 1.0 time: 0.0103 data: 0.0005 max mem: 346
+26-07-2026 18:44:45 - [MDO-EVAL] [20901/25708] eta: 0:00:49 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0101 data: 0.0005 max mem: 346
+26-07-2026 18:44:46 - [MDO-EVAL] [20951/25708] eta: 0:00:49 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0113 data: 0.0005 max mem: 346
+26-07-2026 18:44:46 - [MDO-EVAL] [21001/25708] eta: 0:00:48 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0095 data: 0.0005 max mem: 346
+26-07-2026 18:44:46 - [MDO-EVAL] [21051/25708] eta: 0:00:48 n: 35 recall: 0.83 precision: 0.94 f1-score: 0.88 MAE: 4.0 MSE: 16.0 RMSE: 4.0 time: 0.0095 data: 0.0004 max mem: 346
+26-07-2026 18:44:47 - [MDO-EVAL] [21101/25708] eta: 0:00:47 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 4.0 MSE: 16.0 RMSE: 4.0 time: 0.0100 data: 0.0005 max mem: 346
+26-07-2026 18:44:47 - [MDO-EVAL] [21151/25708] eta: 0:00:47 n: 16 recall: 0.38 precision: 1.0 f1-score: 0.55 MAE: 10.0 MSE: 100.0 RMSE: 10.0 time: 0.0102 data: 0.0005 max mem: 346
+26-07-2026 18:44:48 - [MDO-EVAL] [21201/25708] eta: 0:00:46 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0104 data: 0.0005 max mem: 346
+26-07-2026 18:44:49 - [MDO-EVAL] [21251/25708] eta: 0:00:46 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0106 data: 0.0005 max mem: 346
+26-07-2026 18:44:49 - [MDO-EVAL] [21301/25708] eta: 0:00:45 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0101 data: 0.0005 max mem: 346
+26-07-2026 18:44:49 - [MDO-EVAL] [21351/25708] eta: 0:00:45 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0101 data: 0.0005 max mem: 346
+26-07-2026 18:44:50 - [MDO-EVAL] [21401/25708] eta: 0:00:44 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0102 data: 0.0005 max mem: 346
+26-07-2026 18:44:50 - [MDO-EVAL] [21451/25708] eta: 0:00:44 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0093 data: 0.0005 max mem: 346
+26-07-2026 18:44:51 - [MDO-EVAL] [21501/25708] eta: 0:00:43 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0091 data: 0.0005 max mem: 346
+26-07-2026 18:44:51 - [MDO-EVAL] [21551/25708] eta: 0:00:42 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0097 data: 0.0004 max mem: 346
+26-07-2026 18:44:52 - [MDO-EVAL] [21601/25708] eta: 0:00:42 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0093 data: 0.0004 max mem: 346
+26-07-2026 18:44:53 - [MDO-EVAL] [21651/25708] eta: 0:00:41 n: 2 recall: 1.0 precision: 1.0 f1-score: 1.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0113 data: 0.0005 max mem: 346
+26-07-2026 18:44:53 - [MDO-EVAL] [21701/25708] eta: 0:00:41 n: 6 recall: 1.0 precision: 1.0 f1-score: 1.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0119 data: 0.0008 max mem: 346
+26-07-2026 18:44:54 - [MDO-EVAL] [21751/25708] eta: 0:00:40 n: 1 recall: 1.0 precision: 1.0 f1-score: 1.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0126 data: 0.0006 max mem: 346
+26-07-2026 18:44:54 - [MDO-EVAL] [21801/25708] eta: 0:00:40 n: 4 recall: 1.0 precision: 0.67 f1-score: 0.8 MAE: 2.0 MSE: 4.0 RMSE: 2.0 time: 0.0132 data: 0.0007 max mem: 346
+26-07-2026 18:44:55 - [MDO-EVAL] [21851/25708] eta: 0:00:39 n: 4 recall: 1.0 precision: 0.67 f1-score: 0.8 MAE: 2.0 MSE: 4.0 RMSE: 2.0 time: 0.0113 data: 0.0006 max mem: 346
+26-07-2026 18:44:56 - [MDO-EVAL] [21901/25708] eta: 0:00:39 n: 17 recall: 0.82 precision: 1.0 f1-score: 0.9 MAE: 3.0 MSE: 9.0 RMSE: 3.0 time: 0.0108 data: 0.0005 max mem: 346
+26-07-2026 18:44:56 - [MDO-EVAL] [21951/25708] eta: 0:00:38 n: 7 recall: 1.0 precision: 1.0 f1-score: 1.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0119 data: 0.0006 max mem: 346
+26-07-2026 18:44:57 - [MDO-EVAL] [22001/25708] eta: 0:00:38 n: 1 recall: 1.0 precision: 0.5 f1-score: 0.67 MAE: 1.0 MSE: 1.0 RMSE: 1.0 time: 0.0130 data: 0.0007 max mem: 346
+26-07-2026 18:44:57 - [MDO-EVAL] [22051/25708] eta: 0:00:37 n: 27 recall: 0.81 precision: 1.0 f1-score: 0.9 MAE: 5.0 MSE: 25.0 RMSE: 5.0 time: 0.0116 data: 0.0005 max mem: 346
+26-07-2026 18:44:58 - [MDO-EVAL] [22101/25708] eta: 0:00:37 n: 20 recall: 0.5 precision: 0.53 f1-score: 0.51 MAE: 1.0 MSE: 1.0 RMSE: 1.0 time: 0.0116 data: 0.0005 max mem: 346
+26-07-2026 18:44:59 - [MDO-EVAL] [22151/25708] eta: 0:00:36 n: 65 recall: 0.83 precision: 0.86 f1-score: 0.84 MAE: 2.0 MSE: 4.0 RMSE: 2.0 time: 0.0117 data: 0.0005 max mem: 346
+26-07-2026 18:44:59 - [MDO-EVAL] [22201/25708] eta: 0:00:36 n: 92 recall: 0.89 precision: 0.94 f1-score: 0.92 MAE: 5.0 MSE: 25.0 RMSE: 5.0 time: 0.0115 data: 0.0005 max mem: 346
+26-07-2026 18:45:00 - [MDO-EVAL] [22251/25708] eta: 0:00:35 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0117 data: 0.0005 max mem: 346
+26-07-2026 18:45:00 - [MDO-EVAL] [22301/25708] eta: 0:00:35 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0109 data: 0.0006 max mem: 346
+26-07-2026 18:45:01 - [MDO-EVAL] [22351/25708] eta: 0:00:34 n: 3 recall: 1.0 precision: 0.75 f1-score: 0.86 MAE: 1.0 MSE: 1.0 RMSE: 1.0 time: 0.0114 data: 0.0006 max mem: 346
+26-07-2026 18:45:01 - [MDO-EVAL] [22401/25708] eta: 0:00:34 n: 5 recall: 0.8 precision: 0.67 f1-score: 0.73 MAE: 1.0 MSE: 1.0 RMSE: 1.0 time: 0.0130 data: 0.0007 max mem: 346
+26-07-2026 18:45:02 - [MDO-EVAL] [22451/25708] eta: 0:00:33 n: 3 recall: 1.0 precision: 0.43 f1-score: 0.6 MAE: 4.0 MSE: 16.0 RMSE: 4.0 time: 0.0141 data: 0.0008 max mem: 346
+26-07-2026 18:45:03 - [MDO-EVAL] [22501/25708] eta: 0:00:33 n: 1 recall: 1.0 precision: 1.0 f1-score: 1.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0138 data: 0.0008 max mem: 346
+26-07-2026 18:45:03 - [MDO-EVAL] [22551/25708] eta: 0:00:32 n: 1 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 1.0 MSE: 1.0 RMSE: 1.0 time: 0.0119 data: 0.0006 max mem: 346
+26-07-2026 18:45:04 - [MDO-EVAL] [22601/25708] eta: 0:00:32 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0109 data: 0.0005 max mem: 346
+26-07-2026 18:45:05 - [MDO-EVAL] [22651/25708] eta: 0:00:31 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0104 data: 0.0005 max mem: 346
+26-07-2026 18:45:05 - [MDO-EVAL] [22701/25708] eta: 0:00:31 n: 1 recall: 1.0 precision: 1.0 f1-score: 1.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0101 data: 0.0005 max mem: 346
+26-07-2026 18:45:06 - [MDO-EVAL] [22751/25708] eta: 0:00:30 n: 11 recall: 1.0 precision: 0.92 f1-score: 0.96 MAE: 1.0 MSE: 1.0 RMSE: 1.0 time: 0.0111 data: 0.0006 max mem: 346
+26-07-2026 18:45:06 - [MDO-EVAL] [22801/25708] eta: 0:00:30 n: 9 recall: 0.67 precision: 0.75 f1-score: 0.71 MAE: 1.0 MSE: 1.0 RMSE: 1.0 time: 0.0112 data: 0.0005 max mem: 346
+26-07-2026 18:45:07 - [MDO-EVAL] [22851/25708] eta: 0:00:29 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0111 data: 0.0005 max mem: 346
+26-07-2026 18:45:07 - [MDO-EVAL] [22901/25708] eta: 0:00:29 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0115 data: 0.0006 max mem: 346
+26-07-2026 18:45:08 - [MDO-EVAL] [22951/25708] eta: 0:00:28 n: 10 recall: 1.0 precision: 0.91 f1-score: 0.95 MAE: 1.0 MSE: 1.0 RMSE: 1.0 time: 0.0123 data: 0.0007 max mem: 346
+26-07-2026 18:45:09 - [MDO-EVAL] [23001/25708] eta: 0:00:28 n: 2 recall: 0.5 precision: 1.0 f1-score: 0.67 MAE: 1.0 MSE: 1.0 RMSE: 1.0 time: 0.0116 data: 0.0006 max mem: 346
+26-07-2026 18:45:09 - [MDO-EVAL] [23051/25708] eta: 0:00:27 n: 1 recall: 1.0 precision: 0.5 f1-score: 0.67 MAE: 1.0 MSE: 1.0 RMSE: 1.0 time: 0.0099 data: 0.0005 max mem: 346
+26-07-2026 18:45:10 - [MDO-EVAL] [23101/25708] eta: 0:00:27 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0098 data: 0.0005 max mem: 346
+26-07-2026 18:45:10 - [MDO-EVAL] [23151/25708] eta: 0:00:26 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 2.0 MSE: 4.0 RMSE: 2.0 time: 0.0109 data: 0.0005 max mem: 346
+26-07-2026 18:45:11 - [MDO-EVAL] [23201/25708] eta: 0:00:26 n: 70 recall: 0.86 precision: 0.91 f1-score: 0.88 MAE: 4.0 MSE: 16.0 RMSE: 4.0 time: 0.0113 data: 0.0006 max mem: 346
+26-07-2026 18:45:11 - [MDO-EVAL] [23251/25708] eta: 0:00:25 n: 1 recall: 1.0 precision: 1.0 f1-score: 1.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0101 data: 0.0005 max mem: 346
+26-07-2026 18:45:12 - [MDO-EVAL] [23301/25708] eta: 0:00:25 n: 1 recall: 1.0 precision: 1.0 f1-score: 1.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0104 data: 0.0005 max mem: 346
+26-07-2026 18:45:12 - [MDO-EVAL] [23351/25708] eta: 0:00:24 n: 13 recall: 0.54 precision: 0.7 f1-score: 0.61 MAE: 3.0 MSE: 9.0 RMSE: 3.0 time: 0.0119 data: 0.0007 max mem: 346
+26-07-2026 18:45:13 - [MDO-EVAL] [23401/25708] eta: 0:00:24 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 1.0 MSE: 1.0 RMSE: 1.0 time: 0.0110 data: 0.0005 max mem: 346
+26-07-2026 18:45:13 - [MDO-EVAL] [23451/25708] eta: 0:00:23 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0092 data: 0.0004 max mem: 346
+26-07-2026 18:45:14 - [MDO-EVAL] [23501/25708] eta: 0:00:23 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0102 data: 0.0005 max mem: 346
+26-07-2026 18:45:14 - [MDO-EVAL] [23551/25708] eta: 0:00:22 n: 1 recall: 1.0 precision: 1.0 f1-score: 1.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0116 data: 0.0006 max mem: 346
+26-07-2026 18:45:15 - [MDO-EVAL] [23601/25708] eta: 0:00:21 n: 1 recall: 1.0 precision: 0.2 f1-score: 0.33 MAE: 4.0 MSE: 16.0 RMSE: 4.0 time: 0.0101 data: 0.0005 max mem: 346
+26-07-2026 18:45:15 - [MDO-EVAL] [23651/25708] eta: 0:00:21 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0102 data: 0.0005 max mem: 346
+26-07-2026 18:45:16 - [MDO-EVAL] [23701/25708] eta: 0:00:20 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 6.0 MSE: 36.0 RMSE: 6.0 time: 0.0107 data: 0.0005 max mem: 346
+26-07-2026 18:45:16 - [MDO-EVAL] [23751/25708] eta: 0:00:20 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0122 data: 0.0007 max mem: 346
+26-07-2026 18:45:17 - [MDO-EVAL] [23801/25708] eta: 0:00:19 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0105 data: 0.0005 max mem: 346
+26-07-2026 18:45:18 - [MDO-EVAL] [23851/25708] eta: 0:00:19 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0109 data: 0.0006 max mem: 346
+26-07-2026 18:45:18 - [MDO-EVAL] [23901/25708] eta: 0:00:18 n: 7 recall: 0.86 precision: 0.86 f1-score: 0.86 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0121 data: 0.0007 max mem: 346
+26-07-2026 18:45:19 - [MDO-EVAL] [23951/25708] eta: 0:00:18 n: 4 recall: 0.75 precision: 0.75 f1-score: 0.75 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0115 data: 0.0006 max mem: 346
+26-07-2026 18:45:19 - [MDO-EVAL] [24001/25708] eta: 0:00:17 n: 20 recall: 0.95 precision: 0.73 f1-score: 0.83 MAE: 6.0 MSE: 36.0 RMSE: 6.0 time: 0.0114 data: 0.0005 max mem: 346
+26-07-2026 18:45:20 - [MDO-EVAL] [24051/25708] eta: 0:00:17 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0108 data: 0.0005 max mem: 346
+26-07-2026 18:45:20 - [MDO-EVAL] [24101/25708] eta: 0:00:16 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0102 data: 0.0005 max mem: 346
+26-07-2026 18:45:21 - [MDO-EVAL] [24151/25708] eta: 0:00:16 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0114 data: 0.0006 max mem: 346
+26-07-2026 18:45:21 - [MDO-EVAL] [24201/25708] eta: 0:00:15 n: 3 recall: 0.67 precision: 1.0 f1-score: 0.8 MAE: 1.0 MSE: 1.0 RMSE: 1.0 time: 0.0110 data: 0.0005 max mem: 346
+26-07-2026 18:45:22 - [MDO-EVAL] [24251/25708] eta: 0:00:15 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 3.0 MSE: 9.0 RMSE: 3.0 time: 0.0118 data: 0.0006 max mem: 346
+26-07-2026 18:45:23 - [MDO-EVAL] [24301/25708] eta: 0:00:14 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0111 data: 0.0005 max mem: 346
+26-07-2026 18:45:23 - [MDO-EVAL] [24351/25708] eta: 0:00:14 n: 1 recall: 1.0 precision: 0.17 f1-score: 0.29 MAE: 5.0 MSE: 25.0 RMSE: 5.0 time: 0.0112 data: 0.0006 max mem: 346
+26-07-2026 18:45:24 - [MDO-EVAL] [24401/25708] eta: 0:00:13 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0131 data: 0.0007 max mem: 346
+26-07-2026 18:45:24 - [MDO-EVAL] [24451/25708] eta: 0:00:13 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0093 data: 0.0004 max mem: 346
+26-07-2026 18:45:25 - [MDO-EVAL] [24501/25708] eta: 0:00:12 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0101 data: 0.0005 max mem: 346
+26-07-2026 18:45:25 - [MDO-EVAL] [24551/25708] eta: 0:00:12 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 4.0 MSE: 16.0 RMSE: 4.0 time: 0.0093 data: 0.0004 max mem: 346
+26-07-2026 18:45:26 - [MDO-EVAL] [24601/25708] eta: 0:00:11 n: 1 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 1.0 MSE: 1.0 RMSE: 1.0 time: 0.0095 data: 0.0005 max mem: 346
+26-07-2026 18:45:26 - [MDO-EVAL] [24651/25708] eta: 0:00:11 n: 1 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 1.0 MSE: 1.0 RMSE: 1.0 time: 0.0101 data: 0.0005 max mem: 346
+26-07-2026 18:45:27 - [MDO-EVAL] [24701/25708] eta: 0:00:10 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0124 data: 0.0006 max mem: 346
+26-07-2026 18:45:27 - [MDO-EVAL] [24751/25708] eta: 0:00:10 n: 7 recall: 0.86 precision: 0.75 f1-score: 0.8 MAE: 1.0 MSE: 1.0 RMSE: 1.0 time: 0.0134 data: 0.0007 max mem: 346
+26-07-2026 18:45:28 - [MDO-EVAL] [24801/25708] eta: 0:00:09 n: 13 recall: 0.85 precision: 0.85 f1-score: 0.85 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0119 data: 0.0006 max mem: 346
+26-07-2026 18:45:28 - [MDO-EVAL] [24851/25708] eta: 0:00:08 n: 26 recall: 0.73 precision: 0.86 f1-score: 0.79 MAE: 4.0 MSE: 16.0 RMSE: 4.0 time: 0.0110 data: 0.0005 max mem: 346
+26-07-2026 18:45:29 - [MDO-EVAL] [24901/25708] eta: 0:00:08 n: 19 recall: 0.89 precision: 0.89 f1-score: 0.89 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0115 data: 0.0005 max mem: 346
+26-07-2026 18:45:30 - [MDO-EVAL] [24951/25708] eta: 0:00:07 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0108 data: 0.0006 max mem: 346
+26-07-2026 18:45:30 - [MDO-EVAL] [25001/25708] eta: 0:00:07 n: 2 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 2.0 MSE: 4.0 RMSE: 2.0 time: 0.0108 data: 0.0006 max mem: 346
+26-07-2026 18:45:31 - [MDO-EVAL] [25051/25708] eta: 0:00:06 n: 1 recall: 1.0 precision: 1.0 f1-score: 1.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0101 data: 0.0005 max mem: 346
+26-07-2026 18:45:31 - [MDO-EVAL] [25101/25708] eta: 0:00:06 n: 4 recall: 1.0 precision: 0.8 f1-score: 0.89 MAE: 1.0 MSE: 1.0 RMSE: 1.0 time: 0.0109 data: 0.0005 max mem: 346
+26-07-2026 18:45:32 - [MDO-EVAL] [25151/25708] eta: 0:00:05 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0138 data: 0.0008 max mem: 346
+26-07-2026 18:45:32 - [MDO-EVAL] [25201/25708] eta: 0:00:05 n: 2 recall: 1.0 precision: 0.67 f1-score: 0.8 MAE: 1.0 MSE: 1.0 RMSE: 1.0 time: 0.0114 data: 0.0005 max mem: 346
+26-07-2026 18:45:33 - [MDO-EVAL] [25251/25708] eta: 0:00:04 n: 5 recall: 1.0 precision: 1.0 f1-score: 1.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0123 data: 0.0008 max mem: 346
+26-07-2026 18:45:34 - [MDO-EVAL] [25301/25708] eta: 0:00:04 n: 3 recall: 1.0 precision: 0.75 f1-score: 0.86 MAE: 1.0 MSE: 1.0 RMSE: 1.0 time: 0.0125 data: 0.0007 max mem: 346
+26-07-2026 18:45:34 - [MDO-EVAL] [25351/25708] eta: 0:00:03 n: 20 recall: 0.9 precision: 0.9 f1-score: 0.9 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0109 data: 0.0006 max mem: 346
+26-07-2026 18:45:35 - [MDO-EVAL] [25401/25708] eta: 0:00:03 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0110 data: 0.0005 max mem: 346
+26-07-2026 18:45:35 - [MDO-EVAL] [25451/25708] eta: 0:00:02 n: 16 recall: 0.88 precision: 0.82 f1-score: 0.85 MAE: 1.0 MSE: 1.0 RMSE: 1.0 time: 0.0122 data: 0.0007 max mem: 346
+26-07-2026 18:45:36 - [MDO-EVAL] [25501/25708] eta: 0:00:02 n: 1 recall: 1.0 precision: 0.08 f1-score: 0.14 MAE: 12.0 MSE: 144.0 RMSE: 12.0 time: 0.0111 data: 0.0005 max mem: 346
+26-07-2026 18:45:37 - [MDO-EVAL] [25551/25708] eta: 0:00:01 n: 2 recall: 1.0 precision: 1.0 f1-score: 1.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0134 data: 0.0006 max mem: 346
+26-07-2026 18:45:37 - [MDO-EVAL] [25601/25708] eta: 0:00:01 n: 2 recall: 1.0 precision: 0.67 f1-score: 0.8 MAE: 1.0 MSE: 1.0 RMSE: 1.0 time: 0.0111 data: 0.0005 max mem: 346
+26-07-2026 18:45:38 - [MDO-EVAL] [25651/25708] eta: 0:00:00 n: 1 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 1.0 MSE: 1.0 RMSE: 1.0 time: 0.0102 data: 0.0005 max mem: 346
+26-07-2026 18:45:38 - [MDO-EVAL] [25701/25708] eta: 0:00:00 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0107 data: 0.0006 max mem: 346
+26-07-2026 18:45:38 - [MDO-EVAL] [25708/25708] eta: 0:00:00 n: 0 recall: 0.0 precision: 0.0 f1-score: 0.0 MAE: 0.0 MSE: 0.0 RMSE: 0.0 time: 0.0102 data: 0.0005 max mem: 346
+26-07-2026 18:45:38 - [MDO-EVAL] Total time: 0:04:29 (0.0105 s / it)
+26-07-2026 18:45:38 - [MDO-EVAL] SUMMARY | recall: 0.9120 | precision: 0.7640 | f1_score: 0.8315 | MAE: 0.9662 | MSE: 8.9238 | RMSE: 2.9873 | accuracy: 1.0000 | mAP: 0.0000

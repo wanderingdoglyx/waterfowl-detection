@@ -1,8 +1,14 @@
 # ── Data: raw datasets and everything generated from them (huge, not for git) ──
 dataset/
 crops/
-output/
 yolov5_data/
+
+# output/ IS versioned (metrics, configs, curves, example images, logs, crops_json)
+# EXCEPT model weights (*.pt / *.pth, ignored globally below) and any file over
+# GitHub's 100 MB hard limit — gitignore can't filter by size, so oversized files
+# must be listed here explicitly.  Check before committing new runs:
+#   find output -type f -size +100M ! -name "*.pth" ! -name "*.pt"
+output/checkpoints/mdo_owl_c/2026-07-21_22-59-50/20260722_validation.log
 # OWL point-CSV mirror of the crops (symlinks + gt.csv)
 mdo_data/
 

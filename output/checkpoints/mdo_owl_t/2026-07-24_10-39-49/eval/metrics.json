@@ -1,0 +1,16 @@
+{
+  "point": {
+    "precision": 0.7640135647316976,
+    "recall": 0.9119564601167867,
+    "f1_score": 0.8314553311141895,
+    "n_gt": 88195,
+    "radius_heatmap_px": 10.0,
+    "radius_fullres_px": 20.0
+  },
+  "pseudo_box_map30": {
+    "ap30": 49.268404429771934,
+    "ar30": 59.07931288621804,
+    "box_size": 28
+  },
+  "n_detections": 105273
+}

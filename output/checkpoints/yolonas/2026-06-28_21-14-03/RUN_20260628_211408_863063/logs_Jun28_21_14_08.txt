@@ -1,0 +1,190 @@
+[2026-06-28 21:14:02] INFO - super_gradients.common.crash_handler.crash_tips_setup - Crash tips is enabled. You can set your environment variable to CRASH_HANDLER=FALSE to disable it
+[2026-06-28 21:14:02] DEBUG - matplotlib - matplotlib data path: /home/zygfd/anaconda3/envs/waterfowl/lib/python3.10/site-packages/matplotlib/mpl-data
+[2026-06-28 21:14:02] DEBUG - matplotlib - CONFIGDIR=/home/zygfd/.config/matplotlib
+[2026-06-28 21:14:02] DEBUG - matplotlib - interactive is False
+[2026-06-28 21:14:02] DEBUG - matplotlib - platform is linux
+[2026-06-28 21:14:02] DEBUG - matplotlib - CACHEDIR=/home/zygfd/.cache/matplotlib
+[2026-06-28 21:14:02] DEBUG - matplotlib.font_manager - Using fontManager instance from /home/zygfd/.cache/matplotlib/fontlist-v390.json
+[2026-06-28 21:14:02] DEBUG - super_gradients.common.sg_loggers.clearml_sg_logger - Failed to import clearml
+[2026-06-28 21:14:02] DEBUG - hydra.core.utils - Setting JobRuntime:name=UNKNOWN_NAME
+[2026-06-28 21:14:02] DEBUG - hydra.core.utils - Setting JobRuntime:name=app
+[2026-06-28 21:14:02] DEBUG - hydra.core.utils - Setting JobRuntime:name=app
+[2026-06-28 21:14:04] INFO - super_gradients.training.datasets.detection_datasets.detection_dataset - Dataset Initialization in progress. `cache_annotations=True` causes the process to take longer due to full dataset indexing.
+[2026-06-28 21:14:06] INFO - super_gradients.training.datasets.detection_datasets.detection_dataset - Dataset Initialization in progress. `cache_annotations=True` causes the process to take longer due to full dataset indexing.
+[2026-06-28 21:14:07] INFO - super_gradients.training.datasets.detection_datasets.detection_dataset - Dataset Initialization in progress. `cache_annotations=True` causes the process to take longer due to full dataset indexing.
+[2026-06-28 21:14:08] DEBUG - hydra.core.utils - Setting JobRuntime:name=app
+[2026-06-28 21:14:08] WARNING - super_gradients.training.utils.checkpoint_utils - :warning: The pre-trained models provided by SuperGradients may have their own licenses or terms and conditions derived from the dataset used for pre-training.
+ It is your responsibility to determine whether you have permission to use the models for your use case.
+ The model you have requested was pre-trained on the coco dataset, published under the following terms: https://cocodataset.org/#termsofuse
+[2026-06-28 21:14:08] INFO - super_gradients.training.utils.checkpoint_utils - License Notification: YOLO-NAS pre-trained weights are subjected to the specific license terms and conditions detailed in 
+https://github.com/Deci-AI/super-gradients/blob/master/LICENSE.YOLONAS.md
+By downloading the pre-trained weight files you agree to comply with these terms.
+[2026-06-28 21:14:08] INFO - super_gradients.training.utils.checkpoint_utils - Successfully loaded pretrained weights for architecture yolo_nas_m
+[2026-06-28 21:14:08] DEBUG - super_gradients.training.utils.checkpoint_utils - Trying to load preprocessing params from checkpoint. Preprocessing params in checkpoint: False. Model YoloNAS_M inherit HasPredict: True
+[2026-06-28 21:14:08] INFO - super_gradients.training.sg_trainer.sg_trainer - Starting a new run with `run_id=RUN_20260628_211408_863063`
+[2026-06-28 21:14:08] INFO - super_gradients.training.sg_trainer.sg_trainer - Checkpoints directory: /home/zygfd/waterflow/rebuild/output/checkpoints/yolonas/2026-06-28_21-14-03/RUN_20260628_211408_863063
+[2026-06-28 21:14:08] INFO - super_gradients.training.sg_trainer.sg_trainer - Using EMA with params {'decay': 0.9, 'decay_type': 'threshold'}
+[2026-06-28 21:14:09] INFO - super_gradients.training.utils.sg_trainer_utils - TRAINING PARAMETERS:
+    - Mode:                         Single GPU
+    - Number of GPUs:               1          (1 available on the machine)
+    - Full dataset size:            24231      (len(train_set))
+    - Batch size per GPU:           8          (batch_size)
+    - Batch Accumulate:             1          (batch_accumulate)
+    - Total batch size:             8          (num_gpus * batch_size)
+    - Effective Batch size:         8          (num_gpus * batch_size * batch_accumulate)
+    - Iterations per epoch:         3028       (len(train_loader))
+    - Gradient updates per epoch:   3028       (len(train_loader) / batch_accumulate)
+    - Model: YoloNAS_M  (51.13M parameters, 51.13M optimized)
+    - Learning Rates and Weight Decays:
+      - default: (51.13M parameters). LR: 0.0005 (51.13M parameters) WD: 0.0, (72.21K parameters), WD: 0.0001, (51.06M parameters)
+
+[2026-06-28 21:14:09] INFO - super_gradients.training.sg_trainer.sg_trainer - Started training for 100 epochs (0/99)
+
+[2026-06-28 21:20:18] INFO - super_gradients.training.utils.early_stopping - Metric mAP@0.30 improved. New best score: 0.699
+[2026-06-28 21:20:19] INFO - super_gradients.common.sg_loggers.base_sg_logger - Checkpoint saved in /home/zygfd/waterflow/rebuild/output/checkpoints/yolonas/2026-06-28_21-14-03/RUN_20260628_211408_863063/ckpt_best.pth
+[2026-06-28 21:20:19] INFO - super_gradients.training.sg_trainer.sg_trainer - Best checkpoint overriden: validation mAP@0.30: 0.6993602514266968
+[2026-06-28 21:26:35] INFO - super_gradients.training.utils.early_stopping - Monitored metric mAP@0.30 did not improve in the last 1 records.
+[2026-06-28 21:32:50] INFO - super_gradients.training.utils.early_stopping - Monitored metric mAP@0.30 did not improve in the last 2 records.
+[2026-06-28 21:39:06] INFO - super_gradients.training.utils.early_stopping - Monitored metric mAP@0.30 did not improve in the last 3 records.
+[2026-06-28 21:45:22] INFO - super_gradients.training.utils.early_stopping - Monitored metric mAP@0.30 did not improve in the last 4 records.
+[2026-06-28 21:51:39] INFO - super_gradients.training.utils.early_stopping - Monitored metric mAP@0.30 did not improve in the last 5 records.
+[2026-06-28 21:57:56] INFO - super_gradients.training.utils.early_stopping - Monitored metric mAP@0.30 did not improve in the last 6 records.
+[2026-06-28 22:04:14] INFO - super_gradients.training.utils.early_stopping - Monitored metric mAP@0.30 did not improve in the last 7 records.
+[2026-06-28 22:10:33] INFO - super_gradients.training.utils.early_stopping - Metric mAP@0.30 improved by 0.002 >= min_delta = 0.0. New best score: 0.701
+[2026-06-28 22:10:34] INFO - super_gradients.common.sg_loggers.base_sg_logger - Checkpoint saved in /home/zygfd/waterflow/rebuild/output/checkpoints/yolonas/2026-06-28_21-14-03/RUN_20260628_211408_863063/ckpt_best.pth
+[2026-06-28 22:10:34] INFO - super_gradients.training.sg_trainer.sg_trainer - Best checkpoint overriden: validation mAP@0.30: 0.700971782207489
+[2026-06-28 22:16:54] INFO - super_gradients.training.utils.early_stopping - Monitored metric mAP@0.30 did not improve in the last 1 records.
+[2026-06-28 22:23:24] INFO - super_gradients.training.utils.early_stopping - Metric mAP@0.30 improved by 0.003 >= min_delta = 0.0. New best score: 0.704
+[2026-06-28 22:23:25] INFO - super_gradients.common.sg_loggers.base_sg_logger - Checkpoint saved in /home/zygfd/waterflow/rebuild/output/checkpoints/yolonas/2026-06-28_21-14-03/RUN_20260628_211408_863063/ckpt_best.pth
+[2026-06-28 22:23:25] INFO - super_gradients.training.sg_trainer.sg_trainer - Best checkpoint overriden: validation mAP@0.30: 0.7036324739456177
+[2026-06-28 22:29:43] INFO - super_gradients.training.utils.early_stopping - Metric mAP@0.30 improved by 0.011 >= min_delta = 0.0. New best score: 0.715
+[2026-06-28 22:29:44] INFO - super_gradients.common.sg_loggers.base_sg_logger - Checkpoint saved in /home/zygfd/waterflow/rebuild/output/checkpoints/yolonas/2026-06-28_21-14-03/RUN_20260628_211408_863063/ckpt_best.pth
+[2026-06-28 22:29:44] INFO - super_gradients.training.sg_trainer.sg_trainer - Best checkpoint overriden: validation mAP@0.30: 0.7150374054908752
+[2026-06-28 22:36:01] INFO - super_gradients.training.utils.early_stopping - Monitored metric mAP@0.30 did not improve in the last 1 records.
+[2026-06-28 22:42:20] INFO - super_gradients.training.utils.early_stopping - Monitored metric mAP@0.30 did not improve in the last 2 records.
+[2026-06-28 22:48:39] INFO - super_gradients.training.utils.early_stopping - Metric mAP@0.30 improved by 0.002 >= min_delta = 0.0. New best score: 0.717
+[2026-06-28 22:48:40] INFO - super_gradients.common.sg_loggers.base_sg_logger - Checkpoint saved in /home/zygfd/waterflow/rebuild/output/checkpoints/yolonas/2026-06-28_21-14-03/RUN_20260628_211408_863063/ckpt_best.pth
+[2026-06-28 22:48:40] INFO - super_gradients.training.sg_trainer.sg_trainer - Best checkpoint overriden: validation mAP@0.30: 0.7167962193489075
+[2026-06-28 22:54:57] INFO - super_gradients.training.utils.early_stopping - Metric mAP@0.30 improved by 0.006 >= min_delta = 0.0. New best score: 0.723
+[2026-06-28 22:54:58] INFO - super_gradients.common.sg_loggers.base_sg_logger - Checkpoint saved in /home/zygfd/waterflow/rebuild/output/checkpoints/yolonas/2026-06-28_21-14-03/RUN_20260628_211408_863063/ckpt_best.pth
+[2026-06-28 22:54:58] INFO - super_gradients.training.sg_trainer.sg_trainer - Best checkpoint overriden: validation mAP@0.30: 0.7226991057395935
+[2026-06-28 23:01:16] INFO - super_gradients.training.utils.early_stopping - Monitored metric mAP@0.30 did not improve in the last 1 records.
+[2026-06-28 23:07:35] INFO - super_gradients.training.utils.early_stopping - Monitored metric mAP@0.30 did not improve in the last 2 records.
+[2026-06-28 23:13:54] INFO - super_gradients.training.utils.early_stopping - Monitored metric mAP@0.30 did not improve in the last 3 records.
+[2026-06-28 23:20:12] INFO - super_gradients.training.utils.early_stopping - Metric mAP@0.30 improved by 0.007 >= min_delta = 0.0. New best score: 0.730
+[2026-06-28 23:20:13] INFO - super_gradients.common.sg_loggers.base_sg_logger - Checkpoint saved in /home/zygfd/waterflow/rebuild/output/checkpoints/yolonas/2026-06-28_21-14-03/RUN_20260628_211408_863063/ckpt_best.pth
+[2026-06-28 23:20:13] INFO - super_gradients.training.sg_trainer.sg_trainer - Best checkpoint overriden: validation mAP@0.30: 0.7297875285148621
+[2026-06-28 23:26:31] INFO - super_gradients.training.utils.early_stopping - Monitored metric mAP@0.30 did not improve in the last 1 records.
+[2026-06-28 23:32:42] INFO - super_gradients.training.utils.early_stopping - Monitored metric mAP@0.30 did not improve in the last 2 records.
+[2026-06-28 23:38:47] INFO - super_gradients.training.utils.early_stopping - Monitored metric mAP@0.30 did not improve in the last 3 records.
+[2026-06-28 23:44:54] INFO - super_gradients.training.utils.early_stopping - Monitored metric mAP@0.30 did not improve in the last 4 records.
+[2026-06-28 23:51:00] INFO - super_gradients.training.utils.early_stopping - Monitored metric mAP@0.30 did not improve in the last 5 records.
+[2026-06-28 23:57:05] INFO - super_gradients.training.utils.early_stopping - Monitored metric mAP@0.30 did not improve in the last 6 records.
+[2026-06-29 00:03:11] INFO - super_gradients.training.utils.early_stopping - Monitored metric mAP@0.30 did not improve in the last 7 records.
+[2026-06-29 00:09:16] INFO - super_gradients.training.utils.early_stopping - Monitored metric mAP@0.30 did not improve in the last 8 records.
+[2026-06-29 00:15:22] INFO - super_gradients.training.utils.early_stopping - Monitored metric mAP@0.30 did not improve in the last 9 records.
+[2026-06-29 00:21:28] INFO - super_gradients.training.utils.early_stopping - Monitored metric mAP@0.30 did not improve in the last 10 records.
+[2026-06-29 00:27:33] INFO - super_gradients.training.utils.early_stopping - Monitored metric mAP@0.30 did not improve in the last 11 records.
+[2026-06-29 00:33:39] INFO - super_gradients.training.utils.early_stopping - Metric mAP@0.30 improved by 0.001 >= min_delta = 0.0. New best score: 0.731
+[2026-06-29 00:33:40] INFO - super_gradients.common.sg_loggers.base_sg_logger - Checkpoint saved in /home/zygfd/waterflow/rebuild/output/checkpoints/yolonas/2026-06-28_21-14-03/RUN_20260628_211408_863063/ckpt_best.pth
+[2026-06-29 00:33:40] INFO - super_gradients.training.sg_trainer.sg_trainer - Best checkpoint overriden: validation mAP@0.30: 0.7305228114128113
+[2026-06-29 00:39:46] INFO - super_gradients.training.utils.early_stopping - Metric mAP@0.30 improved by 0.002 >= min_delta = 0.0. New best score: 0.733
+[2026-06-29 00:39:47] INFO - super_gradients.common.sg_loggers.base_sg_logger - Checkpoint saved in /home/zygfd/waterflow/rebuild/output/checkpoints/yolonas/2026-06-28_21-14-03/RUN_20260628_211408_863063/ckpt_best.pth
+[2026-06-29 00:39:47] INFO - super_gradients.training.sg_trainer.sg_trainer - Best checkpoint overriden: validation mAP@0.30: 0.7325094938278198
+[2026-06-29 00:45:51] INFO - super_gradients.training.utils.early_stopping - Monitored metric mAP@0.30 did not improve in the last 1 records.
+[2026-06-29 00:51:57] INFO - super_gradients.training.utils.early_stopping - Monitored metric mAP@0.30 did not improve in the last 2 records.
+[2026-06-29 00:58:03] INFO - super_gradients.training.utils.early_stopping - Monitored metric mAP@0.30 did not improve in the last 3 records.
+[2026-06-29 01:04:09] INFO - super_gradients.training.utils.early_stopping - Monitored metric mAP@0.30 did not improve in the last 4 records.
+[2026-06-29 01:10:15] INFO - super_gradients.training.utils.early_stopping - Monitored metric mAP@0.30 did not improve in the last 5 records.
+[2026-06-29 01:16:20] INFO - super_gradients.training.utils.early_stopping - Metric mAP@0.30 improved by 0.000 >= min_delta = 0.0. New best score: 0.733
+[2026-06-29 01:16:21] INFO - super_gradients.common.sg_loggers.base_sg_logger - Checkpoint saved in /home/zygfd/waterflow/rebuild/output/checkpoints/yolonas/2026-06-28_21-14-03/RUN_20260628_211408_863063/ckpt_best.pth
+[2026-06-29 01:16:21] INFO - super_gradients.training.sg_trainer.sg_trainer - Best checkpoint overriden: validation mAP@0.30: 0.7325769066810608
+[2026-06-29 01:22:26] INFO - super_gradients.training.utils.early_stopping - Metric mAP@0.30 improved by 0.001 >= min_delta = 0.0. New best score: 0.734
+[2026-06-29 01:22:27] INFO - super_gradients.common.sg_loggers.base_sg_logger - Checkpoint saved in /home/zygfd/waterflow/rebuild/output/checkpoints/yolonas/2026-06-28_21-14-03/RUN_20260628_211408_863063/ckpt_best.pth
+[2026-06-29 01:22:27] INFO - super_gradients.training.sg_trainer.sg_trainer - Best checkpoint overriden: validation mAP@0.30: 0.7338988780975342
+[2026-06-29 01:28:32] INFO - super_gradients.training.utils.early_stopping - Monitored metric mAP@0.30 did not improve in the last 1 records.
+[2026-06-29 01:34:38] INFO - super_gradients.training.utils.early_stopping - Monitored metric mAP@0.30 did not improve in the last 2 records.
+[2026-06-29 01:40:43] INFO - super_gradients.training.utils.early_stopping - Monitored metric mAP@0.30 did not improve in the last 3 records.
+[2026-06-29 01:46:49] INFO - super_gradients.training.utils.early_stopping - Metric mAP@0.30 improved by 0.000 >= min_delta = 0.0. New best score: 0.734
+[2026-06-29 01:46:50] INFO - super_gradients.common.sg_loggers.base_sg_logger - Checkpoint saved in /home/zygfd/waterflow/rebuild/output/checkpoints/yolonas/2026-06-28_21-14-03/RUN_20260628_211408_863063/ckpt_best.pth
+[2026-06-29 01:46:50] INFO - super_gradients.training.sg_trainer.sg_trainer - Best checkpoint overriden: validation mAP@0.30: 0.7340625524520874
+[2026-06-29 01:52:55] INFO - super_gradients.training.utils.early_stopping - Metric mAP@0.30 improved by 0.005 >= min_delta = 0.0. New best score: 0.739
+[2026-06-29 01:52:56] INFO - super_gradients.common.sg_loggers.base_sg_logger - Checkpoint saved in /home/zygfd/waterflow/rebuild/output/checkpoints/yolonas/2026-06-28_21-14-03/RUN_20260628_211408_863063/ckpt_best.pth
+[2026-06-29 01:52:56] INFO - super_gradients.training.sg_trainer.sg_trainer - Best checkpoint overriden: validation mAP@0.30: 0.7388346195220947
+[2026-06-29 01:59:01] INFO - super_gradients.training.utils.early_stopping - Metric mAP@0.30 improved by 0.005 >= min_delta = 0.0. New best score: 0.744
+[2026-06-29 01:59:03] INFO - super_gradients.common.sg_loggers.base_sg_logger - Checkpoint saved in /home/zygfd/waterflow/rebuild/output/checkpoints/yolonas/2026-06-28_21-14-03/RUN_20260628_211408_863063/ckpt_best.pth
+[2026-06-29 01:59:03] INFO - super_gradients.training.sg_trainer.sg_trainer - Best checkpoint overriden: validation mAP@0.30: 0.7441657185554504
+[2026-06-29 02:05:07] INFO - super_gradients.training.utils.early_stopping - Monitored metric mAP@0.30 did not improve in the last 1 records.
+[2026-06-29 02:11:13] INFO - super_gradients.training.utils.early_stopping - Monitored metric mAP@0.30 did not improve in the last 2 records.
+[2026-06-29 02:17:19] INFO - super_gradients.training.utils.early_stopping - Metric mAP@0.30 improved by 0.000 >= min_delta = 0.0. New best score: 0.745
+[2026-06-29 02:17:20] INFO - super_gradients.common.sg_loggers.base_sg_logger - Checkpoint saved in /home/zygfd/waterflow/rebuild/output/checkpoints/yolonas/2026-06-28_21-14-03/RUN_20260628_211408_863063/ckpt_best.pth
+[2026-06-29 02:17:20] INFO - super_gradients.training.sg_trainer.sg_trainer - Best checkpoint overriden: validation mAP@0.30: 0.7445735931396484
+[2026-06-29 02:23:24] INFO - super_gradients.training.utils.early_stopping - Monitored metric mAP@0.30 did not improve in the last 1 records.
+[2026-06-29 02:29:30] INFO - super_gradients.training.utils.early_stopping - Metric mAP@0.30 improved by 0.001 >= min_delta = 0.0. New best score: 0.745
+[2026-06-29 02:29:31] INFO - super_gradients.common.sg_loggers.base_sg_logger - Checkpoint saved in /home/zygfd/waterflow/rebuild/output/checkpoints/yolonas/2026-06-28_21-14-03/RUN_20260628_211408_863063/ckpt_best.pth
+[2026-06-29 02:29:31] INFO - super_gradients.training.sg_trainer.sg_trainer - Best checkpoint overriden: validation mAP@0.30: 0.7454207539558411
+[2026-06-29 02:35:36] INFO - super_gradients.training.utils.early_stopping - Monitored metric mAP@0.30 did not improve in the last 1 records.
+[2026-06-29 02:41:42] INFO - super_gradients.training.utils.early_stopping - Monitored metric mAP@0.30 did not improve in the last 2 records.
+[2026-06-29 02:47:47] INFO - super_gradients.training.utils.early_stopping - Metric mAP@0.30 improved by 0.000 >= min_delta = 0.0. New best score: 0.746
+[2026-06-29 02:47:48] INFO - super_gradients.common.sg_loggers.base_sg_logger - Checkpoint saved in /home/zygfd/waterflow/rebuild/output/checkpoints/yolonas/2026-06-28_21-14-03/RUN_20260628_211408_863063/ckpt_best.pth
+[2026-06-29 02:47:48] INFO - super_gradients.training.sg_trainer.sg_trainer - Best checkpoint overriden: validation mAP@0.30: 0.7458818554878235
+[2026-06-29 02:53:53] INFO - super_gradients.training.utils.early_stopping - Metric mAP@0.30 improved by 0.004 >= min_delta = 0.0. New best score: 0.750
+[2026-06-29 02:53:54] INFO - super_gradients.common.sg_loggers.base_sg_logger - Checkpoint saved in /home/zygfd/waterflow/rebuild/output/checkpoints/yolonas/2026-06-28_21-14-03/RUN_20260628_211408_863063/ckpt_best.pth
+[2026-06-29 02:53:54] INFO - super_gradients.training.sg_trainer.sg_trainer - Best checkpoint overriden: validation mAP@0.30: 0.7499171495437622
+[2026-06-29 02:59:58] INFO - super_gradients.training.utils.early_stopping - Monitored metric mAP@0.30 did not improve in the last 1 records.
+[2026-06-29 03:06:03] INFO - super_gradients.training.utils.early_stopping - Monitored metric mAP@0.30 did not improve in the last 2 records.
+[2026-06-29 03:12:08] INFO - super_gradients.training.utils.early_stopping - Monitored metric mAP@0.30 did not improve in the last 3 records.
+[2026-06-29 03:18:12] INFO - super_gradients.training.utils.early_stopping - Monitored metric mAP@0.30 did not improve in the last 4 records.
+[2026-06-29 03:24:16] INFO - super_gradients.training.utils.early_stopping - Monitored metric mAP@0.30 did not improve in the last 5 records.
+[2026-06-29 03:30:22] INFO - super_gradients.training.utils.early_stopping - Monitored metric mAP@0.30 did not improve in the last 6 records.
+[2026-06-29 03:36:27] INFO - super_gradients.training.utils.early_stopping - Monitored metric mAP@0.30 did not improve in the last 7 records.
+[2026-06-29 03:42:32] INFO - super_gradients.training.utils.early_stopping - Metric mAP@0.30 improved by 0.005 >= min_delta = 0.0. New best score: 0.755
+[2026-06-29 03:42:33] INFO - super_gradients.common.sg_loggers.base_sg_logger - Checkpoint saved in /home/zygfd/waterflow/rebuild/output/checkpoints/yolonas/2026-06-28_21-14-03/RUN_20260628_211408_863063/ckpt_best.pth
+[2026-06-29 03:42:33] INFO - super_gradients.training.sg_trainer.sg_trainer - Best checkpoint overriden: validation mAP@0.30: 0.7545458078384399
+[2026-06-29 03:48:37] INFO - super_gradients.training.utils.early_stopping - Monitored metric mAP@0.30 did not improve in the last 1 records.
+[2026-06-29 03:54:41] INFO - super_gradients.training.utils.early_stopping - Monitored metric mAP@0.30 did not improve in the last 2 records.
+[2026-06-29 04:00:46] INFO - super_gradients.training.utils.early_stopping - Monitored metric mAP@0.30 did not improve in the last 3 records.
+[2026-06-29 04:06:52] INFO - super_gradients.training.utils.early_stopping - Monitored metric mAP@0.30 did not improve in the last 4 records.
+[2026-06-29 04:12:56] INFO - super_gradients.training.utils.early_stopping - Monitored metric mAP@0.30 did not improve in the last 5 records.
+[2026-06-29 04:19:01] INFO - super_gradients.training.utils.early_stopping - Monitored metric mAP@0.30 did not improve in the last 6 records.
+[2026-06-29 04:25:06] INFO - super_gradients.training.utils.early_stopping - Metric mAP@0.30 improved by 0.002 >= min_delta = 0.0. New best score: 0.757
+[2026-06-29 04:25:07] INFO - super_gradients.common.sg_loggers.base_sg_logger - Checkpoint saved in /home/zygfd/waterflow/rebuild/output/checkpoints/yolonas/2026-06-28_21-14-03/RUN_20260628_211408_863063/ckpt_best.pth
+[2026-06-29 04:25:07] INFO - super_gradients.training.sg_trainer.sg_trainer - Best checkpoint overriden: validation mAP@0.30: 0.7566472291946411
+[2026-06-29 04:31:11] INFO - super_gradients.training.utils.early_stopping - Monitored metric mAP@0.30 did not improve in the last 1 records.
+[2026-06-29 04:37:16] INFO - super_gradients.training.utils.early_stopping - Monitored metric mAP@0.30 did not improve in the last 2 records.
+[2026-06-29 04:43:21] INFO - super_gradients.training.utils.early_stopping - Monitored metric mAP@0.30 did not improve in the last 3 records.
+[2026-06-29 04:49:25] INFO - super_gradients.training.utils.early_stopping - Monitored metric mAP@0.30 did not improve in the last 4 records.
+[2026-06-29 04:55:29] INFO - super_gradients.training.utils.early_stopping - Monitored metric mAP@0.30 did not improve in the last 5 records.
+[2026-06-29 05:01:33] INFO - super_gradients.training.utils.early_stopping - Metric mAP@0.30 improved by 0.001 >= min_delta = 0.0. New best score: 0.758
+[2026-06-29 05:01:34] INFO - super_gradients.common.sg_loggers.base_sg_logger - Checkpoint saved in /home/zygfd/waterflow/rebuild/output/checkpoints/yolonas/2026-06-28_21-14-03/RUN_20260628_211408_863063/ckpt_best.pth
+[2026-06-29 05:01:34] INFO - super_gradients.training.sg_trainer.sg_trainer - Best checkpoint overriden: validation mAP@0.30: 0.757998526096344
+[2026-06-29 05:07:37] INFO - super_gradients.training.utils.early_stopping - Monitored metric mAP@0.30 did not improve in the last 1 records.
+[2026-06-29 05:13:42] INFO - super_gradients.training.utils.early_stopping - Monitored metric mAP@0.30 did not improve in the last 2 records.
+[2026-06-29 05:19:46] INFO - super_gradients.training.utils.early_stopping - Metric mAP@0.30 improved by 0.004 >= min_delta = 0.0. New best score: 0.762
+[2026-06-29 05:19:47] INFO - super_gradients.common.sg_loggers.base_sg_logger - Checkpoint saved in /home/zygfd/waterflow/rebuild/output/checkpoints/yolonas/2026-06-28_21-14-03/RUN_20260628_211408_863063/ckpt_best.pth
+[2026-06-29 05:19:47] INFO - super_gradients.training.sg_trainer.sg_trainer - Best checkpoint overriden: validation mAP@0.30: 0.761968731880188
+[2026-06-29 05:25:51] INFO - super_gradients.training.utils.early_stopping - Monitored metric mAP@0.30 did not improve in the last 1 records.
+[2026-06-29 05:31:55] INFO - super_gradients.training.utils.early_stopping - Monitored metric mAP@0.30 did not improve in the last 2 records.
+[2026-06-29 05:38:00] INFO - super_gradients.training.utils.early_stopping - Monitored metric mAP@0.30 did not improve in the last 3 records.
+[2026-06-29 05:44:03] INFO - super_gradients.training.utils.early_stopping - Monitored metric mAP@0.30 did not improve in the last 4 records.
+[2026-06-29 05:50:07] INFO - super_gradients.training.utils.early_stopping - Monitored metric mAP@0.30 did not improve in the last 5 records.
+[2026-06-29 05:56:11] INFO - super_gradients.training.utils.early_stopping - Monitored metric mAP@0.30 did not improve in the last 6 records.
+[2026-06-29 06:02:15] INFO - super_gradients.training.utils.early_stopping - Monitored metric mAP@0.30 did not improve in the last 7 records.
+[2026-06-29 06:08:20] INFO - super_gradients.training.utils.early_stopping - Monitored metric mAP@0.30 did not improve in the last 8 records.
+[2026-06-29 06:14:24] INFO - super_gradients.training.utils.early_stopping - Monitored metric mAP@0.30 did not improve in the last 9 records.
+[2026-06-29 06:20:28] INFO - super_gradients.training.utils.early_stopping - Monitored metric mAP@0.30 did not improve in the last 10 records.
+[2026-06-29 06:26:32] INFO - super_gradients.training.utils.early_stopping - Monitored metric mAP@0.30 did not improve in the last 11 records.
+[2026-06-29 06:32:36] INFO - super_gradients.training.utils.early_stopping - Monitored metric mAP@0.30 did not improve in the last 12 records.
+[2026-06-29 06:38:41] INFO - super_gradients.training.utils.early_stopping - Monitored metric mAP@0.30 did not improve in the last 13 records.
+[2026-06-29 06:44:46] INFO - super_gradients.training.utils.early_stopping - Metric mAP@0.30 improved by 0.001 >= min_delta = 0.0. New best score: 0.763
+[2026-06-29 06:44:47] INFO - super_gradients.common.sg_loggers.base_sg_logger - Checkpoint saved in /home/zygfd/waterflow/rebuild/output/checkpoints/yolonas/2026-06-28_21-14-03/RUN_20260628_211408_863063/ckpt_best.pth
+[2026-06-29 06:44:47] INFO - super_gradients.training.sg_trainer.sg_trainer - Best checkpoint overriden: validation mAP@0.30: 0.7626018524169922
+[2026-06-29 06:50:50] INFO - super_gradients.training.utils.early_stopping - Monitored metric mAP@0.30 did not improve in the last 1 records.
+[2026-06-29 06:56:54] INFO - super_gradients.training.utils.early_stopping - Monitored metric mAP@0.30 did not improve in the last 2 records.
+[2026-06-29 07:02:57] INFO - super_gradients.training.utils.early_stopping - Monitored metric mAP@0.30 did not improve in the last 3 records.
+[2026-06-29 07:09:01] INFO - super_gradients.training.utils.early_stopping - Monitored metric mAP@0.30 did not improve in the last 4 records.
+[2026-06-29 07:15:05] INFO - super_gradients.training.utils.early_stopping - Monitored metric mAP@0.30 did not improve in the last 5 records.
+[2026-06-29 07:21:08] INFO - super_gradients.training.utils.early_stopping - Monitored metric mAP@0.30 did not improve in the last 6 records.
+[2026-06-29 07:27:13] INFO - super_gradients.training.utils.early_stopping - Monitored metric mAP@0.30 did not improve in the last 7 records.
+[2026-06-29 07:27:17] INFO - super_gradients.training.sg_trainer.sg_trainer - RUNNING ADDITIONAL TEST ON THE AVERAGED MODEL...
+[2026-06-29 07:29:11] INFO - super_gradients.common.sg_loggers.base_sg_logger - [CLEANUP] - Successfully stopped system monitoring process
