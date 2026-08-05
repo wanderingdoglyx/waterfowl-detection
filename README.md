@@ -22,13 +22,29 @@ stack). It is scored two ways — a native point precision/recall/F1 and a bridg
 "pseudo-box" mAP30 — and runs in a separate interpreter. See
 [Running the Pipeline (MegaDetector-Overhead)](#running-the-pipeline-megadetector-overhead).
 
+## Data
+
+The raw aerial imagery (11 sub-datasets, `Bird_A`–`Bird_J`) is too large for git and
+is hosted on the Hugging Face Hub:
+**[juliamonson/waterfowl-uav](https://huggingface.co/datasets/juliamonson/waterfowl-uav)**.
+Fetch it into `dataset/`, then `--prepare` regenerates the 512×512 crops and the COCO /
+YOLO / OWL layouts from it (`crops/`, `yolov5_data/`, `mdo_data/` are all derived and
+gitignored):
+
+```bash
+hf download juliamonson/waterfowl-uav --repo-type dataset --local-dir dataset/
+```
+
+Per-run **results** (metrics, configs, curves, example panels, logs) *are* committed
+under `output/`; only model weights (`*.pth`/`*.pt`) are excluded.
+
 ---
 
 ## Project Layout
 
 ```
 rebuild/
-├── dataset/                    # Raw aerial-image datasets (read-only)
+├── dataset/                    # Raw aerial-image datasets (read-only; not in git — see below)
 │   ├── Bird_A/
 │   ├── Bird_B/
 │   ├── Bird_C/
