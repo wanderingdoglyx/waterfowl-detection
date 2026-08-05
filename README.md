@@ -36,7 +36,10 @@ hf download juliamonson/waterfowl-uav --repo-type dataset --local-dir dataset/
 ```
 
 Per-run **results** (metrics, configs, curves, example panels, logs) *are* committed
-under `output/`; only model weights (`*.pth`/`*.pt`) are excluded.
+under `output/`; only model weights (`*.pth`/`*.pt`) are excluded. The trained **best
+checkpoints** (plus a copy of the eval artifacts) are on the HF Hub:
+**[juliamonson/waterfowl-uav-checkpoints](https://huggingface.co/juliamonson/waterfowl-uav-checkpoints)**
+(OWL-D added once its run finishes).
 
 ---
 
