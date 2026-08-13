@@ -235,15 +235,14 @@ def main() -> None:
 
         ap30 = float(results.get(MAP_KEY, 0.0)) * 100.0
         ar30 = float(results.get(AR_KEY, 0.0)) * 100.0
-        print(f"\nTest mAP30 : {ap30:.2f}%")
-        print(f"Test mAR30 : {ar30:.2f}%")
 
         # ── OWL-paper point metrics (shared protocol, Section 4.3) ────────────
         # trainer.test only returns aggregates, so run a chunked predict pass to
         # collect per-detection boxes, then score their centres against the GT
         # box centres (MAE/RMSE, AP/AUC-PR, P/R/F1 at t*, bootstrap CIs).
         from data_prep.point_metrics import (gt_points_from_coco, paper_point_metrics,
-                                             format_report)
+                                             format_report, format_map30_block,
+                                             write_eval_txt)
 
         test_json = os.path.join(config.CROPS_JSON_DIR, "test", "coco.json")
         with open(test_json) as f:
@@ -277,9 +276,12 @@ def main() -> None:
             gt_points_from_coco(test_json), dets_by_image,
             tau=config.PAPER_TAU, bootstrap=config.PAPER_BOOTSTRAP,
         )
-        print("\n" + format_report(pm, "YOLO-NAS"))
         with open(os.path.join(eval_dir, "paper_point_metrics.json"), "w") as f:
             json.dump(pm, f, indent=2)
+        text = write_eval_txt(os.path.join(eval_dir, "eval_results.txt"),
+                              [format_map30_block(ap30, ar30), format_report(pm, "YOLO-NAS")])
+        print("\n" + text)
+        print(f"\nSaved results to {os.path.join(eval_dir, 'eval_results.txt')}")
 
         if args.examples > 0:
             print(f"\nSaving {args.examples} example images...")

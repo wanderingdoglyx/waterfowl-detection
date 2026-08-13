@@ -980,3 +980,5 @@
 26-07-2026 22:00:32 - [VALIDATION] - Epoch: [1] Total time: 0:42:26 (0.1045 s / it)
 26-07-2026 22:00:32 - [VALIDATION] - Epoch: [1] SUMMARY | recall: 0.9152 | precision: 0.5638 | f1_score: 0.6978 | MAE: 2.6100 | MSE: 47.0113 | RMSE: 6.8565 | accuracy: 1.0000 | mAP: 0.0000
 26-07-2026 22:00:32 - [VALIDATION] - Epoch: [1] SUMMARY | recall: 0.9152 | precision: 0.5638 | f1_score: 0.6978 | MAE: 2.6100 | MSE: 47.0113 | RMSE: 6.8565 | accuracy: 1.0000 | mAP: 0.0000
+08-08-2026 16:05:00 - Training complete | Best f1_score: 0.876074 at epoch 88
+08-08-2026 16:05:00 - Training complete | Best f1_score: 0.876074 at epoch 88

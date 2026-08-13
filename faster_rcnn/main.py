@@ -262,18 +262,20 @@ def main() -> None:
             cfg, model, evaluators=[evaluator]
         )
 
-        if results and "bbox" in results:
-            print(f"\nTest mAP30 : {results['bbox'].get('AP30', 0.0):.2f}%")
-            print(f"Test mAR30 : {results['bbox'].get('AR30', 0.0):.2f}%")
-        else:
-            print("No bbox results returned.")
-
         # ── OWL-paper point metrics (shared protocol, Section 4.3) ────────────
         # Box centres vs GT box centres: MAE/RMSE, AP/AUC-PR, P/R/F1 at t*,
         # bootstrap CIs.  Reads the per-detection dump COCOEvaluator just wrote.
         import torch as _torch
         from data_prep.point_metrics import (gt_points_from_coco, dets_from_coco_results,
-                                             paper_point_metrics, format_report)
+                                             paper_point_metrics, format_report,
+                                             format_map30_block, write_eval_txt)
+
+        sections = []
+        if results and "bbox" in results:
+            ap30 = results["bbox"].get("AP30", 0.0); ar30 = results["bbox"].get("AR30", 0.0)
+            sections.append(format_map30_block(ap30, ar30))
+        else:
+            print("No bbox results returned.")
 
         preds_pth = os.path.join(eval_dir, "test_inference", "instances_predictions.pth")
         test_json = os.path.join(config.CROPS_JSON_DIR, "test", "coco.json")
@@ -285,11 +287,16 @@ def main() -> None:
                 gt_points_from_coco(test_json), dets_from_coco_results(flat),
                 tau=config.PAPER_TAU, bootstrap=config.PAPER_BOOTSTRAP,
             )
-            print("\n" + format_report(pm, "Faster R-CNN"))
+            sections.append(format_report(pm, "Faster R-CNN"))
             with open(os.path.join(eval_dir, "paper_point_metrics.json"), "w") as f:
                 json.dump(pm, f, indent=2)
         else:
-            print(f"\n(point metrics skipped — {preds_pth} not found)")
+            sections.append(f"(point metrics skipped — {preds_pth} not found)")
+
+        # Print the full summary and save it as a plain-text results file.
+        text = write_eval_txt(os.path.join(eval_dir, "eval_results.txt"), sections)
+        print("\n" + text)
+        print(f"\nSaved results to {os.path.join(eval_dir, 'eval_results.txt')}")
 
         if args.examples > 0:
             print(f"\nSaving {args.examples} example images...")

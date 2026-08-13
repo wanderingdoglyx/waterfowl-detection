@@ -69,7 +69,7 @@ def coco_map30(coco_gt_path: str, coco_results: list) -> tuple[float, float]:
     return ap30, ar30
 
 
-def predictions_to_coco(model, coco_gt_path: str, conf: float, batch: int = 16) -> list:
+def predictions_to_coco(model, coco_gt_path: str, conf: float) -> list:
     """
     Run the Ultralytics model over every image in `coco_gt_path` and return the
     detections as a COCO result list (category_id fixed to 1 = bird).
@@ -77,27 +77,26 @@ def predictions_to_coco(model, coco_gt_path: str, conf: float, batch: int = 16) 
     Images are looked up on disk via the shared crops root so we score the exact
     same pixels as the ground truth, independent of the symlinked YOLO mirror.
 
-    We predict in explicit chunks of `batch` images.  Passing the full path list to
-    a single model.predict() call makes Ultralytics preprocess the *entire* list as
-    one batch (25k images -> ~80 GiB of GPU tensor), which OOMs the card; chunking
-    caps peak memory to `batch` images at a time.
+    ONE IMAGE PER predict() CALL (bs=1) — this is deliberate, not a perf oversight.
+    Ultralytics NMS uses a *cumulative per-batch* time budget (utils/nms.py:
+    `time_limit = 2.0 + 0.05 * bs`); when a dense crop trips it, the loop `break`s
+    and every remaining image in that batch is returned with ZERO detections. At the
+    low eval conf (0.05) our dense flock crops (300+ birds) reliably trip it: an
+    8-image batch of them returned 7 empties (all their birds silently became false
+    negatives), while at bs=1 all 8 returned full detections. Passing a list — even
+    with stream=True/batch=1 — still batches the NMS, so we must call predict per
+    image. bs=1 also keeps GPU memory trivial. Slower, but correct.
     """
     import json
 
     with open(coco_gt_path) as f:
         coco = json.load(f)
 
-    paths, ids = [], []
-    for img in coco["images"]:
-        paths.append(os.path.join(config.CROPS_IMG_DIR, img["file_name"]))
-        ids.append(img["id"])
-
     results: list = []
-    for i in range(0, len(paths), batch):
-        chunk_paths = paths[i:i + batch]
-        chunk_ids   = ids[i:i + batch]
+    for img in coco["images"]:
+        path = os.path.join(config.CROPS_IMG_DIR, img["file_name"])
         preds = model.predict(
-            source=chunk_paths,
+            source=path,
             conf=conf,
             iou=config.YOLOV5_NMS_IOU,
             imgsz=config.CROP_SIZE,
@@ -105,17 +104,16 @@ def predictions_to_coco(model, coco_gt_path: str, conf: float, batch: int = 16) 
             stream=False,
             verbose=False,
         )
-        for image_id, res in zip(chunk_ids, preds):
-            boxes = res.boxes
-            if boxes is None or len(boxes) == 0:
-                continue
-            xyxy   = boxes.xyxy.cpu().numpy()
-            scores = boxes.conf.cpu().numpy()
-            for (x1, y1, x2, y2), score in zip(xyxy, scores):
-                results.append({
-                    "image_id":    int(image_id),
-                    "category_id": 1,
-                    "bbox":        [float(x1), float(y1), float(x2 - x1), float(y2 - y1)],
-                    "score":       float(score),
-                })
+        boxes = preds[0].boxes
+        if boxes is None or len(boxes) == 0:
+            continue
+        xyxy   = boxes.xyxy.cpu().numpy()
+        scores = boxes.conf.cpu().numpy()
+        for (x1, y1, x2, y2), score in zip(xyxy, scores):
+            results.append({
+                "image_id":    int(img["id"]),
+                "category_id": 1,
+                "bbox":        [float(x1), float(y1), float(x2 - x1), float(y2 - y1)],
+                "score":       float(score),
+            })
     return results

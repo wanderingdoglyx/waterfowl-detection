@@ -43,6 +43,8 @@ __all__ = [
     "gt_points_from_coco",
     "paper_point_metrics",
     "format_report",
+    "format_map30_block",
+    "write_eval_txt",
 ]
 
 
@@ -283,6 +285,22 @@ def format_report(m: dict, model_name: str = "") -> str:
         f"({c['signed_pct_error']:+.1f}%)",
     ]
     return "\n".join(lines)
+
+
+def format_map30_block(ap30: float, ar30: float) -> str:
+    """Box-detection mAP30 block for the box models' results file."""
+    return ("── mAP30 (box detection, COCOeval@IoU=0.30) ──\n"
+            f"  mAP30 : {ap30:6.2f}%\n"
+            f"  mAR30 : {ar30:6.2f}%")
+
+
+def write_eval_txt(path: str, sections) -> str:
+    """Join non-empty `sections` with blank lines and write them to `path`.
+    Returns the full text (so callers can print it too)."""
+    text = "\n\n".join(s for s in sections if s)
+    with open(path, "w") as f:
+        f.write(text + "\n")
+    return text
 
 
 # ──────────────────────────────────────────────────────────────────────────────

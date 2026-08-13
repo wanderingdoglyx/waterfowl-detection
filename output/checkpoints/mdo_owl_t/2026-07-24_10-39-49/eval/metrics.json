@@ -12,5 +12,45 @@
     "ar30": 59.07931288621804,
     "box_size": 28
   },
-  "n_detections": 105273
+  "n_detections": 105273,
+  "paper_point_metrics": {
+    "protocol": {
+      "tau_px": 40,
+      "bootstrap_B": 1000,
+      "n_images": 25708,
+      "n_gt_points": 88195,
+      "n_detections": 105273,
+      "score_grid_size": 256,
+      "matching": "score-ordered greedy NN, one-to-one"
+    },
+    "detection": {
+      "ap": 0.9029160224844351,
+      "auc_pr": 0.9028040131023374,
+      "precision_at_t_star": 0.9029701828248458,
+      "recall_at_t_star": 0.8876126764555814,
+      "f1_at_t_star": 0.895225570358511
+    },
+    "counting": {
+      "t_star": 0.25664284650017233,
+      "mae": 0.4976660961568383,
+      "rmse": 2.0064273570377646,
+      "total_gt": 88195,
+      "total_pred_at_t_star": 86695,
+      "signed_pct_error": -1.7007766880208628
+    },
+    "ci95": {
+      "mae": [
+        0.4749465147035942,
+        0.5223315699393185
+      ],
+      "rmse": [
+        1.7454579564460864,
+        2.315149459781028
+      ],
+      "ap": [
+        0.8965751477816793,
+        0.9083463582789586
+      ]
+    }
+  }
 }

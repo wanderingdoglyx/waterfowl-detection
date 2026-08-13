@@ -1,0 +1,41 @@
+{
+  "protocol": {
+    "tau_px": 40,
+    "bootstrap_B": 1000,
+    "n_images": 25708,
+    "n_gt_points": 88195,
+    "n_detections": 168591,
+    "score_grid_size": 256,
+    "matching": "score-ordered greedy NN, one-to-one",
+    "max_det_cap": 500
+  },
+  "detection": {
+    "ap": 0.8954043077653514,
+    "auc_pr": 0.8952536759932195,
+    "precision_at_t_star": 0.8720109919292452,
+    "recall_at_t_star": 0.8563297239072509,
+    "f1_at_t_star": 0.8640992196974898
+  },
+  "counting": {
+    "t_star": 0.5793212184719009,
+    "mae": 0.7622529951765987,
+    "rmse": 3.594183881203047,
+    "total_gt": 88195,
+    "total_pred_at_t_star": 86609,
+    "signed_pct_error": -1.7982878848007258
+  },
+  "ci95": {
+    "mae": [
+      0.7197701104714486,
+      0.8066914968103314
+    ],
+    "rmse": [
+      3.1307815614684897,
+      4.0633262589789805
+    ],
+    "ap": [
+      0.8897925997853116,
+      0.8997471490735591
+    ]
+  }
+}

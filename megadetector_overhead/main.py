@@ -342,19 +342,26 @@ def main() -> None:
 
         pt = metrics["point"]
         pb = metrics["pseudo_box_map30"]
-        print("\n── Point metric (native; TP within "
-              f"{pt.get('radius_fullres_px', '?')} px of a GT point) ──")
-        print(f"  Precision : {pt.get('precision', 0) * 100:.2f}%")
-        print(f"  Recall    : {pt.get('recall', 0) * 100:.2f}%")
-        print(f"  F1        : {pt.get('f1_score', 0) * 100:.2f}%")
-        print(f"\n── Pseudo-box mAP30 (points → {pb['box_size']}px boxes, "
-              "COCOeval@IoU=0.30) ──")
-        print(f"  mAP30 : {pb['ap30']:.2f}%")
-        print(f"  mAR30 : {pb['ar30']:.2f}%")
-
-        from data_prep.point_metrics import format_report
-        print("\n" + format_report(metrics["paper_point_metrics"], model_spec["name"]))
-        print(f"\n  ({metrics['n_detections']} detections total)")
+        from data_prep.point_metrics import format_report, write_eval_txt
+        native_block = (
+            f"── Point metric (native; TP within {pt.get('radius_fullres_px', '?')} px "
+            "of a GT point) ──\n"
+            f"  Precision : {pt.get('precision', 0) * 100:.2f}%\n"
+            f"  Recall    : {pt.get('recall', 0) * 100:.2f}%\n"
+            f"  F1        : {pt.get('f1_score', 0) * 100:.2f}%"
+        )
+        pseudo_block = (
+            f"── Pseudo-box mAP30 (points → {pb['box_size']}px boxes, COCOeval@IoU=0.30) ──\n"
+            f"  mAP30 : {pb['ap30']:.2f}%\n"
+            f"  mAR30 : {pb['ar30']:.2f}%"
+        )
+        text = write_eval_txt(os.path.join(eval_out_dir, "eval_results.txt"), [
+            native_block, pseudo_block,
+            format_report(metrics["paper_point_metrics"], model_spec["name"]),
+            f"  ({metrics['n_detections']} detections total)",
+        ])
+        print("\n" + text)
+        print(f"\nSaved results to {os.path.join(eval_out_dir, 'eval_results.txt')}")
 
         with open(os.path.join(eval_out_dir, "metrics.json"), "w") as f:
             json.dump(metrics, f, indent=2)
