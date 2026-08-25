@@ -1,0 +1,54 @@
+{
+  "model": "yolonas",
+  "label": "YOLO-NAS-m (COCO)",
+  "family": "yolonas",
+  "weights": "coco",
+  "zero_shot": true,
+  "class_filter": "bird",
+  "timestamp": "2026-08-15_22-46-06",
+  "limit": null,
+  "n_test": 25708,
+  "n_detections": 113958,
+  "map30": 19.415868151550292,
+  "mar30": 32.15715176597313,
+  "paper_point_metrics": {
+    "protocol": {
+      "tau_px": 40,
+      "bootstrap_B": 1000,
+      "n_images": 25708,
+      "n_gt_points": 88195,
+      "n_detections": 113958,
+      "score_grid_size": 256,
+      "matching": "score-ordered greedy NN, one-to-one"
+    },
+    "detection": {
+      "ap": 0.20281263829195087,
+      "auc_pr": 0.20265317356438767,
+      "precision_at_t_star": 0.5866603855062222,
+      "recall_at_t_star": 0.16944271217189183,
+      "f1_at_t_star": 0.2629411971707077
+    },
+    "counting": {
+      "t_star": 0.12943925804951611,
+      "mae": 3.00832425704061,
+      "rmse": 16.438462318921786,
+      "total_gt": 88195,
+      "total_pred_at_t_star": 25473,
+      "signed_pct_error": -71.1174102840297
+    },
+    "ci95": {
+      "mae": [
+        2.807566710751517,
+        3.23236443908511
+      ],
+      "rmse": [
+        15.039160790906164,
+        17.83579427297683
+      ],
+      "ap": [
+        0.19084755227553638,
+        0.2137377572765858
+      ]
+    }
+  }
+}

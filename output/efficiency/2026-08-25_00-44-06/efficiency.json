@@ -1,0 +1,310 @@
+{
+  "generated": "2026-08-25T00:46:03",
+  "protocol": {
+    "crops": 200,
+    "repeats": 3,
+    "warmup": 10,
+    "crop_size": 512,
+    "conf": 0.05,
+    "max_det": 500
+  },
+  "hardware": {
+    "hostname": "cengr-dp6smw3.engineering.missouri.edu",
+    "platform": "Linux-6.8.0-90-generic-x86_64-with-glibc2.35",
+    "cpu_count": 32,
+    "ram_gb": 62.5,
+    "gpus": [
+      {
+        "name": "NVIDIA GeForce RTX 4080 SUPER",
+        "memory_gb": 15.6,
+        "capability": "8.9"
+      }
+    ],
+    "cuda": "12.1",
+    "nvidia_driver": "570.195.03"
+  },
+  "software": {
+    "git_commit": "94845357b53bef856f071cfc5cd74a23297b55f4",
+    "git_commit_short": "9484535",
+    "git_branch": "main",
+    "git_dirty": true,
+    "git_dirty_files": 352,
+    "python": "3.10.20",
+    "libraries": {
+      "torch": "2.1.2+cu121",
+      "ultralytics": "8.4.82",
+      "super_gradients": "3.7.1",
+      "detectron2": "0.6",
+      "numpy": "1.23.0",
+      "cv2": "4.11.0",
+      "pycocotools": "unknown"
+    }
+  },
+  "results": {
+    "fasterrcnn": {
+      "label": "Faster R-CNN",
+      "checkpoint": "/home/zygfd/waterflow/rebuild/output/checkpoints/fasterrcnn/2026-06-27_16-56-51/model_best.pth",
+      "checkpoint_bytes": 165712625,
+      "checkpoint_mb": 158.0,
+      "run_dir": "/home/zygfd/waterflow/rebuild/output/checkpoints/fasterrcnn/2026-06-27_16-56-51",
+      "ms_per_crop": [
+        9.042624204885215,
+        9.258591429679655,
+        8.95913792483043
+      ],
+      "peak_gpu_mb": 332.1,
+      "params": 41295061,
+      "ms_per_crop_mean": 9.087,
+      "ms_per_crop_std": 0.155,
+      "crops_per_second": 110.0,
+      "training": {},
+      "batch_sweep": {},
+      "end_to_end": {}
+    },
+    "yolonas": {
+      "label": "YOLO-NAS-m",
+      "checkpoint": "/home/zygfd/waterflow/rebuild/output/checkpoints/yolonas/2026-06-28_21-14-03/RUN_20260628_211408_863063/ckpt_best.pth",
+      "checkpoint_bytes": 681026562,
+      "checkpoint_mb": 649.5,
+      "run_dir": "/home/zygfd/waterflow/rebuild/output/checkpoints/yolonas/2026-06-28_21-14-03",
+      "ms_per_crop": [
+        15.776077269692907,
+        15.943492215010336,
+        15.592467789538205
+      ],
+      "peak_gpu_mb": 459.4,
+      "params": 51129333,
+      "ms_per_crop_mean": 15.771,
+      "ms_per_crop_std": 0.176,
+      "crops_per_second": 63.4,
+      "training": {},
+      "batch_sweep": {},
+      "end_to_end": {}
+    },
+    "yolov5": {
+      "label": "YOLOv5m",
+      "checkpoint": "/home/zygfd/waterflow/rebuild/output/checkpoints/yolov5/2026-07-11_13-18-41/weights/best.pt",
+      "checkpoint_bytes": 50480487,
+      "checkpoint_mb": 48.1,
+      "run_dir": "/home/zygfd/waterflow/rebuild/output/checkpoints/yolov5/2026-07-11_13-18-41",
+      "ms_per_crop": [
+        4.182645884575322,
+        4.172146189957857,
+        4.173161699436605
+      ],
+      "peak_gpu_mb": 505.3,
+      "preprocess_ms": 0.331,
+      "inference_ms": 2.71,
+      "postprocess_ms": 0.22,
+      "params": 25045795,
+      "ms_per_crop_mean": 4.176,
+      "ms_per_crop_std": 0.006,
+      "crops_per_second": 239.5,
+      "training": {
+        "train_seconds": 46747.5,
+        "epochs": 100,
+        "source": "results.csv"
+      },
+      "batch_sweep": {
+        "1": {
+          "ms_per_crop": 5.223,
+          "crops_per_second": 191.5
+        },
+        "2": {
+          "ms_per_crop": 4.107,
+          "crops_per_second": 243.5
+        },
+        "4": {
+          "ms_per_crop": 3.887,
+          "crops_per_second": 257.3
+        },
+        "8": {
+          "ms_per_crop": 3.931,
+          "crops_per_second": 254.4
+        },
+        "16": {
+          "ms_per_crop": 3.794,
+          "crops_per_second": 263.6
+        }
+      },
+      "end_to_end": {
+        "image": "100_1.jpg",
+        "resolution": "5120x3584",
+        "crops": 77,
+        "seconds": 0.48,
+        "seconds_per_megapixel": 0.026
+      }
+    },
+    "yolo11": {
+      "label": "YOLO11m",
+      "checkpoint": "/home/zygfd/waterflow/rebuild/output/checkpoints/yolo11/2026-08-14_00-25-32/weights/best.pt",
+      "checkpoint_bytes": 40505189,
+      "checkpoint_mb": 38.6,
+      "run_dir": "/home/zygfd/waterflow/rebuild/output/checkpoints/yolo11/2026-08-14_00-25-32",
+      "ms_per_crop": [
+        4.305904805078171,
+        4.3231903947889805,
+        4.326259114895947
+      ],
+      "peak_gpu_mb": 630.9,
+      "preprocess_ms": 0.324,
+      "inference_ms": 2.885,
+      "postprocess_ms": 0.21,
+      "params": 20030803,
+      "ms_per_crop_mean": 4.318,
+      "ms_per_crop_std": 0.011,
+      "crops_per_second": 231.6,
+      "training": {
+        "train_seconds": 49304.6,
+        "epochs": 100,
+        "source": "results.csv"
+      },
+      "batch_sweep": {
+        "1": {
+          "ms_per_crop": 5.649,
+          "crops_per_second": 177.0
+        },
+        "2": {
+          "ms_per_crop": 4.322,
+          "crops_per_second": 231.4
+        },
+        "4": {
+          "ms_per_crop": 4.24,
+          "crops_per_second": 235.8
+        },
+        "8": {
+          "ms_per_crop": 4.077,
+          "crops_per_second": 245.3
+        },
+        "16": {
+          "ms_per_crop": 4.313,
+          "crops_per_second": 231.9
+        }
+      },
+      "end_to_end": {
+        "image": "100_1.jpg",
+        "resolution": "5120x3584",
+        "crops": 77,
+        "seconds": 0.47,
+        "seconds_per_megapixel": 0.026
+      }
+    },
+    "yolo26": {
+      "label": "YOLO26m",
+      "checkpoint": "/home/zygfd/waterflow/rebuild/output/checkpoints/yolo26/2026-08-15_21-24-35/weights/best.pt",
+      "checkpoint_bytes": 44012562,
+      "checkpoint_mb": 42.0,
+      "run_dir": "/home/zygfd/waterflow/rebuild/output/checkpoints/yolo26/2026-08-15_21-24-35",
+      "ms_per_crop": [
+        4.706364324665628,
+        4.7605390654644,
+        4.714555160026066
+      ],
+      "peak_gpu_mb": 814.5,
+      "preprocess_ms": 0.326,
+      "inference_ms": 3.403,
+      "postprocess_ms": 0.095,
+      "params": 20350223,
+      "ms_per_crop_mean": 4.727,
+      "ms_per_crop_std": 0.029,
+      "crops_per_second": 211.6,
+      "training": {
+        "train_seconds": 61815.0,
+        "epochs": 100,
+        "source": "results.csv"
+      },
+      "batch_sweep": {
+        "1": {
+          "ms_per_crop": 5.772,
+          "crops_per_second": 173.2
+        },
+        "2": {
+          "ms_per_crop": 4.257,
+          "crops_per_second": 234.9
+        },
+        "4": {
+          "ms_per_crop": 4.218,
+          "crops_per_second": 237.1
+        },
+        "8": {
+          "ms_per_crop": 4.235,
+          "crops_per_second": 236.1
+        },
+        "16": {
+          "ms_per_crop": 4.339,
+          "crops_per_second": 230.5
+        }
+      },
+      "end_to_end": {
+        "image": "100_1.jpg",
+        "resolution": "5120x3584",
+        "crops": 77,
+        "seconds": 0.49,
+        "seconds_per_megapixel": 0.027
+      }
+    },
+    "owl_c": {
+      "label": "OWL-C",
+      "checkpoint": "/home/zygfd/waterflow/rebuild/output/checkpoints/mdo_owl_c/2026-07-21_22-59-50/weights/best.pth",
+      "checkpoint_bytes": 216442532,
+      "checkpoint_mb": 206.4,
+      "run_dir": "/home/zygfd/waterflow/rebuild/output/checkpoints/mdo_owl_c/2026-07-21_22-59-50",
+      "ms_per_crop": [
+        3.4185061749303713,
+        3.3523857803083956,
+        3.3593644649954513
+      ],
+      "params": 18375449,
+      "peak_gpu_mb": 803.3,
+      "note": "forward pass only; LMDS point decoding excluded",
+      "ms_per_crop_mean": 3.377,
+      "ms_per_crop_std": 0.036,
+      "crops_per_second": 296.1,
+      "training": {},
+      "batch_sweep": {},
+      "end_to_end": {}
+    },
+    "owl_t": {
+      "label": "OWL-T",
+      "checkpoint": "/home/zygfd/waterflow/rebuild/output/checkpoints/mdo_owl_t/2026-07-24_10-39-49/weights/best.pth",
+      "checkpoint_bytes": 355332166,
+      "checkpoint_mb": 338.9,
+      "run_dir": "/home/zygfd/waterflow/rebuild/output/checkpoints/mdo_owl_t/2026-07-24_10-39-49",
+      "ms_per_crop": [
+        6.870405219960958,
+        6.883291794802062,
+        6.879313485114835
+      ],
+      "params": 29925990,
+      "peak_gpu_mb": 895.6,
+      "note": "forward pass only; LMDS point decoding excluded",
+      "ms_per_crop_mean": 6.878,
+      "ms_per_crop_std": 0.007,
+      "crops_per_second": 145.4,
+      "training": {},
+      "batch_sweep": {},
+      "end_to_end": {}
+    },
+    "owl_d": {
+      "label": "OWL-D",
+      "checkpoint": "/home/zygfd/waterflow/rebuild/output/checkpoints/mdo_owl_d/2026-07-26_18-56-20/weights/best.pth",
+      "checkpoint_bytes": 3541434688,
+      "checkpoint_mb": 3377.4,
+      "run_dir": "/home/zygfd/waterflow/rebuild/output/checkpoints/mdo_owl_d/2026-07-26_18-56-20",
+      "ms_per_crop": [
+        99.99830051034223,
+        100.47865026514046,
+        100.69755930046085
+      ],
+      "params": 855471745,
+      "peak_gpu_mb": 4248.9,
+      "note": "forward pass only; LMDS point decoding excluded",
+      "ms_per_crop_mean": 100.392,
+      "ms_per_crop_std": 0.358,
+      "crops_per_second": 10.0,
+      "training": {},
+      "batch_sweep": {},
+      "end_to_end": {}
+    }
+  }
+}

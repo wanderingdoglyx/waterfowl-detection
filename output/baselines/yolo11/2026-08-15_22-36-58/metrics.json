@@ -1,0 +1,54 @@
+{
+  "model": "yolo11",
+  "label": "YOLO11m (COCO)",
+  "family": "ultralytics",
+  "weights": "/home/zygfd/waterflow/rebuild/yolo11m.pt",
+  "zero_shot": true,
+  "class_filter": "bird",
+  "timestamp": "2026-08-15_22-36-58",
+  "limit": null,
+  "n_test": 25708,
+  "n_detections": 20867,
+  "map30": 11.06539151447894,
+  "mar30": 13.76268495946482,
+  "paper_point_metrics": {
+    "protocol": {
+      "tau_px": 40,
+      "bootstrap_B": 1000,
+      "n_images": 25708,
+      "n_gt_points": 88195,
+      "n_detections": 20867,
+      "score_grid_size": 256,
+      "matching": "score-ordered greedy NN, one-to-one"
+    },
+    "detection": {
+      "ap": 0.11248779560876922,
+      "auc_pr": 0.1120186600841512,
+      "precision_at_t_star": 0.6471099270242094,
+      "recall_at_t_star": 0.12668518623504735,
+      "f1_at_t_star": 0.2118887550848181
+    },
+    "counting": {
+      "t_star": 0.06842759710316565,
+      "mae": 3.124824957211763,
+      "rmse": 16.9806484738419,
+      "total_gt": 88195,
+      "total_pred_at_t_star": 17266,
+      "signed_pct_error": -80.42292646975451
+    },
+    "ci95": {
+      "mae": [
+        2.919092305896997,
+        3.353385133032519
+      ],
+      "rmse": [
+        15.60388035497962,
+        18.378002907322244
+      ],
+      "ap": [
+        0.10392531749019601,
+        0.12116501699607905
+      ]
+    }
+  }
+}

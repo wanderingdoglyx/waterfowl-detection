@@ -1,17 +1,8 @@
 ── mAP30 (box detection, COCOeval@IoU=0.30) ──
-  (re-run --eval to populate; not persisted in this run)
+  mAP30 :  76.79%
+  mAR30 :  78.68%
 
-── OWL-paper point metrics — YOLOv5 [capped] (τ = 40 px, 25708 images, 88195 GT points) ──
-  AP        :  92.18%  [95% CI 91.66–92.64]
-  AUC-PR    :  92.17%
-  Precision :  92.60%   (at t* = 0.227)
-  Recall    :  88.80%
-  F1        :  90.66%
-  MAE       :  0.445  [95% CI 0.424–0.469]
-  RMSE      :  1.883  [95% CI 1.573–2.237]
-  Count     : 84577 predicted vs 88195 GT (-4.1%)
-
-── OWL-paper point metrics — YOLOv5 [uncapped, cap 500] (τ = 40 px, 25708 images, 88195 GT points) ──
+── OWL-paper point metrics — YOLOv5 (τ = 40 px, 25708 images, 88195 GT points) ──
   AP        :  92.59%  [95% CI 92.13–92.99]
   AUC-PR    :  92.58%
   Precision :  92.59%   (at t* = 0.227)

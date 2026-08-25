@@ -69,6 +69,10 @@ def build_cfg(
     # ── ROI head ──────────────────────────────────────────────────────────────
     cfg.MODEL.ROI_HEADS.NUM_CLASSES          = 1    # Detectron2 excludes background
     cfg.MODEL.ROI_HEADS.SCORE_THRESH_TEST    = config.CONF_THRESHOLD
+    # Detectron2 defaults to 100 detections per image — below the 422 birds in the
+    # densest crop, so it silently truncated exactly the scenes that matter most.  Use
+    # the project-wide limit so Faster R-CNN is scored on the same footing as the rest.
+    cfg.TEST.DETECTIONS_PER_IMAGE            = config.MAX_DETECTIONS_PER_IMAGE
 
     # ── Input size ────────────────────────────────────────────────────────────
     cfg.INPUT.MIN_SIZE_TRAIN = (config.CROP_SIZE,)

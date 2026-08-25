@@ -1,0 +1,16 @@
+Efficiency benchmark — 2026-08-25T00:46:03
+
+Hardware : NVIDIA GeForce RTX 4080 SUPER, 32 CPU, 62.5 GB RAM, driver 570.195.03, CUDA 12.1
+Software : Python 3.10.20, torch 2.1.2+cu121
+Protocol : 200 crops x 3 repeats, 10 warm-up, 512px, conf 0.05, max_det 500
+
+Model               params   ckpt MB     ms/crop   crops/s  peak GPU MB
+-----------------------------------------------------------------------
+Faster R-CNN    41,295,061     158.0 9.09+/-0.15     110.0        332.1
+YOLO-NAS-m      51,129,333     649.515.77+/-0.18      63.4        459.4
+YOLOv5m         25,045,795      48.1 4.18+/-0.01     239.5        505.3
+YOLO11m         20,030,803      38.6 4.32+/-0.01     231.6        630.9
+YOLO26m         20,350,223      42.0 4.73+/-0.03     211.6        814.5
+OWL-C           18,375,449     206.4 3.38+/-0.04     296.1        803.3
+OWL-T           29,925,990     338.9 6.88+/-0.01     145.4        895.6
+OWL-D          855,471,745    3377.4100.39+/-0.36      10.0       4248.9

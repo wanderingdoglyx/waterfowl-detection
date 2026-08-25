@@ -1,0 +1,54 @@
+{
+  "model": "owl_t",
+  "label": "OWL-T (overhead)",
+  "family": "owl",
+  "weights": "/home/zygfd/waterflow/rebuild/third_party/MegaDetector-Overhead/weights/OWL-T.pth",
+  "zero_shot": true,
+  "class_filter": "bird",
+  "timestamp": "2026-08-16_07-09-13",
+  "limit": null,
+  "n_test": 25708,
+  "n_detections": 64591,
+  "map30": 16.15120239624412,
+  "mar30": 26.157945461760875,
+  "paper_point_metrics": {
+    "protocol": {
+      "tau_px": 40,
+      "bootstrap_B": 1000,
+      "n_images": 25708,
+      "n_gt_points": 88195,
+      "n_detections": 64591,
+      "score_grid_size": 256,
+      "matching": "score-ordered greedy NN, one-to-one"
+    },
+    "detection": {
+      "ap": 0.254106453715268,
+      "auc_pr": 0.2493361363783019,
+      "precision_at_t_star": 0.6388805069402534,
+      "recall_at_t_star": 0.2880775554169738,
+      "f1_at_t_star": 0.39709916147636426
+    },
+    "counting": {
+      "t_star": 0.24840706323876097,
+      "mae": 2.730395207717442,
+      "rmse": 15.225212735701353,
+      "total_gt": 88195,
+      "total_pred_at_t_star": 39768,
+      "signed_pct_error": -54.909008447190885
+    },
+    "ci95": {
+      "mae": [
+        2.5479899253150773,
+        2.9265958067527618
+      ],
+      "rmse": [
+        13.860092157129008,
+        16.666380878586306
+      ],
+      "ap": [
+        0.2362715242924484,
+        0.2728330690825608
+      ]
+    }
+  }
+}

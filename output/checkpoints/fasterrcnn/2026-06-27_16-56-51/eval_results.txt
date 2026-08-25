@@ -1,17 +1,8 @@
 ── mAP30 (box detection, COCOeval@IoU=0.30) ──
-  (re-run --eval to populate; not persisted in this run)
+  mAP30 :  75.59%
+  mAR30 :  80.12%
 
-── OWL-paper point metrics — Faster R-CNN [capped] (τ = 40 px, 25708 images, 88195 GT points) ──
-  AP        :  76.63%  [95% CI 74.78–78.45]
-  AUC-PR    :  76.61%
-  Precision :  88.61%   (at t* = 0.686)
-  Recall    :  74.34%
-  F1        :  80.85%
-  MAE       :  1.071  [95% CI 0.969–1.179]
-  RMSE      :  8.645  [95% CI 7.550–9.737]
-  Count     : 73994 predicted vs 88195 GT (-16.1%)
-
-── OWL-paper point metrics — Faster R-CNN [uncapped, cap 500] (τ = 40 px, 25708 images, 88195 GT points) ──
+── OWL-paper point metrics — Faster R-CNN (τ = 40 px, 25708 images, 88195 GT points) ──
   AP        :  89.54%  [95% CI 88.98–89.97]
   AUC-PR    :  89.53%
   Precision :  87.20%   (at t* = 0.579)

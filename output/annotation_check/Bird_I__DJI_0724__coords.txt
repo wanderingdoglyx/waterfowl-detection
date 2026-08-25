@@ -1,0 +1,8 @@
+# Bird_I / DJI_0724
+# image   : /home/zygfd/waterflow/rebuild/dataset_full/Bird_I/DJI_0724.jpg  (5472x3648)
+# labels  : /home/zygfd/waterflow/rebuild/dataset_full/Bird_I/DJI_0724.txt
+# boxes   : 2   species labels: 2
+#
+#   idx      x1     y1     x2     y2     w    h  species
+      0    4217    940   4333   1005   116   65  Shoveler_Female
+      1    3852    227   3893    280    41   53  Not a bird

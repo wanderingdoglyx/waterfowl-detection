@@ -1,0 +1,54 @@
+{
+  "model": "fasterrcnn",
+  "label": "Faster R-CNN R50-FPN (COCO)",
+  "family": "fasterrcnn",
+  "weights": "COCO-Detection/faster_rcnn_R_50_FPN_3x.yaml",
+  "zero_shot": true,
+  "class_filter": "bird",
+  "timestamp": "2026-08-17_09-04-32",
+  "limit": null,
+  "n_test": 25708,
+  "n_detections": 10839,
+  "map30": 6.449459624017276,
+  "mar30": 7.885934576790067,
+  "paper_point_metrics": {
+    "protocol": {
+      "tau_px": 40,
+      "bootstrap_B": 1000,
+      "n_images": 25708,
+      "n_gt_points": 88195,
+      "n_detections": 10839,
+      "score_grid_size": 256,
+      "matching": "score-ordered greedy NN, one-to-one"
+    },
+    "detection": {
+      "ap": 0.06554384499901308,
+      "auc_pr": 0.06543297141525872,
+      "precision_at_t_star": 0.664636959129071,
+      "recall_at_t_star": 0.0816826350700153,
+      "f1_at_t_star": 0.14548538885635237
+    },
+    "counting": {
+      "t_star": 0.05000815913081169,
+      "mae": 3.174264820289404,
+      "rmse": 16.875169783447067,
+      "total_gt": 88195,
+      "total_pred_at_t_star": 10839,
+      "signed_pct_error": -87.71018765236124
+    },
+    "ci95": {
+      "mae": [
+        2.964899058658783,
+        3.397119573673564
+      ],
+      "rmse": [
+        15.492200172051998,
+        18.260786614409238
+      ],
+      "ap": [
+        0.06041499993639115,
+        0.07060967074810853
+      ]
+    }
+  }
+}

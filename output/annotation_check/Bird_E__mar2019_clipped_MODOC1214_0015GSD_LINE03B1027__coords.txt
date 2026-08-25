@@ -1,0 +1,6 @@
+# Bird_E / mar2019_clipped_MODOC1214_0015GSD_LINE03B1027
+# image   : /home/zygfd/waterflow/rebuild/dataset_full/Bird_E/mar2019_clipped_MODOC1214_0015GSD_LINE03B1027.png  (512x512)
+# labels  : /home/zygfd/waterflow/rebuild/dataset_full/Bird_E/mar2019_clipped_MODOC1214_0015GSD_LINE03B1027.txt
+# boxes   : 0   species labels: none
+#
+#   idx      x1     y1     x2     y2     w    h  species

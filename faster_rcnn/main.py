@@ -205,7 +205,21 @@ def main() -> None:
         print(f"Max iterations: {cfg.SOLVER.MAX_ITER}  "
               f"| Eval every: {cfg.TEST.EVAL_PERIOD} iters  "
               f"| Early-stop patience: {config.EARLY_STOP_PATIENCE} evals")
-        run_training(cfg)
+        from data_prep.experiment_record import ExperimentRecord, Timer
+
+        rec = ExperimentRecord(run_dir, model="fasterrcnn", label="Faster R-CNN",
+                               family="detectron2")
+        rec.set_pretrained("COCO-Detection/faster_rcnn_R_50_FPN_3x.yaml")
+        rec.set_training({"epochs": config.NUM_EPOCHS, "patience": config.EARLY_STOP_PATIENCE,
+                          "batch": config.BATCH_SIZE, "lr": config.LEARNING_RATE,
+                          "optimizer": "SGD", "momentum": 0.9, "weight_decay": 1e-4,
+                          "anchor_sizes": str(config.ANCHOR_SIZES),
+                          "seed": config.RANDOM_SEED})
+        with Timer() as _t:
+            run_training(cfg)
+        rec.finish_training(checkpoint=os.path.join(run_dir, "model_best.pth"),
+                            duration_s=_t.seconds, epochs_completed=config.NUM_EPOCHS,
+                            peak_gpu_mb=_t.peak_gpu_mb)
 
     # ── 3. Evaluation on test set ─────────────────────────────────────────────
     if args.eval:

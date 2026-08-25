@@ -184,7 +184,19 @@ def main() -> None:
               f"| Max epochs: {config.NUM_EPOCHS}  "
               f"| Early-stop patience: {config.EARLY_STOP_PATIENCE}")
 
-        ckpt = run_training(run_dir, loaders["train"], loaders["val"])
+        from data_prep.experiment_record import ExperimentRecord, Timer
+
+        rec = ExperimentRecord(run_dir, model="yolonas", label="YOLO-NAS",
+                               family="super-gradients")
+        rec.set_pretrained(f"{config.YOLONAS_MODEL} (coco)")
+        rec.set_training({"epochs": config.NUM_EPOCHS, "patience": config.EARLY_STOP_PATIENCE,
+                          "batch": config.YOLONAS_BATCH_SIZE, "lr": config.YOLONAS_LR,
+                          "optimizer": "Adam", "lr_mode": "cosine",
+                          "seed": config.RANDOM_SEED})
+        with Timer() as _t:
+            ckpt = run_training(run_dir, loaders["train"], loaders["val"])
+        rec.finish_training(checkpoint=ckpt, duration_s=_t.seconds,
+                            epochs_completed=config.NUM_EPOCHS, peak_gpu_mb=_t.peak_gpu_mb)
         print(f"Best checkpoint: {ckpt}")
 
     # ── 3. Evaluation on the test set ──────────────────────────────────────────

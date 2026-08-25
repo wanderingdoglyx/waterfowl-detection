@@ -1,0 +1,10 @@
+Efficiency benchmark — 2026-08-25T00:52:40
+
+Hardware : NVIDIA GeForce RTX 4080 SUPER, 32 CPU, 62.5 GB RAM, driver 570.195.03, CUDA 12.1
+Software : Python 3.10.20, torch 2.1.2+cu121
+Mode     : WHOLE PROCESS (disk read -> final coordinates)
+Protocol : 200 crops x 3 repeats, 10 warm-up, 512px, conf 0.05, max_det 500
+
+Model                params    ckpt MB        ms/crop   crops/s  peak GPU MB
+----------------------------------------------------------------------------
+OWL-D           855,471,745    3,377.4  103.42+/-0.03       9.7       3630.1

@@ -1,0 +1,65 @@
+{
+  "generated": "2026-08-25T00:52:40",
+  "protocol": {
+    "mode": "whole_process",
+    "crops": 200,
+    "repeats": 3,
+    "warmup": 10,
+    "crop_size": 512,
+    "conf": 0.05,
+    "max_det": 500
+  },
+  "hardware": {
+    "hostname": "cengr-dp6smw3.engineering.missouri.edu",
+    "platform": "Linux-6.8.0-90-generic-x86_64-with-glibc2.35",
+    "cpu_count": 32,
+    "ram_gb": 62.5,
+    "gpus": [
+      {
+        "name": "NVIDIA GeForce RTX 4080 SUPER",
+        "memory_gb": 15.6,
+        "capability": "8.9"
+      }
+    ],
+    "cuda": "12.1",
+    "nvidia_driver": "570.195.03"
+  },
+  "software": {
+    "git_commit": "94845357b53bef856f071cfc5cd74a23297b55f4",
+    "git_commit_short": "9484535",
+    "git_branch": "main",
+    "git_dirty": true,
+    "git_dirty_files": 352,
+    "python": "3.10.20",
+    "libraries": {
+      "torch": "2.1.2+cu121",
+      "ultralytics": "8.4.82",
+      "super_gradients": "3.7.1",
+      "detectron2": "0.6",
+      "numpy": "1.23.0",
+      "cv2": "4.11.0",
+      "pycocotools": "unknown"
+    }
+  },
+  "results": {
+    "owl_d": {
+      "label": "OWL-D",
+      "checkpoint": "/home/zygfd/waterflow/rebuild/output/checkpoints/mdo_owl_d/2026-07-26_18-56-20/weights/best.pth",
+      "checkpoint_bytes": 3541434688,
+      "checkpoint_mb": 3377.4,
+      "run_dir": "/home/zygfd/waterflow/rebuild/output/checkpoints/mdo_owl_d/2026-07-26_18-56-20",
+      "ms_per_crop": [
+        103.439778679749,
+        103.3900438004639,
+        103.42733890516683
+      ],
+      "params": 855471745,
+      "peak_gpu_mb": 3630.1,
+      "note": "whole process: disk read, preprocess, forward, LMDS decode",
+      "ms_per_crop_mean": 103.419,
+      "ms_per_crop_std": 0.026,
+      "crops_per_second": 9.7,
+      "training": {}
+    }
+  }
+}

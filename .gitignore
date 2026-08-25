@@ -1,4 +1,10 @@
 # ── Data: raw datasets and everything generated from them (huge, not for git) ──
+dataset_full/*
+# ...but keep the metadata inventory, which is documentation rather than data.
+# (`dataset_full/*` rather than `dataset_full/` so this negation can take effect — git
+# cannot re-include a file whose parent directory is itself excluded.)
+!dataset_full/DATASET_INVENTORY.md
+dataset_v1/
 dataset/
 crops/
 yolov5_data/

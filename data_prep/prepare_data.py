@@ -20,7 +20,7 @@ Output layout:
 Crop filename convention (matches BirdI_faster reference dataset):
   {DatasetLetter}_{ImageStem}_{row_offset}_{col_offset}.JPG
   - DatasetLetter: second segment of folder name split on "_"
-    (Bird_A → A, Bird_I_complete → I)
+    (Bird_A → A, Bird_I → I)
   - row_offset / col_offset: pixel coordinates of the crop's top-left corner
     (y first, then x, no zero-padding)
   - stride = int(crop_size × (1 − overlap/2)); with overlap=0.20 → stride=460 px
@@ -47,20 +47,56 @@ def find_image(dataset_dir: str, stem: str) -> str | None:
     return None
 
 
+# Label-file suffixes seen across the datasets.  Most use "<stem>.txt", but Bird_B and
+# Bird_C use "<stem>_bird_box.txt"; both are tried so no dataset is silently skipped.
+ANNOTATION_SUFFIXES = (".txt", "_bird_box.txt")
+
+
+def find_annotation(dataset_dir: str, stem: str,
+                    annotation_name: str | None = None) -> str | None:
+    """
+    Locate the label file for `stem`, or None.
+
+    `annotation_name` is image_info.csv's own pointer and is trusted first — every
+    dataset records the correct filename there.  Reconstructing "<stem>.txt" instead
+    is what previously dropped Bird_B and Bird_C from the entire project: their labels
+    are named "<stem>_bird_box.txt", the existence check failed, and both datasets were
+    skipped without an error (140 images, 3,765 birds).  The suffix fallbacks cover the
+    same cases should the CSV column be missing or stale.
+    """
+    for name in filter(None, (annotation_name, *(stem + sfx for sfx in ANNOTATION_SUFFIXES))):
+        path = os.path.join(dataset_dir, name)
+        if os.path.exists(path):
+            return path
+    return None
+
+
 def read_annotations(txt_path: str) -> list[list[int]]:
-    """Parse 'bird,x1,y1,x2,y2' → [[x1,y1,x2,y2], ...]."""
+    """
+    Parse a label file → [[x1, y1, x2, y2], ...].
+
+    Two layouts occur in these datasets and both are accepted:
+
+        bird,2047,2343,2143,2426     labelled   — the common form
+        2047,2343,2143,2426          unlabelled — parts of Bird_I
+
+    Requiring the leading label silently discarded 2,646 of Bird_I's 7,058
+    boxes (37%), since the unlabelled rows have four fields and the parser read
+    coordinates from parts[1:5].  Coordinates are therefore taken from the LAST four
+    fields, which is correct for both layouts.
+    """
     boxes = []
     with open(txt_path) as f:
         for line in f:
-            parts = line.strip().split(",")
-            if len(parts) < 5:
+            parts = [p.strip() for p in line.strip().split(",") if p.strip() != ""]
+            if len(parts) < 4:
                 continue
             try:
-                x1, y1, x2, y2 = int(parts[1]), int(parts[2]), int(parts[3]), int(parts[4])
-                if x2 > x1 and y2 > y1:
-                    boxes.append([x1, y1, x2, y2])
+                x1, y1, x2, y2 = (int(float(v)) for v in parts[-4:])
             except ValueError:
                 continue
+            if x2 > x1 and y2 > y1:
+                boxes.append([x1, y1, x2, y2])
     return boxes
 
 
@@ -81,7 +117,7 @@ def crop_image(
     crop_size: int,
     stride: int,
     out_img_dir: str,   # dataset-specific folder, e.g. crops/Bird_A/
-    ds_letter: str,     # e.g. "A" from "Bird_A", "I" from "Bird_I_complete"
+    ds_letter: str,     # e.g. "A" from "Bird_A", "I" from "Bird_I"
     stem: str,          # original image filename stem, e.g. "DJI_0001"
     ds_name: str,       # folder name, e.g. "Bird_A" — used for the relative file_name
 ) -> list[dict]:
@@ -173,7 +209,12 @@ def discover_datasets(root: str, excluded: set) -> list[str]:
 
 
 def read_split(dataset_dir: str) -> tuple[list, list]:
-    """Returns (train_items, test_items) where each item is (dataset_dir, image_name)."""
+    """
+    Returns (train_items, test_items), each item (dataset_dir, image_name, annotation_path).
+
+    The resolved annotation path is carried in the item rather than rebuilt later, so the
+    file that decided an image was usable is the same file that is read for its boxes.
+    """
     train, test = [], []
     with open(os.path.join(dataset_dir, "image_info.csv")) as f:
         for row in csv.DictReader(f):
@@ -181,10 +222,11 @@ def read_split(dataset_dir: str) -> tuple[list, list]:
             stem = os.path.splitext(name)[0]
             if find_image(dataset_dir, stem) is None:
                 continue
-            if not os.path.exists(os.path.join(dataset_dir, stem + ".txt")):
+            ann = find_annotation(dataset_dir, stem, row.get("annotation_name"))
+            if ann is None:
                 continue
             bucket = train if row.get("bbox_split_Robert", "train") == "train" else test
-            bucket.append((dataset_dir, name))
+            bucket.append((dataset_dir, name, ann))
     return train, test
 
 
@@ -227,10 +269,10 @@ def prepare(
 
     for split, img_list in splits.items():
         all_records: list[dict] = []
-        for ddir, img_name in img_list:
+        for ddir, img_name, ann_path in img_list:
             stem    = os.path.splitext(img_name)[0]
             ds_name = os.path.basename(ddir)
-            # "Bird_A" → "A",  "Bird_I_complete" → "I"
+            # "Bird_A" → "A",  "Bird_I" → "I"
             ds_letter = ds_name.split("_")[1]
 
             # Per-dataset image sub-folder: crops/Bird_A/
@@ -239,7 +281,7 @@ def prepare(
 
             records = crop_image(
                 image_path=find_image(ddir, stem),
-                boxes=read_annotations(os.path.join(ddir, stem + ".txt")),
+                boxes=read_annotations(ann_path),
                 crop_size=crop_size,
                 stride=stride,
                 out_img_dir=ds_img_dir,

@@ -1,0 +1,69 @@
+{
+  "generated": "2026-08-25T00:43:57",
+  "protocol": {
+    "crops": 30,
+    "repeats": 2,
+    "warmup": 10,
+    "crop_size": 512,
+    "conf": 0.05,
+    "max_det": 500
+  },
+  "hardware": {
+    "hostname": "cengr-dp6smw3.engineering.missouri.edu",
+    "platform": "Linux-6.8.0-90-generic-x86_64-with-glibc2.35",
+    "cpu_count": 32,
+    "ram_gb": 62.5,
+    "gpus": [
+      {
+        "name": "NVIDIA GeForce RTX 4080 SUPER",
+        "memory_gb": 15.6,
+        "capability": "8.9"
+      }
+    ],
+    "cuda": "12.1",
+    "nvidia_driver": "570.195.03"
+  },
+  "software": {
+    "git_commit": "94845357b53bef856f071cfc5cd74a23297b55f4",
+    "git_commit_short": "9484535",
+    "git_branch": "main",
+    "git_dirty": true,
+    "git_dirty_files": 351,
+    "python": "3.10.20",
+    "libraries": {
+      "torch": "2.1.2+cu121",
+      "ultralytics": "8.4.82",
+      "super_gradients": "3.7.1",
+      "detectron2": "0.6",
+      "numpy": "1.23.0",
+      "cv2": "4.11.0",
+      "pycocotools": "unknown"
+    }
+  },
+  "results": {
+    "yolo11": {
+      "label": "YOLO11m",
+      "checkpoint": "/home/zygfd/waterflow/rebuild/output/checkpoints/yolo11/2026-08-14_00-25-32/weights/best.pt",
+      "checkpoint_bytes": 40505189,
+      "checkpoint_mb": 38.6,
+      "run_dir": "/home/zygfd/waterflow/rebuild/output/checkpoints/yolo11/2026-08-14_00-25-32",
+      "ms_per_crop": [
+        5.0077781663276255,
+        4.929479133958618
+      ],
+      "peak_gpu_mb": 284.2,
+      "preprocess_ms": 0.359,
+      "inference_ms": 2.936,
+      "postprocess_ms": 0.707,
+      "params": 20030803,
+      "ms_per_crop_mean": 4.969,
+      "ms_per_crop_std": 0.055,
+      "crops_per_second": 201.2,
+      "training": {
+        "train_seconds": 49304.6,
+        "epochs": 100,
+        "source": "results.csv"
+      }
+    }
+  }
+}

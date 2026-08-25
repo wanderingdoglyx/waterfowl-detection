@@ -2,7 +2,31 @@ import os
 
 # ── Root paths ────────────────────────────────────────────────────────────────
 _ROOT        = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DATASET_ROOT = os.path.join(_ROOT, "dataset")
+# Two dataset trees are maintained side by side:
+#
+#   dataset_full/  every dataset (10) — including Bird_B and Bird_C, which the loader
+#                  silently skipped until the annotation-lookup fix, and the merged
+#                  Bird_I.  This is the corpus for future work.
+#   dataset_v1/    a frozen, independent COPY of the input behind every committed result:
+#                  the 8 datasets that reached the pipeline, all 1,955 images.  This is
+#                  the DEFAULT so results stay reproducible.
+#
+#                  It includes the 30 Bird_I images whose 4-field annotations the old
+#                  parser dropped.  They contributed no boxes, but they were still images
+#                  in the pool, and the train/val split is a seeded shuffle OVER THAT POOL
+#                  — removing them reshuffles membership for every dataset.  Verified:
+#                  re-deriving the split from this tree reproduces the committed
+#                  train/val/test image counts exactly, per dataset.
+#
+# Default is "full": the corpus to build on going forward.  v1 is retained as the frozen
+# record of what produced the committed results, so any older number can still be traced
+# to its input, but it is no longer the tree the pipeline reads.
+#
+# Switching here does NOT by itself change any result — nothing is recomputed until
+# --prepare is re-run.  Once it is, the splits are re-derived over a larger pool and every
+# committed metric becomes non-comparable; see the note in dataset_v1/DATASET_INVENTORY.md.
+DATASET_VERSION = "full"        # "full" | "v1"
+DATASET_ROOT = os.path.join(_ROOT, f"dataset_{DATASET_VERSION}")
 OUTPUT_DIR   = os.path.join(_ROOT, "output")
 CKPT_DIR     = os.path.join(OUTPUT_DIR, "checkpoints", "fasterrcnn")
 YOLONAS_CKPT_DIR = os.path.join(OUTPUT_DIR, "checkpoints", "yolonas")
@@ -17,8 +41,13 @@ CROPS_JSON_DIR = os.path.join(OUTPUT_DIR, "crops_json") # train/val/test coco.js
 
 # ── Datasets to use ───────────────────────────────────────────────────────────
 # All sub-folders of DATASET_ROOT that contain images.
-# Bird_I is the incomplete version of Bird_I_complete — exclude it.
-EXCLUDED_DATASETS = {"Bird_I"}
+# No dataset is currently excluded.  This previously held {"Bird_I"}, when the folder was
+# the incomplete 141-image version and a separate Bird_I_complete carried the full 171.
+# The two were merged (the smaller was a strict, byte-identical subset), so Bird_I is now
+# the complete dataset and MUST NOT be excluded — leaving the old entry here would silently
+# drop all 171 images and 7,038 birds, the same class of failure as the Bird_B/Bird_C
+# filename mismatch documented in dataset/DATASET_INVENTORY.md.
+EXCLUDED_DATASETS: set[str] = set()
 
 # ── Image cropping (Section 4.3) ──────────────────────────────────────────────
 CROP_SIZE    = 512
@@ -30,6 +59,19 @@ CROP_OVERLAP = 0.20     # 20% total overlap for middle crops (10% each side) →
 # so the final ratio is ≈ 60 / 20 / 20.
 VAL_FRACTION = 0.25
 RANDOM_SEED  = 42
+
+# ── Detection limit (shared by every model) ───────────────────────────────────
+# Maximum detections kept per 512x512 crop at inference.  ONE value for the whole
+# project — every family reads this constant, so no model is scored under a looser or
+# tighter limit than another, and there are no capped/uncapped variants of any metric.
+#
+# Set above the densest crop rather than at a round number: the busiest crop in the test
+# split holds 422 birds and none exceed 500, so this limit cannot discard a real bird.
+# It is a safety bound on runaway inference, not a scoring parameter.
+#
+# Detectron2's own default is 100, which silently truncated Faster R-CNN on dense flock
+# crops until this constant was wired into faster_rcnn/model.py.
+MAX_DETECTIONS_PER_IMAGE = 500
 
 # ── Faster R-CNN anchor settings (Section 4.1) ────────────────────────────────
 # Paper reduced default [32,64,128,256,512] → [8,16,32,64,128] for small birds
@@ -43,8 +85,13 @@ RPN_BATCH_SIZE_PER_IMAGE = 512   # paper: 256 → 512
 RPN_POSITIVE_FRACTION    = 0.8   # paper: 0.5 → 0.8
 RPN_PRE_NMS_TOP_N_TRAIN  = 2000
 RPN_POST_NMS_TOP_N_TRAIN = 1000
-RPN_PRE_NMS_TOP_N_TEST   = 1000
-RPN_POST_NMS_TOP_N_TEST  = 300
+# Test-time proposal budget.  POST_NMS bounds how many regions reach the ROI head, so it
+# is an upper bound on detections per crop no matter what TEST.DETECTIONS_PER_IMAGE says.
+# At its old value of 300 it silently truncated the dense flock crops (the busiest holds
+# 422 birds), which is a second, independent version of the same fault as the detectron2
+# 100-detection default.  Tied to MAX_DETECTIONS_PER_IMAGE so the two limits cannot drift.
+RPN_PRE_NMS_TOP_N_TEST   = 2000
+RPN_POST_NMS_TOP_N_TEST  = MAX_DETECTIONS_PER_IMAGE
 
 # ── Training (Section 4.1) ────────────────────────────────────────────────────
 NUM_EPOCHS          = 100   # paper cap; early stopping almost always ends sooner
@@ -63,7 +110,7 @@ YOLONAS_LR          = 0.0005   # cosine-decayed; tuned for Adam + small birds
 # COCO-style AP integrates the full PR curve).
 YOLONAS_NMS_IOU     = 0.7
 YOLONAS_NMS_TOPK    = 1000
-YOLONAS_MAX_PRED    = 300
+YOLONAS_MAX_PRED    = MAX_DETECTIONS_PER_IMAGE
 
 # ── YOLOv5 settings (Ultralytics) ─────────────────────────────────────────────
 # Variant: one of "yolov5su", "yolov5mu", "yolov5lu" (Ultralytics' anchor-free
@@ -78,7 +125,59 @@ YOLOV5_LR           = 0.0005   # ultralytics lr0; Adam, tuned for small birds (m
 # `crops/` (not under output/) since it is a sizeable derived dataset, not a run artifact.
 YOLOV5_DATA_DIR     = os.path.join(_ROOT, "yolov5_data")
 YOLOV5_NMS_IOU      = 0.7      # NMS IoU during inference (matches YOLONAS_NMS_IOU)
-YOLOV5_MAX_PRED     = 300      # max detections per image (matches YOLONAS_MAX_PRED)
+YOLOV5_MAX_PRED     = MAX_DETECTIONS_PER_IMAGE
+
+# ── Ultralytics YOLO11 / YOLO26 ───────────────────────────────────────────────
+# Newer Ultralytics generations, added alongside YOLOv5.  They read the *same*
+# Ultralytics on-disk mirror that yolov5/dataset.py already builds (YOLOV5_DATA_DIR),
+# so they need no extra --prepare step and train on byte-identical data.
+#
+# Both are driven by one package (yolo_ultralytics/) selected with --model, mirroring
+# how megadetector_overhead/ serves OWL-C/T/D from a single entry point.
+#
+# Naming: Ultralytics calls these YOLO11 and YOLO26 (no "v"); the OWL paper writes
+# "YOLOv11".  Same models — the paper benchmarks YOLOv11n and YOLOv11l, we use the
+# medium variants to match YOLOv5m / YOLO-NAS-m elsewhere in this project.
+#
+# YOLO26 is END-TO-END (NMS-free): its head sets end2end=True, so the `iou` NMS
+# argument is accepted but ignored at inference.  max_det still caps predictions per
+# image, which matters on dense crops — see the note in yolo_ultralytics/evaluate-time
+# prediction.  Hyperparameters below deliberately match YOLOV5_* so the comparison
+# across generations is like-for-like rather than per-model tuned.
+YOLO11_CKPT_DIR = os.path.join(OUTPUT_DIR, "checkpoints", "yolo11")
+YOLO26_CKPT_DIR = os.path.join(OUTPUT_DIR, "checkpoints", "yolo26")
+
+ULTRALYTICS_MODELS = {
+    "yolo11": {
+        "label": "YOLO11",
+        "weights": "yolo11m",          # Ultralytics auto-downloads yolo11m.pt
+        "ckpt_dir": YOLO11_CKPT_DIR,
+        "batch_size": YOLOV5_BATCH_SIZE,
+        "lr": YOLOV5_LR,
+        "nms_iou": YOLOV5_NMS_IOU,
+        "max_pred": YOLOV5_MAX_PRED,
+        "end2end": False,
+    },
+    "yolo26": {
+        "label": "YOLO26",
+        "weights": "yolo26m",          # Ultralytics auto-downloads yolo26m.pt
+        "ckpt_dir": YOLO26_CKPT_DIR,
+        "batch_size": YOLOV5_BATCH_SIZE,
+        "lr": YOLOV5_LR,
+        "nms_iou": YOLOV5_NMS_IOU,     # ignored (end-to-end), kept for symmetry
+        "max_pred": YOLOV5_MAX_PRED,
+        "end2end": True,
+    },
+}
+
+
+def ultralytics_model_spec(key: str) -> dict:
+    """Return the registry spec for a YOLO11/YOLO26 variant."""
+    if key not in ULTRALYTICS_MODELS:
+        raise KeyError(f"Unknown Ultralytics model '{key}'. "
+                       f"Choices: {list(ULTRALYTICS_MODELS)}")
+    return ULTRALYTICS_MODELS[key]
+
 
 # ── MegaDetector-Overhead / OWL settings (Microsoft AI for Good, super-gradients-free) ──
 # MegaDetector-Overhead (formerly "OWL", Overhead Wildlife Locator) is a *point-based*
@@ -233,3 +332,98 @@ CONF_THRESHOLD    = 0.05     # used as SCORE_THRESH_TEST during mAP evaluation
 # This is what was causing the "lots of false alarms" look: drawing every box
 # above 0.01.  Visualise only confident detections.
 DISPLAY_CONF_THRESHOLD = 0.5
+
+# ── Zero-shot baselines (pre-fine-tuning) ─────────────────────────────────────
+# Every model in this project starts from a public pretrained checkpoint and is then
+# fine-tuned on the waterfowl crops.  The baseline/ pipeline scores those *starting*
+# checkpoints on the identical test split, with the identical mAP30 + OWL-paper point
+# protocols, so each fine-tuned number has a documented "before" to be measured against.
+#
+# Two kinds of starting point, and the difference matters when reading the table:
+#
+#   • COCO-pretrained box detectors (YOLOv5/11/26, YOLO-NAS, Faster R-CNN).  These
+#     have never seen an overhead waterfowl crop.  Their only relevant output is the
+#     COCO "bird" class, so detections are filtered to it and remapped to the project's
+#     single category 1.  Expect very low numbers: COCO birds are large, side-on and
+#     centred; ours are 10-30 px specks seen from 15-90 m.  A near-zero score here is
+#     the honest baseline, not a broken pipeline — see --any-class to check whether the
+#     birds are instead being found under some other COCO label.
+#
+#   • Overhead-pretrained point detectors (OWL-C/T/D).  These were trained on aerial
+#     wildlife imagery by Microsoft AI for Good, are already single-class animal point
+#     detectors, and need no class remap — so this is a genuine domain-transfer test
+#     rather than a category mismatch.  Their checkpoints are the same `load_from`
+#     files the fine-tuning runs start from (MDO_MODELS), scored as-is.
+#
+# Inference hyperparameters deliberately mirror each family's fine-tuned --eval
+# (conf 0.05, the family's NMS IoU, 300 max detections, 512 px) so the only variable
+# between "before" and "after" is the weights.
+BASELINE_DIR = os.path.join(OUTPUT_DIR, "baselines")
+
+# COCO class name whose detections count as birds for the box models.
+BASELINE_COCO_CLASS = "bird"
+
+BASELINE_MODELS = {
+    # key            family        label              pretrained source
+    "yolov5": {
+        "label": "YOLOv5m (COCO)", "family": "ultralytics",
+        "weights": os.path.join(_ROOT, "yolov5mu.pt"),
+        "nms_iou": YOLOV5_NMS_IOU, "max_pred": YOLOV5_MAX_PRED,
+    },
+    "yolo11": {
+        "label": "YOLO11m (COCO)", "family": "ultralytics",
+        "weights": os.path.join(_ROOT, "yolo11m.pt"),
+        "nms_iou": YOLOV5_NMS_IOU, "max_pred": YOLOV5_MAX_PRED,
+    },
+    "yolo26": {
+        "label": "YOLO26m (COCO)", "family": "ultralytics",
+        "weights": os.path.join(_ROOT, "yolo26m.pt"),
+        "nms_iou": YOLOV5_NMS_IOU, "max_pred": YOLOV5_MAX_PRED,
+    },
+    "yolonas": {
+        "label": "YOLO-NAS-m (COCO)", "family": "yolonas",
+        "weights": "coco",                      # super-gradients pretrained_weights tag
+        "nms_iou": YOLONAS_NMS_IOU, "max_pred": YOLONAS_MAX_PRED,
+    },
+    "fasterrcnn": {
+        "label": "Faster R-CNN R50-FPN (COCO)", "family": "fasterrcnn",
+        # Stock COCO config — NOT the project's retuned anchors.  The pretrained RPN was
+        # trained against the default [32,64,128,256,512] anchors; swapping in the paper's
+        # small-object anchors would invalidate those weights and understate the baseline.
+        "weights": "COCO-Detection/faster_rcnn_R_50_FPN_3x.yaml",
+        "nms_iou": None, "max_pred": YOLOV5_MAX_PRED,
+    },
+    "owl_c": {
+        "label": "OWL-C (overhead)", "family": "owl", "mdo_key": "OWLC",
+        "weights": MDO_PRETRAINED, "nms_iou": None, "max_pred": None,
+    },
+    "owl_t": {
+        "label": "OWL-T (overhead)", "family": "owl", "mdo_key": "OWLT",
+        "weights": MDO_OWLT_WEIGHTS, "nms_iou": None, "max_pred": None,
+    },
+    "owl_d": {
+        "label": "OWL-D (overhead)", "family": "owl", "mdo_key": "OWLD_H",
+        "weights": MDO_OWLD_WEIGHTS, "nms_iou": None, "max_pred": None,
+    },
+}
+
+# Fine-tuned counterpart of each baseline, so --summary can print before/after side by
+# side.  Values are checkpoint dirs; the newest timestamped run in each is used.
+BASELINE_FINETUNED_DIRS = {
+    "yolov5":     YOLOV5_CKPT_DIR,
+    "yolo11":     YOLO11_CKPT_DIR,
+    "yolo26":     YOLO26_CKPT_DIR,
+    "yolonas":    YOLONAS_CKPT_DIR,
+    "fasterrcnn": CKPT_DIR,
+    "owl_c":      MDO_MODELS["OWLC"]["ckpt_dir"],
+    "owl_t":      MDO_MODELS["OWLT"]["ckpt_dir"],
+    "owl_d":      MDO_MODELS["OWLD_H"]["ckpt_dir"],
+}
+
+
+def baseline_model_spec(key: str) -> dict:
+    """Return the registry spec for a zero-shot baseline model."""
+    if key not in BASELINE_MODELS:
+        raise KeyError(f"Unknown baseline model '{key}'. "
+                       f"Choices: {list(BASELINE_MODELS)}")
+    return BASELINE_MODELS[key]

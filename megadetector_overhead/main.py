@@ -302,7 +302,21 @@ def main() -> None:
 
         print(f"Training crops: {n_train}  | Model: {model_spec['name']}  "
               f"| Epochs: {run_info['epochs']}  | Batch: {config.MDO_BATCH_SIZE}")
-        ckpt = run_training(run_dir, epochs=args.epochs, model_key=args.model)
+        from data_prep.experiment_record import ExperimentRecord, Timer
+
+        rec = ExperimentRecord(run_dir, model=args.model, label=model_spec["name"],
+                               family="animaloc/OWL")
+        rec.set_pretrained(model_spec.get("load_from") or "")
+        rec.set_training({"epochs": args.epochs or config.MDO_EPOCHS,
+                          "batch": config.MDO_BATCH_SIZE, "lr": config.MDO_LR,
+                          "optimizer": "Adam", "auto_lr": True,
+                          "down_ratio": config.MDO_DOWN_RATIO,
+                          "seed": config.RANDOM_SEED})
+        with Timer() as _t:
+            ckpt = run_training(run_dir, epochs=args.epochs, model_key=args.model)
+        rec.finish_training(checkpoint=ckpt, duration_s=_t.seconds,
+                            epochs_completed=args.epochs or config.MDO_EPOCHS,
+                            peak_gpu_mb=_t.peak_gpu_mb)
         print(f"Best checkpoint: {ckpt}")
 
     # ── 3. Evaluation on the test set ───────────────────────────────────────────

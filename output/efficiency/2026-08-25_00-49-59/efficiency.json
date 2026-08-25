@@ -1,0 +1,205 @@
+{
+  "generated": "2026-08-25T00:50:53",
+  "protocol": {
+    "mode": "whole_process",
+    "crops": 200,
+    "repeats": 3,
+    "warmup": 10,
+    "crop_size": 512,
+    "conf": 0.05,
+    "max_det": 500
+  },
+  "hardware": {
+    "hostname": "cengr-dp6smw3.engineering.missouri.edu",
+    "platform": "Linux-6.8.0-90-generic-x86_64-with-glibc2.35",
+    "cpu_count": 32,
+    "ram_gb": 62.5,
+    "gpus": [
+      {
+        "name": "NVIDIA GeForce RTX 4080 SUPER",
+        "memory_gb": 15.6,
+        "capability": "8.9"
+      }
+    ],
+    "cuda": "12.1",
+    "nvidia_driver": "570.195.03"
+  },
+  "software": {
+    "git_commit": "94845357b53bef856f071cfc5cd74a23297b55f4",
+    "git_commit_short": "9484535",
+    "git_branch": "main",
+    "git_dirty": true,
+    "git_dirty_files": 352,
+    "python": "3.10.20",
+    "libraries": {
+      "torch": "2.1.2+cu121",
+      "ultralytics": "8.4.82",
+      "super_gradients": "3.7.1",
+      "detectron2": "0.6",
+      "numpy": "1.23.0",
+      "cv2": "4.11.0",
+      "pycocotools": "unknown"
+    }
+  },
+  "results": {
+    "fasterrcnn": {
+      "label": "Faster R-CNN",
+      "checkpoint": "/home/zygfd/waterflow/rebuild/output/checkpoints/fasterrcnn/2026-06-27_16-56-51/model_best.pth",
+      "checkpoint_bytes": 165712625,
+      "checkpoint_mb": 158.0,
+      "run_dir": "/home/zygfd/waterflow/rebuild/output/checkpoints/fasterrcnn/2026-06-27_16-56-51",
+      "ms_per_crop": [
+        9.931417635525577,
+        9.769240990281105,
+        10.104107795050368
+      ],
+      "peak_gpu_mb": 332.1,
+      "params": 41295061,
+      "ms_per_crop_mean": 9.935,
+      "ms_per_crop_std": 0.167,
+      "crops_per_second": 100.7,
+      "training": {}
+    },
+    "yolonas": {
+      "label": "YOLO-NAS-m",
+      "checkpoint": "/home/zygfd/waterflow/rebuild/output/checkpoints/yolonas/2026-06-28_21-14-03/RUN_20260628_211408_863063/ckpt_best.pth",
+      "checkpoint_bytes": 681026562,
+      "checkpoint_mb": 649.5,
+      "run_dir": "/home/zygfd/waterflow/rebuild/output/checkpoints/yolonas/2026-06-28_21-14-03",
+      "ms_per_crop": [
+        15.878347589750774,
+        15.59258519031573,
+        15.52003628516104
+      ],
+      "peak_gpu_mb": 459.4,
+      "params": 51129333,
+      "ms_per_crop_mean": 15.664,
+      "ms_per_crop_std": 0.189,
+      "crops_per_second": 63.8,
+      "training": {}
+    },
+    "yolov5": {
+      "label": "YOLOv5m",
+      "checkpoint": "/home/zygfd/waterflow/rebuild/output/checkpoints/yolov5/2026-07-11_13-18-41/weights/best.pt",
+      "checkpoint_bytes": 50480487,
+      "checkpoint_mb": 48.1,
+      "run_dir": "/home/zygfd/waterflow/rebuild/output/checkpoints/yolov5/2026-07-11_13-18-41",
+      "ms_per_crop": [
+        4.197846145252697,
+        4.190902499831282,
+        4.202037875074893
+      ],
+      "peak_gpu_mb": 505.3,
+      "preprocess_ms": 0.332,
+      "inference_ms": 2.706,
+      "postprocess_ms": 0.222,
+      "params": 25045795,
+      "ms_per_crop_mean": 4.197,
+      "ms_per_crop_std": 0.006,
+      "crops_per_second": 238.3,
+      "training": {
+        "train_seconds": 46747.5,
+        "epochs": 100,
+        "source": "results.csv"
+      }
+    },
+    "yolo11": {
+      "label": "YOLO11m",
+      "checkpoint": "/home/zygfd/waterflow/rebuild/output/checkpoints/yolo11/2026-08-14_00-25-32/weights/best.pt",
+      "checkpoint_bytes": 40505189,
+      "checkpoint_mb": 38.6,
+      "run_dir": "/home/zygfd/waterflow/rebuild/output/checkpoints/yolo11/2026-08-14_00-25-32",
+      "ms_per_crop": [
+        4.314408029895276,
+        4.310596495051868,
+        4.307459834963083
+      ],
+      "peak_gpu_mb": 543.6,
+      "preprocess_ms": 0.333,
+      "inference_ms": 2.825,
+      "postprocess_ms": 0.222,
+      "params": 20030803,
+      "ms_per_crop_mean": 4.311,
+      "ms_per_crop_std": 0.003,
+      "crops_per_second": 232.0,
+      "training": {
+        "train_seconds": 49304.6,
+        "epochs": 100,
+        "source": "results.csv"
+      }
+    },
+    "yolo26": {
+      "label": "YOLO26m",
+      "checkpoint": "/home/zygfd/waterflow/rebuild/output/checkpoints/yolo26/2026-08-15_21-24-35/weights/best.pt",
+      "checkpoint_bytes": 44012562,
+      "checkpoint_mb": 42.0,
+      "run_dir": "/home/zygfd/waterflow/rebuild/output/checkpoints/yolo26/2026-08-15_21-24-35",
+      "ms_per_crop": [
+        4.311335230013356,
+        4.342202245024964,
+        4.3310584052233025
+      ],
+      "peak_gpu_mb": 619.4,
+      "preprocess_ms": 0.33,
+      "inference_ms": 2.972,
+      "postprocess_ms": 0.098,
+      "params": 20350223,
+      "ms_per_crop_mean": 4.328,
+      "ms_per_crop_std": 0.016,
+      "crops_per_second": 231.1,
+      "training": {
+        "train_seconds": 61815.0,
+        "epochs": 100,
+        "source": "results.csv"
+      }
+    },
+    "owl_c": {
+      "label": "OWL-C",
+      "checkpoint": "/home/zygfd/waterflow/rebuild/output/checkpoints/mdo_owl_c/2026-07-21_22-59-50/weights/best.pth",
+      "checkpoint_bytes": 216442532,
+      "checkpoint_mb": 206.4,
+      "run_dir": "/home/zygfd/waterflow/rebuild/output/checkpoints/mdo_owl_c/2026-07-21_22-59-50",
+      "ms_per_crop": [
+        4.939462095499039,
+        4.863084355019964,
+        4.835351490182802
+      ],
+      "params": 18375449,
+      "peak_gpu_mb": 207.5,
+      "note": "whole process: disk read, preprocess, forward, LMDS decode",
+      "ms_per_crop_mean": 4.879,
+      "ms_per_crop_std": 0.054,
+      "crops_per_second": 205.0,
+      "training": {}
+    },
+    "owl_t": {
+      "label": "OWL-T",
+      "checkpoint": "/home/zygfd/waterflow/rebuild/output/checkpoints/mdo_owl_t/2026-07-24_10-39-49/weights/best.pth",
+      "checkpoint_bytes": 355332166,
+      "checkpoint_mb": 338.9,
+      "run_dir": "/home/zygfd/waterflow/rebuild/output/checkpoints/mdo_owl_t/2026-07-24_10-39-49",
+      "ms_per_crop": [
+        9.38856607535854,
+        9.365950929932296,
+        9.349671584786847
+      ],
+      "params": 29925990,
+      "peak_gpu_mb": 299.8,
+      "note": "whole process: disk read, preprocess, forward, LMDS decode",
+      "ms_per_crop_mean": 9.368,
+      "ms_per_crop_std": 0.02,
+      "crops_per_second": 106.7,
+      "training": {}
+    },
+    "owl_d": {
+      "label": "OWL-D",
+      "checkpoint": "/home/zygfd/waterflow/rebuild/output/checkpoints/mdo_owl_d/2026-07-26_18-56-20/weights/best.pth",
+      "checkpoint_bytes": 3541434688,
+      "checkpoint_mb": 3377.4,
+      "run_dir": "/home/zygfd/waterflow/rebuild/output/checkpoints/mdo_owl_d/2026-07-26_18-56-20",
+      "error": "ine 97, in whole_process\n    lmds(heat)\n  File \"/home/zygfd/waterflow/rebuild/third_party/MegaDetector-Overhead/animaloc/eval/lmds.py\", line 260, in __call__\n    batch_size, channels = heatmap.shape[:2]\n                           ^^^^^^^^^^^^^\nAttributeError: 'tuple' object has no attribute 'shape'\n",
+      "params": 855602336,
+      "training": {}
+    }
+  }
+}

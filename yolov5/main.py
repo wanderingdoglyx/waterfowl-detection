@@ -192,7 +192,18 @@ def main() -> None:
               f"| Max epochs: {config.NUM_EPOCHS}  "
               f"| Early-stop patience: {config.EARLY_STOP_PATIENCE}")
 
-        ckpt = run_training(run_dir, data_yaml=data_yaml)
+        from data_prep.experiment_record import ExperimentRecord, Timer
+
+        rec = ExperimentRecord(run_dir, model="yolov5", label="YOLOv5", family="ultralytics")
+        rec.set_pretrained(config.YOLOV5_MODEL)
+        rec.set_training({"epochs": config.NUM_EPOCHS, "patience": config.EARLY_STOP_PATIENCE,
+                          "batch": config.YOLOV5_BATCH_SIZE, "lr0": config.YOLOV5_LR,
+                          "optimizer": "Adam", "imgsz": config.CROP_SIZE,
+                          "seed": config.RANDOM_SEED})
+        with Timer() as _t:
+            ckpt = run_training(run_dir, data_yaml=data_yaml)
+        rec.finish_training(checkpoint=ckpt, duration_s=_t.seconds,
+                            epochs_completed=config.NUM_EPOCHS, peak_gpu_mb=_t.peak_gpu_mb)
         print(f"Best checkpoint: {ckpt}")
 
     # ── 3. Evaluation on the test set (mAP30) ──────────────────────────────────

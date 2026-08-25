@@ -69,10 +69,24 @@ def coco_map30(coco_gt_path: str, coco_results: list) -> tuple[float, float]:
     return ap30, ar30
 
 
-def predictions_to_coco(model, coco_gt_path: str, conf: float) -> list:
+def predictions_to_coco(model, coco_gt_path: str, conf: float,
+                        iou: float | None = None, max_det: int | None = None,
+                        imgsz: int | None = None,
+                        classes: list[int] | None = None) -> list:
     """
     Run the Ultralytics model over every image in `coco_gt_path` and return the
     detections as a COCO result list (category_id fixed to 1 = bird).
+
+    `iou` / `max_det` / `imgsz` default to the YOLOV5_* config values, so existing
+    callers are unaffected; yolo_ultralytics/ passes its own per-model values from
+    config.ULTRALYTICS_MODELS.  For an end-to-end (NMS-free) model such as YOLO26,
+    `iou` is accepted by Ultralytics but has no effect.
+
+    `classes` restricts predict() to the given model class indices, then remaps
+    whatever survives onto the project's single category 1.  Fine-tuned checkpoints
+    are already single-class and pass None; the zero-shot baselines in baseline/
+    pass the COCO "bird" index so an 80-class pretrained model is scored on the one
+    category that could plausibly match our ground truth.
 
     Images are looked up on disk via the shared crops root so we score the exact
     same pixels as the ground truth, independent of the symlinked YOLO mirror.
@@ -89,6 +103,10 @@ def predictions_to_coco(model, coco_gt_path: str, conf: float) -> list:
     """
     import json
 
+    iou = config.YOLOV5_NMS_IOU if iou is None else iou
+    max_det = config.YOLOV5_MAX_PRED if max_det is None else max_det
+    imgsz = config.CROP_SIZE if imgsz is None else imgsz
+
     with open(coco_gt_path) as f:
         coco = json.load(f)
 
@@ -98,9 +116,10 @@ def predictions_to_coco(model, coco_gt_path: str, conf: float) -> list:
         preds = model.predict(
             source=path,
             conf=conf,
-            iou=config.YOLOV5_NMS_IOU,
-            imgsz=config.CROP_SIZE,
-            max_det=config.YOLOV5_MAX_PRED,
+            iou=iou,
+            imgsz=imgsz,
+            max_det=max_det,
+            classes=classes,
             stream=False,
             verbose=False,
         )

@@ -1,0 +1,13 @@
+── mAP30 (box detection, COCOeval@IoU=0.30) ──
+  mAP30 :  10.21%
+  mAR30 :  12.73%
+
+── OWL-paper point metrics — YOLOv5m (COCO) — zero-shot (τ = 40 px, 25708 images, 88195 GT points) ──
+  AP        :  10.38%  [95% CI 9.60–11.20]
+  AUC-PR    :  10.36%
+  Precision :  65.55%   (at t* = 0.050)
+  Recall    :  13.10%
+  F1        :  21.84%
+  MAE       :  3.088  [95% CI 2.879–3.307]
+  RMSE      : 16.840  [95% CI 15.442–18.231]
+  Count     : 17625 predicted vs 88195 GT (-80.0%)

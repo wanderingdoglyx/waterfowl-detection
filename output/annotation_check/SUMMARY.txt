@@ -1,0 +1,14 @@
+Annotation verification — /home/zygfd/waterflow/rebuild/dataset_full
+
+dataset   image                                       WxH  boxes  px min-max  species  off-frame
+------------------------------------------------------------------------------------------------
+Bird_A    140_5                                 5120x3584     49        5-28        0          0
+Bird_B    DJI_0119                              5472x3648     70       21-68        0          0
+Bird_C    DJI_0638_30m                          5472x3648      6      76-113        0          0
+Bird_D    G260_22Nov2016_0139                   5760x3840     62       22-46        0          0
+Bird_E    mar2019_clipped_MODOC1214_0015GSD       512x512    186        8-30        0          3
+Bird_F    DJI_0088                              5472x3648     37       16-44        0          0
+Bird_G    Cloud_Land_60m_train                  5472x3078    298       15-43        0          0
+Bird_H    EagleBluffs_03082022_Trees_Spot3_     5472x3648    126        8-32      126          0
+Bird_I    DJI_0724                              5472x3648      2      53-116        2          0
+Bird_J    Cloud_Land_60m_DJI_0671               5472x3648    273       14-41        0          0
