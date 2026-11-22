@@ -1,0 +1,104 @@
+{
+  "experiment_id": "yolonas__2026-08-26_13-30-40",
+  "created_utc": "2026-08-26T18:30:46+00:00",
+  "updated_utc": "2026-08-27T05:46:05+00:00",
+  "model": {
+    "key": "yolonas",
+    "label": "YOLO-NAS",
+    "family": "super-gradients"
+  },
+  "code": {
+    "git_commit": "742b7fab6f9b0c6987dd2722a3136d74e42b2c67",
+    "git_commit_short": "742b7fa",
+    "git_branch": "main",
+    "git_dirty": true,
+    "git_dirty_files": 8,
+    "python": "3.10.20",
+    "libraries": {
+      "torch": "2.1.2+cu121",
+      "ultralytics": "8.4.82",
+      "super_gradients": "3.7.1",
+      "detectron2": "0.6",
+      "numpy": "1.23.0",
+      "cv2": "4.11.0",
+      "pycocotools": "unknown"
+    }
+  },
+  "hardware": {
+    "hostname": "cengr-dp6smw3.engineering.missouri.edu",
+    "platform": "Linux-6.8.0-90-generic-x86_64-with-glibc2.35",
+    "cpu_count": 32,
+    "ram_gb": 62.5,
+    "gpus": [
+      {
+        "name": "NVIDIA GeForce RTX 4080 SUPER",
+        "memory_gb": 15.6,
+        "capability": "8.9"
+      }
+    ],
+    "cuda": "12.1",
+    "nvidia_driver": "570.195.03"
+  },
+  "dataset": {
+    "version": "full",
+    "root": "/home/zygfd/waterflow/rebuild/dataset_full",
+    "crop_size": 512,
+    "crop_overlap": 0.2,
+    "random_seed": 42,
+    "val_fraction": 0.25,
+    "splits": {
+      "train": {
+        "path": "/home/zygfd/waterflow/rebuild/output/crops_json/train/coco.json",
+        "sha256": "22e6d8841451d39f0bb33dcc414bac076682ca4cf34bac84302e5b30603ca7e0",
+        "images": 82827,
+        "annotations": 241730
+      },
+      "val": {
+        "path": "/home/zygfd/waterflow/rebuild/output/crops_json/val/coco.json",
+        "sha256": "541c5507f12f53fa1c35667e544f795098a6556787e57e52149d498e68b3944e",
+        "images": 27771,
+        "annotations": 89422
+      },
+      "test": {
+        "path": "/home/zygfd/waterflow/rebuild/output/crops_json/test/coco.json",
+        "sha256": "ba86397601c5f4e02b9838bbb56ec19e852e219b915d8d170c2d62f937b329dd",
+        "images": 28588,
+        "annotations": 89884
+      }
+    }
+  },
+  "inference": {
+    "score_threshold": 0.05,
+    "max_detections_per_image": 500,
+    "map_iou_threshold": 0.3,
+    "point_match_tau_px": 40,
+    "bootstrap_resamples": 1000
+  },
+  "outputs": {
+    "run_dir": "/home/zygfd/waterflow/rebuild/output/checkpoints/yolonas/2026-08-26_13-30-40",
+    "checkpoint": "/home/zygfd/waterflow/rebuild/output/checkpoints/yolonas/2026-08-26_13-30-40/RUN_20260826_133047_531432/ckpt_best.pth"
+  },
+  "pretrained": {
+    "weights": "yolo_nas_m (coco)",
+    "sha256": null
+  },
+  "training": {
+    "config": {
+      "epochs": 100,
+      "patience": 30,
+      "batch": 8,
+      "lr": 0.0005,
+      "optimizer": "Adam",
+      "lr_mode": "cosine",
+      "seed": 42
+    },
+    "completed_utc": "2026-08-27T05:46:05+00:00",
+    "epochs_completed": 100,
+    "checkpoint_sha256": "a9e7f38ace3ecc98f903d3dfd6fb37e1f320643505fe22edfe8d6764b8804ac1~first64MB"
+  },
+  "metrics_efficiency": {
+    "train_seconds": 40518.65,
+    "train_peak_gpu_mb": 5612.3,
+    "seconds_per_epoch": 405.2
+  }
+}

@@ -54,12 +54,23 @@ def build_post_prediction_callback(score_threshold: float = config.CONF_THRESHOL
 
 
 def build_metric(num_classes: int = NUM_CLASSES) -> DetectionMetrics:
-    """DetectionMetrics evaluated at IoU=0.30 (mAP30)."""
+    """DetectionMetrics evaluated at IoU=0.30 (mAP30).
+
+    Two super-gradients defaults are overridden so mAP30 / Recall@0.30 are scored
+    like the pycocotools evaluators of the other models:
+      top_k_predictions  default 100 per image, below the 422 birds in the densest
+                         crop — raised to the project-wide detection limit.
+      score_thres        default 0.1 for Recall/Precision/F1 — lowered to the
+                         inference threshold, so Recall@0.30 is the recall over all
+                         kept detections (COCOeval's AR), not recall at score 0.1.
+    """
     return DetectionMetrics(
         num_cls=num_classes,
         post_prediction_callback=build_post_prediction_callback(),
         normalize_targets=True,
         iou_thres=_IOU,
+        score_thres=config.CONF_THRESHOLD,
+        top_k_predictions=config.MAX_DETECTIONS_PER_IMAGE,
     )
 
 

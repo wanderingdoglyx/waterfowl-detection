@@ -1,0 +1,9 @@
+sp,median_FC3170,median_L1D-20c,size_FC3170,size_L1D-20c,ratio_L1D_over_FC3170,predicted_ratio
+american widgeon male,65.52,76.16,5,39,1.162,1.512
+gadwall,66.26,78.96,182,148,1.192,1.512
+green winged teal,53.94,61.16,40,383,1.134,1.512
+mallard female,69.29,80.4,48,38,1.16,1.512
+mallard male,76.56,85.22,138,176,1.113,1.512
+pintail female,68.01,78.8,114,305,1.159,1.512
+pintail male,70.56,82.58,104,477,1.17,1.512
+unknown,64.81,73.59,113,245,1.135,1.512

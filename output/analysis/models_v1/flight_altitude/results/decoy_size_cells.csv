@@ -1,0 +1,39 @@
+sp,alt,n,s,k_ratio_vs_15m,pred_geometry_px,pred_fit_px
+american widgeon female,15,573,88.32,1,87.83,88.13
+american widgeon female,30,215,43.45,0.984,43.91,44.51
+american widgeon female,60,97,23.32,1.056,21.96,23.14
+american widgeon male,15,618,89.88,1,89.52,89.81
+american widgeon male,30,262,44.81,0.9971,44.76,45.35
+american widgeon male,60,181,23.98,1.067,22.38,23.54
+american widgeon male,90,53,17.44,1.164,14.92,16.61
+gadwall,15,1075,85.56,1,85.16,85.47
+gadwall,30,431,42.85,1.002,42.58,43.2
+gadwall,60,265,22.23,1.039,21.29,22.51
+gadwall,90,75,16,1.122,14.19,15.96
+green winged teal,15,1098,68.93,1,68.4,68.78
+green winged teal,30,484,34.44,0.9992,34.2,34.97
+green winged teal,60,406,18.25,1.059,17.1,18.59
+green winged teal,90,282,13.34,1.161,11.4,13.53
+mallard female,15,611,99.72,1,99.42,99.69
+mallard female,30,233,50.01,1.003,49.71,50.24
+mallard female,60,171,26.08,1.046,24.86,25.9
+mallard female,90,61,18.38,1.106,16.57,18.11
+mallard male,15,661,101.7,1,101.2,101.5
+mallard male,30,316,49.97,0.9829,50.61,51.14
+mallard male,60,263,26.83,1.056,25.31,26.34
+mallard male,90,224,19,1.121,16.87,18.38
+pintail female,15,503,98.99,1,98.58,98.85
+pintail female,30,172,49.16,0.9931,49.29,49.83
+pintail female,60,75,24.74,0.9996,24.64,25.7
+pintail male,15,601,99.72,1,99.15,99.41
+pintail male,30,269,48.76,0.978,49.57,50.11
+pintail male,60,205,25.51,1.023,24.79,25.84
+pintail male,90,143,18.57,1.118,16.52,18.06
+shoveler female,15,496,89.93,1,89.61,89.91
+shoveler female,30,243,45,1.001,44.8,45.39
+shoveler female,60,155,24.27,1.079,22.4,23.56
+shoveler female,90,39,17.97,1.199,14.93,16.62
+shoveler male,15,565,88.91,1,88.45,88.75
+shoveler male,30,300,43.66,0.9821,44.22,44.82
+shoveler male,60,283,23.92,1.076,22.11,23.28
+shoveler male,90,240,17.49,1.18,14.74,16.45

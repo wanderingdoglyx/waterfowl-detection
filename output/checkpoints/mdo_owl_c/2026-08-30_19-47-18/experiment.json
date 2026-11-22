@@ -1,0 +1,96 @@
+{
+  "experiment_id": "OWLC__2026-08-30_19-47-18",
+  "created_utc": "2026-08-31T00:47:18+00:00",
+  "updated_utc": "2026-09-01T11:27:08+00:00",
+  "model": {
+    "key": "OWLC",
+    "label": "OWLC",
+    "family": "animaloc/OWL"
+  },
+  "code": {
+    "git_commit": "742b7fab6f9b0c6987dd2722a3136d74e42b2c67",
+    "git_commit_short": "742b7fa",
+    "git_branch": "main",
+    "git_dirty": true,
+    "git_dirty_files": 18,
+    "python": "3.13.9",
+    "libraries": {
+      "torch": null,
+      "ultralytics": null,
+      "super_gradients": null,
+      "detectron2": null,
+      "numpy": "2.3.5",
+      "cv2": null,
+      "pycocotools": null
+    }
+  },
+  "hardware": {
+    "hostname": "cengr-dp6smw3.engineering.missouri.edu",
+    "platform": "Linux-6.8.0-90-generic-x86_64-with-glibc2.35",
+    "cpu_count": 32,
+    "ram_gb": 62.5,
+    "gpus": [],
+    "cuda": null,
+    "nvidia_driver": "570.195.03"
+  },
+  "dataset": {
+    "version": "full",
+    "root": "/home/zygfd/waterflow/rebuild/dataset_full",
+    "crop_size": 512,
+    "crop_overlap": 0.2,
+    "random_seed": 42,
+    "val_fraction": 0.25,
+    "splits": {
+      "train": {
+        "path": "/home/zygfd/waterflow/rebuild/output/crops_json/train/coco.json",
+        "sha256": "22e6d8841451d39f0bb33dcc414bac076682ca4cf34bac84302e5b30603ca7e0",
+        "images": 82827,
+        "annotations": 241730
+      },
+      "val": {
+        "path": "/home/zygfd/waterflow/rebuild/output/crops_json/val/coco.json",
+        "sha256": "541c5507f12f53fa1c35667e544f795098a6556787e57e52149d498e68b3944e",
+        "images": 27771,
+        "annotations": 89422
+      },
+      "test": {
+        "path": "/home/zygfd/waterflow/rebuild/output/crops_json/test/coco.json",
+        "sha256": "ba86397601c5f4e02b9838bbb56ec19e852e219b915d8d170c2d62f937b329dd",
+        "images": 28588,
+        "annotations": 89884
+      }
+    }
+  },
+  "inference": {
+    "score_threshold": 0.05,
+    "max_detections_per_image": 500,
+    "map_iou_threshold": 0.3,
+    "point_match_tau_px": 40,
+    "bootstrap_resamples": 1000
+  },
+  "outputs": {
+    "run_dir": "/home/zygfd/waterflow/rebuild/output/checkpoints/mdo_owl_c/2026-08-30_19-47-18",
+    "checkpoint": "/home/zygfd/waterflow/rebuild/output/checkpoints/mdo_owl_c/2026-08-30_19-47-18/weights/best.pth"
+  },
+  "pretrained": {
+    "weights": "/home/zygfd/waterflow/rebuild/third_party/MegaDetector-Overhead/weights/OWL-C.pth",
+    "sha256": "617ee83caa26735778dfea4f85dabda8e4d051e2b376270e5d39179b76b84ac4~first64MB"
+  },
+  "training": {
+    "config": {
+      "epochs": 100,
+      "batch": 8,
+      "lr": 0.0005,
+      "optimizer": "Adam",
+      "auto_lr": true,
+      "down_ratio": 2,
+      "seed": 42
+    },
+    "completed_utc": "2026-09-01T11:27:08+00:00",
+    "epochs_completed": null,
+    "checkpoint_sha256": "0c2c4ef0cd43adb62727d0ea2941a9cf7d62d27a9afacf48343adc40bb4f9e8e~first64MB"
+  },
+  "metrics_efficiency": {
+    "train_seconds": 124788.68
+  }
+}

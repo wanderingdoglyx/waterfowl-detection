@@ -298,7 +298,9 @@ def write_eval_txt(path: str, sections) -> str:
     """Join non-empty `sections` with blank lines and write them to `path`.
     Returns the full text (so callers can print it too)."""
     text = "\n\n".join(s for s in sections if s)
-    with open(path, "w") as f:
+    # Explicit UTF-8: the headers use box-drawing characters, and a default encoding that
+    # falls back to ASCII (a C library resetting the locale) failed here after a full eval.
+    with open(path, "w", encoding="utf-8") as f:
         f.write(text + "\n")
     return text
 

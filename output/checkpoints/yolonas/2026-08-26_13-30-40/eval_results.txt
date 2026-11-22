@@ -1,0 +1,13 @@
+── mAP30 (box detection, COCOeval@IoU=0.30) ──
+  mAP30 :  92.00%
+  mAR30 :  97.41%
+
+── OWL-paper point metrics — YOLO-NAS (τ = 40 px, 28588 images, 89884 GT points) ──
+  AP        :  93.45%  [95% CI 92.66–93.47]
+  AUC-PR    :  93.45%
+  Precision :  90.44%   (at t* = 0.392)
+  Recall    :  88.34%
+  F1        :  89.38%
+  MAE       :  0.461  [95% CI 0.441–0.481]
+  RMSE      :  1.779  [95% CI 1.606–1.952]
+  Count     : 87802 predicted vs 89884 GT (-2.3%)

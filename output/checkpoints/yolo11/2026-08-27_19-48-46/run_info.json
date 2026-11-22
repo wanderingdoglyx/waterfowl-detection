@@ -1,0 +1,10 @@
+{
+  "timestamp": "2026-08-27_19-48-46",
+  "model": "yolo11",
+  "weights": "yolo11m",
+  "end2end": false,
+  "n_train": 82827,
+  "n_val": 27771,
+  "n_test": 28588,
+  "epochs": 100
+}

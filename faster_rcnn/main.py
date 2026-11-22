@@ -19,6 +19,7 @@ Usage (from the rebuild/ directory):
 """
 
 import argparse
+import glob
 import json
 import os
 import sys
@@ -150,11 +151,29 @@ def main() -> None:
                         help="Run timestamp to evaluate (default: latest)")
     parser.add_argument("--examples", type=int, default=40, metavar="N",
                         help="Number of example images to save during --eval (default: 40, 0 to skip)")
+    parser.add_argument("--init-from", default=None, metavar="CHECKPOINT",
+                        help="--train: start from these weights (e.g. an earlier run's "
+                             "model_best.pth) instead of the COCO-pretrained ones. A new run "
+                             "folder, a fresh optimiser and schedule; only the weights carry over")
+    parser.add_argument("--checkpoint", choices=["best", "last"], default="best",
+                        help="--eval: which weights of the run to score. best (default) is "
+                             "model_best.pth; last is model_final.pth, or the newest periodic "
+                             "checkpoint of an unfinished run. 'last' writes its results to "
+                             "<run>/eval_last/ and leaves the run's own scores untouched")
     args = parser.parse_args()
 
     if not (args.prepare or args.train or args.eval):
         parser.print_help()
         return
+    if args.init_from and not os.path.isfile(args.init_from):
+        print(f"--init-from: {args.init_from} is not a file")
+        return
+
+    # The data this run uses is whatever `config.DATASET_FOLDER` names (default
+    # dataset_full).  This makes it ready — filtering or tiling only if the folder
+    # changed — and points the paths below at it.  Nothing else to run.
+    from pipeline.auto import ensure_data
+    ensure_data(mirror=None)
 
     # ── 1. Data preparation ───────────────────────────────────────────────────
     if args.prepare:
@@ -192,6 +211,8 @@ def main() -> None:
             "n_val":        counts.get("val", 0),
             "n_test":       counts.get("test", 0),
         }
+        if args.init_from:
+            run_info["init_from"] = os.path.abspath(args.init_from)
         with open(os.path.join(run_dir, "run_info.json"), "w") as f:
             json.dump(run_info, f, indent=2)
         print(f"Run info saved to {run_dir}/run_info.json")
@@ -202,6 +223,11 @@ def main() -> None:
             output_dir=run_dir,
             use_pretrained=True,
         )
+        if args.init_from:
+            # resume_or_load(resume=False) takes only the model weights from this file, so
+            # the run starts its own optimiser, schedule and iteration count.
+            cfg.MODEL.WEIGHTS = os.path.abspath(args.init_from)
+            print(f"Starting from: {cfg.MODEL.WEIGHTS}")
         print(f"Max iterations: {cfg.SOLVER.MAX_ITER}  "
               f"| Eval every: {cfg.TEST.EVAL_PERIOD} iters  "
               f"| Early-stop patience: {config.EARLY_STOP_PATIENCE} evals")
@@ -209,16 +235,21 @@ def main() -> None:
 
         rec = ExperimentRecord(run_dir, model="fasterrcnn", label="Faster R-CNN",
                                family="detectron2")
-        rec.set_pretrained("COCO-Detection/faster_rcnn_R_50_FPN_3x.yaml")
+        rec.set_pretrained(os.path.abspath(args.init_from) if args.init_from
+                           else "COCO-Detection/faster_rcnn_R_50_FPN_3x.yaml")
         rec.set_training({"epochs": config.NUM_EPOCHS, "patience": config.EARLY_STOP_PATIENCE,
                           "batch": config.BATCH_SIZE, "lr": config.LEARNING_RATE,
                           "optimizer": "SGD", "momentum": 0.9, "weight_decay": 1e-4,
                           "anchor_sizes": str(config.ANCHOR_SIZES),
                           "seed": config.RANDOM_SEED})
         with Timer() as _t:
-            run_training(cfg)
+            iters_done = run_training(cfg)
+        # build_cfg sets MAX_ITER = NUM_EPOCHS * iters_per_epoch, so the division recovers
+        # iters_per_epoch exactly and early-stopped runs report the epochs they really ran.
+        iters_per_epoch = max(1, cfg.SOLVER.MAX_ITER // config.NUM_EPOCHS)
+        epochs_done = max(1, round(iters_done / iters_per_epoch)) if iters_done else None
         rec.finish_training(checkpoint=os.path.join(run_dir, "model_best.pth"),
-                            duration_s=_t.seconds, epochs_completed=config.NUM_EPOCHS,
+                            duration_s=_t.seconds, epochs_completed=epochs_done,
                             peak_gpu_mb=_t.peak_gpu_mb)
 
     # ── 3. Evaluation on test set ─────────────────────────────────────────────
@@ -246,7 +277,15 @@ def main() -> None:
         print(f"Evaluating run: {eval_dir}")
         best_ckpt  = os.path.join(eval_dir, "model_best.pth")
         final_ckpt = os.path.join(eval_dir, "model_final.pth")
-        ckpt = best_ckpt if os.path.exists(best_ckpt) else final_ckpt
+        if args.checkpoint == "best":
+            ckpt = best_ckpt if os.path.exists(best_ckpt) else final_ckpt
+            out_dir = eval_dir
+        else:
+            periodic = sorted(glob.glob(os.path.join(eval_dir, "model_[0-9]*.pth")))
+            ckpt = final_ckpt if os.path.exists(final_ckpt) else (
+                periodic[-1] if periodic else best_ckpt)
+            out_dir = os.path.join(eval_dir, "eval_last")
+            os.makedirs(out_dir, exist_ok=True)
 
         if not os.path.exists(ckpt):
             print(f"No checkpoint found in {eval_dir}. Run --train first.")
@@ -265,7 +304,7 @@ def main() -> None:
 
         evaluator = MAP30Evaluator(
             DATASET_NAMES["test"],
-            output_dir=os.path.join(eval_dir, "test_inference"),
+            output_dir=os.path.join(out_dir, "test_inference"),
         )
         # build_model() only constructs the architecture with random weights;
         # DefaultTrainer.test expects a model that already holds its weights, so
@@ -291,7 +330,7 @@ def main() -> None:
         else:
             print("No bbox results returned.")
 
-        preds_pth = os.path.join(eval_dir, "test_inference", "instances_predictions.pth")
+        preds_pth = os.path.join(out_dir, "test_inference", "instances_predictions.pth")
         test_json = os.path.join(config.CROPS_JSON_DIR, "test", "coco.json")
         if os.path.exists(preds_pth) and os.path.exists(test_json):
             flat = []
@@ -302,19 +341,19 @@ def main() -> None:
                 tau=config.PAPER_TAU, bootstrap=config.PAPER_BOOTSTRAP,
             )
             sections.append(format_report(pm, "Faster R-CNN"))
-            with open(os.path.join(eval_dir, "paper_point_metrics.json"), "w") as f:
+            with open(os.path.join(out_dir, "paper_point_metrics.json"), "w") as f:
                 json.dump(pm, f, indent=2)
         else:
             sections.append(f"(point metrics skipped — {preds_pth} not found)")
 
         # Print the full summary and save it as a plain-text results file.
-        text = write_eval_txt(os.path.join(eval_dir, "eval_results.txt"), sections)
+        text = write_eval_txt(os.path.join(out_dir, "eval_results.txt"), sections)
         print("\n" + text)
-        print(f"\nSaved results to {os.path.join(eval_dir, 'eval_results.txt')}")
+        print(f"\nSaved results to {os.path.join(out_dir, 'eval_results.txt')}")
 
         if args.examples > 0:
             print(f"\nSaving {args.examples} example images...")
-            _save_examples(cfg, eval_dir=eval_dir, n=args.examples)
+            _save_examples(cfg, eval_dir=out_dir, n=args.examples)
 
 
 if __name__ == "__main__":

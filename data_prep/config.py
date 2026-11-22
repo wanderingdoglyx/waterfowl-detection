@@ -26,7 +26,42 @@ _ROOT        = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # --prepare is re-run.  Once it is, the splits are re-derived over a larger pool and every
 # committed metric becomes non-comparable; see the note in dataset_v1/DATASET_INVENTORY.md.
 DATASET_VERSION = "full"        # "full" | "v1"
-DATASET_ROOT = os.path.join(_ROOT, f"dataset_{DATASET_VERSION}")
+
+# ── THE DATA THE PIPELINE READS ───────────────────────────────────────────────
+# Put the data you want in a folder and name it here.  Every model reads this folder —
+# there is nothing else to run and no flag to pass:
+#
+#     DATASET_FOLDER = "dataset_full"      <- the whole corpus (default)
+#     DATASET_FOLDER = "dataset_g_and_j"   <- a folder holding just Bird_G and Bird_J
+#
+# The folder may hold whole collections (symlinks are fine), part of a collection, or
+# loose images with their label files.  On the first run with a new folder the pipeline
+# works out which crops it needs and caches the result; later runs are instant.
+DATASET_FOLDER = f"dataset_{DATASET_VERSION}"
+
+DATASET_ROOT = os.path.join(_ROOT, DATASET_FOLDER)
+
+# The whole corpus, whatever folder the pipeline is currently pointed at.  Inheriting the
+# published train/validation membership needs the split over the FULL pool, so this must
+# survive the WATERFOWL_DATASET override below.
+DEFAULT_DATASET_ROOT = os.path.join(_ROOT, f"dataset_{DATASET_VERSION}")
+
+# ── Pointing the pipeline at a different folder of data ───────────────────────
+# The simplest way to choose the data for an experiment is to put it in a folder: make a
+# directory holding the collections you want (symlinks are fine — no images are copied)
+# and point the pipeline at it.  The folder IS the selection.
+#
+#     python -m pipeline.cli folder --name teal --collections Bird_G Bird_J
+#     python -m pipeline.cli select --from dataset_teal --mirrors
+#
+# WATERFOWL_DATASET overrides the folder for a single command; the default stays
+# dataset_full.  An absolute path or a name relative to the repository both work.
+_DATASET_OVERRIDE = (os.environ.get("WATERFOWL_DATASET") or "").strip()
+if _DATASET_OVERRIDE:
+    DATASET_ROOT = (_DATASET_OVERRIDE if os.path.isabs(_DATASET_OVERRIDE)
+                    else os.path.join(_ROOT, _DATASET_OVERRIDE))
+    if not os.path.isdir(DATASET_ROOT):
+        raise SystemExit(f"WATERFOWL_DATASET={_DATASET_OVERRIDE!r}: {DATASET_ROOT} is not a folder")
 OUTPUT_DIR   = os.path.join(_ROOT, "output")
 CKPT_DIR     = os.path.join(OUTPUT_DIR, "checkpoints", "fasterrcnn")
 YOLONAS_CKPT_DIR = os.path.join(OUTPUT_DIR, "checkpoints", "yolonas")
@@ -427,3 +462,62 @@ def baseline_model_spec(key: str) -> dict:
         raise KeyError(f"Unknown baseline model '{key}'. "
                        f"Choices: {list(BASELINE_MODELS)}")
     return BASELINE_MODELS[key]
+
+
+# ── Experiment data selection (pipeline/selection.py) ─────────────────────────
+# One choice of data, shared by all eight models.  A selection is materialised under
+# output/experiments/<name>/ as filtered COCO splits plus the Ultralytics and OWL
+# mirrors; setting WATERFOWL_EXPERIMENT points every model at it:
+#
+#     python -m pipeline.cli select --name g_and_j --collections Bird_G Bird_J --mirrors
+#     WATERFOWL_EXPERIMENT=g_and_j ./yolov5/main.py --train
+#     WATERFOWL_EXPERIMENT=g_and_j ./faster_rcnn/main.py --train --eval
+#
+# Nothing in a model package changes: every framework reads CROPS_JSON_DIR (and its own
+# mirror directory) from this module at call time, so redirecting them here is enough.
+# CROPS_IMG_DIR is deliberately NOT redirected — a selection filters the shared crops, it
+# never re-cuts them, so every experiment scores the same pixels as the published runs.
+EXPERIMENTS_DIR = os.path.join(OUTPUT_DIR, "experiments")
+
+# Where the published crops and mirrors live, whatever the pipeline is pointed at now.
+COMMITTED_CROPS_JSON_DIR = CROPS_JSON_DIR
+COMMITTED_YOLOV5_DATA_DIR = YOLOV5_DATA_DIR
+COMMITTED_MDO_DATA_DIR = MDO_DATA_DIR
+
+ACTIVE_EXPERIMENT = None
+
+
+def use_committed_data() -> None:
+    """Read the published splits — the whole corpus, as committed."""
+    global CROPS_JSON_DIR, YOLOV5_DATA_DIR, MDO_DATA_DIR, ACTIVE_EXPERIMENT
+    CROPS_JSON_DIR = COMMITTED_CROPS_JSON_DIR
+    YOLOV5_DATA_DIR = COMMITTED_YOLOV5_DATA_DIR
+    MDO_DATA_DIR = COMMITTED_MDO_DATA_DIR
+    ACTIVE_EXPERIMENT = None
+
+
+def use_experiment_data(name: str) -> str:
+    """Read one experiment's data instead: output/experiments/<name>/."""
+    global CROPS_JSON_DIR, YOLOV5_DATA_DIR, MDO_DATA_DIR, ACTIVE_EXPERIMENT
+    directory = os.path.join(EXPERIMENTS_DIR, name)
+    CROPS_JSON_DIR = os.path.join(directory, "crops_json")
+    YOLOV5_DATA_DIR = os.path.join(directory, "yolo")
+    MDO_DATA_DIR = os.path.join(directory, "mdo")
+    ACTIVE_EXPERIMENT = name
+    return directory
+
+
+def active_experiment() -> str | None:
+    """The experiment whose data this process is reading, or None for the whole corpus."""
+    return ACTIVE_EXPERIMENT
+
+
+# WATERFOWL_EXPERIMENT still pins one prepared experiment for a single command; it is no
+# longer needed day to day, because naming the data folder is enough.
+_EXPERIMENT_OVERRIDE = (os.environ.get("WATERFOWL_EXPERIMENT") or "").strip()
+if _EXPERIMENT_OVERRIDE:
+    _EXP_DIR = os.path.join(EXPERIMENTS_DIR, _EXPERIMENT_OVERRIDE)
+    if not os.path.isdir(_EXP_DIR):
+        raise SystemExit(
+            f"WATERFOWL_EXPERIMENT={_EXPERIMENT_OVERRIDE!r} but {_EXP_DIR} does not exist.")
+    use_experiment_data(_EXPERIMENT_OVERRIDE)

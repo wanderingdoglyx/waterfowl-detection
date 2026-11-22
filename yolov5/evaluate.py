@@ -26,13 +26,19 @@ from pycocotools.cocoeval import COCOeval
 import data_prep.config as config
 
 
-def coco_map30(coco_gt_path: str, coco_results: list) -> tuple[float, float]:
+def coco_map30(coco_gt_path: str, coco_results: list,
+               max_dets: int = config.MAX_DETECTIONS_PER_IMAGE) -> tuple[float, float]:
     """
     Returns (AP30, AR30) as percentages for the given GT json and detections.
 
-    AP/AR are averaged over categories and (for the "all" area range, 100-detection
+    AP/AR are averaged over categories and (for the "all" area range, `max_dets`
     budget) read directly from COCOeval's precision/recall arrays, bypassing
     summarize() which assumes the standard 0.50:0.95 IoU sweep.
+
+    `max_dets` replaces COCOeval's default top budget of 100 detections per image.
+    The densest test crops hold up to 422 birds, so at 100 about 15% of all
+    ground-truth birds could never be matched and AR30 could not exceed ~85%.
+    Pass 100 only to reproduce numbers scored before the limit was raised.
     """
     with open(os.devnull, "w") as devnull, redirect_stdout(devnull):
         coco_gt = COCO(coco_gt_path)
@@ -44,11 +50,12 @@ def coco_map30(coco_gt_path: str, coco_results: list) -> tuple[float, float]:
         coco_dt = coco_gt.loadRes(coco_results)
         coco_eval = COCOeval(coco_gt, coco_dt, "bbox")
         coco_eval.params.iouThrs = np.array([config.IOU_THRESHOLD_MAP])
+        coco_eval.params.maxDets = [1, 10, max_dets]
         coco_eval.evaluate()
         coco_eval.accumulate()
 
     # precision: [T=1, R=101, K, A=4, M=3];  recall: [T=1, K, A=4, M=3]
-    # area index 0 = "all";  maxDets index 2 = 100 detections.
+    # area index 0 = "all";  maxDets index 2 = max_dets detections.
     precision = coco_eval.eval.get("precision")
     recall    = coco_eval.eval.get("recall")
 

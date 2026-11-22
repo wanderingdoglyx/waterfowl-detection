@@ -1,0 +1,34 @@
+Same 10 test crops, same protocol (tau = 40 px, B = 1000); 190 GT birds
+
+Model                                       mAP30      AP       P       R      F1     MAE    RMSE  Pred
+───────────────────────────────────────────────────────────────────────────────────────────────────────
+Claude Opus 5.5 (LLM, zero-shot)            85.83   90.16   86.43   90.53   88.43    1.90    2.30   199
+Faster R-CNN (fine-tuned 2026-06-27)        92.97   94.93   94.09   92.11   93.09    1.60    2.24   186
+YOLOv5 (fine-tuned 2026-07-11)              91.85   92.89   94.62   92.63   93.62    1.20    1.90   186
+YOLO11 (fine-tuned 2026-08-14)              92.66   92.79   93.01   91.05   92.02    1.40    2.10   186
+YOLO26 (fine-tuned 2026-08-15)              91.48   92.09   93.33   88.42   90.81    1.80    2.76   180
+YOLO-NAS (fine-tuned 2026-06-28)            93.28   95.84   91.10   91.58   91.34    1.70    2.30   191
+OWL-C (fine-tuned 2026-07-21)                   —   89.45   89.06   90.00   89.53    2.20    2.83   192
+OWL-T (fine-tuned 2026-07-24)                   —   92.57   93.16   93.16   93.16    2.00    2.68   190
+OWL-D (fine-tuned 2026-07-26)                   —   87.96   92.93   90.00   91.44    1.60    2.10   184
+───────────────────────────────────────────────────────────────────────────────────────────────────────
+
+Per-crop count at each model's t* (GT first):
+
+crop                                                                                   GT           LLM  Faster R-CNN        YOLOv5        YOLO11        YOLO26      YOLO-NAS         OWL-C         OWL-T         OWL-D
+Bird_D/D_G377_11Nov2016_0497_460_1380.JPG                                              25            28            28            29            29            29            28            29            29            27
+Bird_A/A_70_2_1840_2760.JPG                                                            34            31            36            34            35            34            37            39            35            34
+Bird_F/F_DJI_0093_1380_1380.JPG                                                         2             2             2             1             1             0             1             0             2             1
+Bird_B/B_DJI_0123_1840_920.JPG                                                          3             5             3             3             3             3             3             3             4             5
+Bird_I/I_DJI_0384_2760_920.JPG                                                          7             6             6             6             6             5             7             3             4             4
+Bird_G/G_Cloud_WaterSubVeg_60m_test2_460_460.JPG                                        4             8             3             1             1             0             1             5             2             5
+Bird_H/H_EagleBluffs_03082022_Trees_Spot3_90meters_DJI_0126_1840_1840.JPG               9             8             4             6             5             3             5             5             4             5
+Bird_C/C_DJI_0148_120m_920_1840.JPG                                                     6             8             6             6             6             6             6             6             6             3
+Bird_J/J_Cloud_MoistSoil_90m_DJI_0443_1840_2300.JPG                                    99            99            96            99            99            99           102           100           103            99
+Bird_D/D_G377_11Nov2016_0497_460_0.JPG                                                  1             4             2             1             1             1             1             2             1             1
+
+t* is chosen per model ON THESE CROPS (argmin MAE), for every row alike.
+mAP30 is omitted for the OWL point models (no boxes in the cache).
+The fine-tuned rows come from output/analysis/predictions/, the cache
+analysis/ scores the current split with.  Treat every number here as
+a sample of 10: compare rows, not against the full-split table.

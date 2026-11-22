@@ -30,13 +30,19 @@ IMAGENET_STD = [0.229, 0.224, 0.225]
 
 def build_train_config(train_imgs: str, train_csv: str,
                        val_imgs: str, val_csv: str,
-                       run_tag: str, model_spec: dict) -> dict:
+                       run_tag: str, model_spec: dict,
+                       resume_from: str | None = None) -> dict:
     """Assemble the Hydra `train:` config for a fine-tuning run (concrete values, no
     interpolations, so it composes on its own via --config-name).
 
     `model_spec` is one entry of config.MDO_MODELS — it supplies the animaloc class name,
     the fine-tuning start checkpoint (`load_from`), and the architecture-specific kwargs
-    (DLA args for OWL-C/T, DINOv3 args for OWL-D)."""
+    (DLA args for OWL-C/T, DINOv3 args for OWL-D).
+
+    `resume_from` continues an interrupted run: animaloc's Trainer.resume() restores the
+    model, the optimizer state (Adam moments and lr) and `best_val` from the checkpoint,
+    then runs epoch+1..epochs.  `load_from` still applies first but is immediately
+    overwritten by the checkpoint's weights, so the two are not in conflict."""
     dr = config.MDO_DOWN_RATIO
     load_from = model_spec.get("load_from")
     if load_from and not os.path.exists(load_from):
@@ -53,7 +59,7 @@ def build_train_config(train_imgs: str, train_csv: str,
                 "from_torchvision": False,
                 "load_from": load_from,
                 "partial_load": False,
-                "resume_from": None,
+                "resume_from": resume_from,
                 "kwargs": dict(model_spec["kwargs"]),
                 "freeze": None,
             },
@@ -143,21 +149,28 @@ def _find_best_checkpoint(run_dir: str) -> str | None:
     return None
 
 
-def train(run_dir: str, epochs: int | None = None, model_key: str | None = None) -> str:
+def train(run_dir: str, epochs: int | None = None, model_key: str | None = None,
+          resume_from: str | None = None, init_from: str | None = None) -> str:
     """
     Fine-tune the selected OWL variant, writing the config + checkpoints under run_dir.
     Returns the path to the best checkpoint (also copied to run_dir/weights/best.pth for a
     stable handle).  `model_key` selects the config.MDO_MODELS entry (defaults to MDO_MODEL).
+    `resume_from` is a checkpoint (usually run_dir/latest_model.pth) to continue from rather
+    than starting at epoch 1.  `init_from` replaces the released start checkpoint
+    (`load_from`) with another — an earlier run's weights/best.pth, say — for a new run.
     """
     from megadetector_overhead.dataset import split_paths
 
     model_spec = config.mdo_model_spec(model_key)
+    if init_from:
+        model_spec = {**model_spec, "load_from": init_from}
 
     train_imgs, train_csv = split_paths("train")
     val_imgs, val_csv = split_paths("val")
 
     cfg = build_train_config(train_imgs, train_csv, val_imgs, val_csv,
-                             run_tag=os.path.basename(run_dir), model_spec=model_spec)
+                             run_tag=os.path.basename(run_dir), model_spec=model_spec,
+                             resume_from=resume_from)
     if epochs is not None:
         cfg["train"]["training_settings"]["epochs"] = epochs
 
@@ -209,8 +222,9 @@ def train(run_dir: str, epochs: int | None = None, model_key: str | None = None)
 
 
 if __name__ == "__main__":
-    # Direct invocation: megadetector_overhead/train.py <run_dir> [epochs] [model_key]
+    # Direct invocation: megadetector_overhead/train.py <run_dir> [epochs] [model_key] [resume_from]
     _run_dir = sys.argv[1]
     _epochs = int(sys.argv[2]) if len(sys.argv) > 2 else None
     _model_key = sys.argv[3] if len(sys.argv) > 3 else None
-    print(train(_run_dir, epochs=_epochs, model_key=_model_key))
+    _resume = sys.argv[4] if len(sys.argv) > 4 else None
+    print(train(_run_dir, epochs=_epochs, model_key=_model_key, resume_from=_resume))

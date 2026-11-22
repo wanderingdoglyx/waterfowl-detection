@@ -1,0 +1,35 @@
+{
+  "timestamp": "2026-09-08_12-57-04",
+  "model": "OWLD_H",
+  "pretrained": "/home/zygfd/waterfowl/detection/third_party/MegaDetector-Overhead/weights/OWL-D.pth",
+  "n_train": 82827,
+  "n_val": 27771,
+  "n_test": 28588,
+  "epochs": 100,
+  "resumes": [
+    {
+      "at": "2026-09-21_15-18-42",
+      "from_checkpoint": "latest_model.pth",
+      "epochs_done": 45,
+      "to_epoch": 100
+    },
+    {
+      "at": "2026-09-22_12-05-54",
+      "from_checkpoint": "latest_model.pth",
+      "epochs_done": 47,
+      "to_epoch": 100
+    },
+    {
+      "at": "2026-09-28_13-56-37",
+      "from_checkpoint": "latest_model.pth",
+      "epochs_done": 67,
+      "to_epoch": 100
+    },
+    {
+      "at": "2026-09-30_11-56-06",
+      "from_checkpoint": "latest_model.pth",
+      "epochs_done": 71,
+      "to_epoch": 100
+    }
+  ]
+}

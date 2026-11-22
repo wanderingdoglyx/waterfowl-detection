@@ -1,0 +1,104 @@
+{
+  "experiment_id": "OWLT__2026-08-31_20-23-56",
+  "created_utc": "2026-09-01T01:23:56+00:00",
+  "updated_utc": "2026-09-04T15:34:57+00:00",
+  "model": {
+    "key": "OWLT",
+    "label": "OWLT",
+    "family": "animaloc/OWL"
+  },
+  "code": {
+    "git_commit": "742b7fab6f9b0c6987dd2722a3136d74e42b2c67",
+    "git_commit_short": "742b7fa",
+    "git_branch": "main",
+    "git_dirty": true,
+    "git_dirty_files": 18,
+    "python": "3.10.21",
+    "libraries": {
+      "torch": "2.1.2+cu121",
+      "ultralytics": "8.4.82",
+      "super_gradients": "3.7.1",
+      "detectron2": "0.6",
+      "numpy": "1.23.0",
+      "cv2": "4.11.0",
+      "pycocotools": "unknown"
+    }
+  },
+  "hardware": {
+    "hostname": "cengr-hm69pk3.umad.umsystem.edu",
+    "platform": "Linux-7.0.0-30-generic-x86_64-with-glibc2.39",
+    "cpu_count": 20,
+    "ram_gb": 62.5,
+    "gpus": [
+      {
+        "name": "NVIDIA GeForce RTX 3090",
+        "memory_gb": 23.6,
+        "capability": "8.6"
+      }
+    ],
+    "cuda": "12.1",
+    "nvidia_driver": "580.173.02"
+  },
+  "dataset": {
+    "version": "full",
+    "root": "/home/zygfd/waterflow/rebuild/dataset_full",
+    "crop_size": 512,
+    "crop_overlap": 0.2,
+    "random_seed": 42,
+    "val_fraction": 0.25,
+    "splits": {
+      "train": {
+        "path": "/home/zygfd/waterflow/rebuild/output/crops_json/train/coco.json",
+        "sha256": "22e6d8841451d39f0bb33dcc414bac076682ca4cf34bac84302e5b30603ca7e0",
+        "images": 82827,
+        "annotations": 241730
+      },
+      "val": {
+        "path": "/home/zygfd/waterflow/rebuild/output/crops_json/val/coco.json",
+        "sha256": "541c5507f12f53fa1c35667e544f795098a6556787e57e52149d498e68b3944e",
+        "images": 27771,
+        "annotations": 89422
+      },
+      "test": {
+        "path": "/home/zygfd/waterflow/rebuild/output/crops_json/test/coco.json",
+        "sha256": "ba86397601c5f4e02b9838bbb56ec19e852e219b915d8d170c2d62f937b329dd",
+        "images": 28588,
+        "annotations": 89884
+      }
+    }
+  },
+  "inference": {
+    "score_threshold": 0.05,
+    "max_detections_per_image": 500,
+    "map_iou_threshold": 0.3,
+    "point_match_tau_px": 40,
+    "bootstrap_resamples": 1000
+  },
+  "outputs": {
+    "run_dir": "/home/zygfd/waterflow/rebuild/output/checkpoints/mdo_owl_t/2026-08-31_20-23-56",
+    "checkpoint": "/home/zygfd/waterflow/rebuild/output/checkpoints/mdo_owl_t/2026-08-31_20-23-56/weights/best.pth"
+  },
+  "pretrained": {
+    "weights": "/home/zygfd/waterflow/rebuild/third_party/MegaDetector-Overhead/weights/OWL-T.pth",
+    "sha256": "dd6a362dcbee0f1c4ff778d8c23c3308844a4ade0a2b3d6b4b429fbfa81393a8~first64MB"
+  },
+  "training": {
+    "config": {
+      "epochs": 100,
+      "batch": 8,
+      "lr": 0.0005,
+      "optimizer": "Adam",
+      "auto_lr": true,
+      "down_ratio": 2,
+      "seed": 42
+    },
+    "completed_utc": "2026-09-04T15:34:57+00:00",
+    "epochs_completed": null,
+    "best_epoch": 75,
+    "checkpoint_sha256": "d92e2c1da71a02f66f815b9e57c34ac174e39eba1e0cf6dd4bd91a0d67d8ccbd~first64MB"
+  },
+  "metrics_efficiency": {
+    "train_seconds": 310254.49,
+    "train_peak_gpu_mb": 0.0
+  }
+}

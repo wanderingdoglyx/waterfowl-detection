@@ -1,0 +1,10 @@
+{
+  "timestamp": "2026-08-28_14-30-54",
+  "model": "yolo26",
+  "weights": "yolo26m",
+  "end2end": true,
+  "n_train": 82827,
+  "n_val": 27771,
+  "n_test": 28588,
+  "epochs": 100
+}

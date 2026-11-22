@@ -1,0 +1,4 @@
+model,first_peak_px,ci_low,ci_high,reps_highest_at_40px,reps
+yolov5,18.1,17.2,26.78,4,100
+yolo11,17.7,16.65,26.18,4,100
+mdo_owl_t,18.9,16.54,22.9,0,100

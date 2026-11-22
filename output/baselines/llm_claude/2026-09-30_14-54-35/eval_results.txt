@@ -1,0 +1,13 @@
+── mAP30 (box detection, COCOeval@IoU=0.30) ──
+  mAP30 :  85.83%
+  mAR30 :  87.37%
+
+── OWL-paper point metrics — Claude Opus 5.5 (LLM, zero-shot) [SAMPLE 10 crops] (τ = 40 px, 10 images, 190 GT points) ──
+  AP        :  90.16%  [95% CI 81.01–94.30]
+  AUC-PR    :  89.63%
+  Precision :  86.43%   (at t* = 0.300)
+  Recall    :  90.53%
+  F1        :  88.43%
+  MAE       :  1.900  [95% CI 1.100–2.700]
+  RMSE      :  2.302  [95% CI 1.517–2.966]
+  Count     : 199 predicted vs 190 GT (+4.7%)

@@ -1,0 +1,56 @@
+{
+  "point": {
+    "precision": 0.833058449228019,
+    "recall": 0.8710115259668016,
+    "f1_score": 0.8516123417979691,
+    "n_gt": 89884,
+    "radius_heatmap_px": 10.0,
+    "radius_fullres_px": 20.0
+  },
+  "pseudo_box_map30": {
+    "ap30": 46.47497068732762,
+    "ar30": 56.18018779760581,
+    "box_size": 28
+  },
+  "paper_point_metrics": {
+    "protocol": {
+      "tau_px": 40,
+      "bootstrap_B": 1000,
+      "n_images": 28588,
+      "n_gt_points": 89884,
+      "n_detections": 93979,
+      "score_grid_size": 256,
+      "matching": "score-ordered greedy NN, one-to-one"
+    },
+    "detection": {
+      "ap": 0.8657593335786539,
+      "auc_pr": 0.8657010472078774,
+      "precision_at_t_star": 0.9136200082581254,
+      "recall_at_t_star": 0.8615882693249076,
+      "f1_at_t_star": 0.8868416080252391
+    },
+    "counting": {
+      "t_star": 0.2466871931272395,
+      "mae": 0.4771582482160347,
+      "rmse": 1.8255853850316441,
+      "total_gt": 89884,
+      "total_pred_at_t_star": 84765,
+      "signed_pct_error": -5.6951181522851675
+    },
+    "ci95": {
+      "mae": [
+        0.4573221281656639,
+        0.4986733944312299
+      ],
+      "rmse": [
+        1.6047463192716056,
+        2.112342232714296
+      ],
+      "ap": [
+        0.8574672012496153,
+        0.8726947125801265
+      ]
+    }
+  },
+  "n_detections": 93979
+}

@@ -26,6 +26,8 @@ Sections (Task 1.3):
     metrics_accuracy    the reported numbers
     metrics_efficiency  wall-clock, throughput, peak GPU memory
     outputs             run directory, checkpoint, artifact paths
+    reopened_context    present only when a later phase ran under different code, hardware
+                        or data than the training phase did
 
 Everything degrades gracefully: a missing git binary, absent GPU or unimportable library
 records `null` for that field rather than failing the run that produced real results.
@@ -117,6 +119,38 @@ def sha256(path: str, limit_mb: int = 0) -> str | None:
     return h.hexdigest()
 
 
+def epochs_from_results_csv(run_dir: str) -> int | None:
+    """Epochs actually completed by an Ultralytics run: one data row per epoch in
+    `results.csv`.  Returns None rather than guessing when the file is unreadable."""
+    path = os.path.join(run_dir, "results.csv")
+    if not os.path.isfile(path):
+        return None
+    try:
+        with open(path) as f:
+            rows = sum(1 for line in f if line.strip())
+        return max(rows - 1, 0) or None          # minus the header
+    except Exception:
+        return None
+
+
+def epoch_from_checkpoint(path: str) -> int | None:
+    """The epoch a checkpoint was saved at, for frameworks that store one (super-gradients
+    and animaloc both do).  This is the *best* epoch, not the number completed.  Memory-maps
+    where possible so reading it does not pull a multi-GB checkpoint into RAM."""
+    if not path or not os.path.isfile(path):
+        return None
+    try:
+        import torch
+        try:
+            d = torch.load(path, map_location="cpu", mmap=True, weights_only=False)
+        except Exception:
+            d = torch.load(path, map_location="cpu", weights_only=False)
+        epoch = d.get("epoch") if isinstance(d, dict) else None
+        return int(epoch) if isinstance(epoch, (int, float)) else None
+    except Exception:
+        return None
+
+
 def capture_code() -> dict:
     """Git state plus the versions of every library that can change a result."""
     libs = {}
@@ -139,19 +173,55 @@ def capture_code() -> dict:
     }
 
 
-def capture_hardware() -> dict:
+def _gpus_via_nvidia_smi() -> list[dict]:
+    """GPU inventory without torch, for interpreters that cannot import it."""
+    out = _run(["nvidia-smi",
+                "--query-gpu=name,memory.total,compute_cap",
+                "--format=csv,noheader,nounits"])
     gpus = []
+    for line in (out or "").splitlines():
+        parts = [p.strip() for p in line.split(",")]
+        if len(parts) < 2 or not parts[0]:
+            continue
+        try:
+            mem_gb = round(float(parts[1]) / 1024, 1)
+        except ValueError:
+            mem_gb = None
+        gpus.append({"name": parts[0], "memory_gb": mem_gb,
+                     "capability": parts[2] if len(parts) > 2 else None})
+    return gpus
+
+
+def capture_hardware() -> dict:
+    """Record the machine a run happened on.
+
+    GPU identity is the part that matters when runs are spread across machines:
+    a training time is meaningless without knowing what it ran on. Detection
+    therefore falls back to nvidia-smi when torch is unavailable — a wrapper
+    launched with the wrong interpreter would otherwise record an empty GPU list,
+    which is indistinguishable from a genuinely CPU-only host. `gpu_source` says
+    which path produced the answer, so a run whose hardware could not be
+    identified is visible rather than silently blank.
+    """
+    gpus, cuda, source = [], None, "none"
     try:
         import torch
+        cuda = torch.version.cuda
         if torch.cuda.is_available():
             for i in range(torch.cuda.device_count()):
                 p = torch.cuda.get_device_properties(i)
                 gpus.append({"name": p.name,
                              "memory_gb": round(p.total_memory / 1024**3, 1),
                              "capability": f"{p.major}.{p.minor}"})
-        cuda = torch.version.cuda
+            source = "torch"
     except Exception:
-        cuda = None
+        pass
+
+    if not gpus:
+        gpus = _gpus_via_nvidia_smi()
+        if gpus:
+            source = "nvidia-smi (torch unavailable in this interpreter)"
+
     mem_gb = None
     try:
         mem_gb = round(os.sysconf("SC_PAGE_SIZE") * os.sysconf("SC_PHYS_PAGES") / 1024**3, 1)
@@ -163,6 +233,7 @@ def capture_hardware() -> dict:
         "cpu_count": os.cpu_count(),
         "ram_gb": mem_gb,
         "gpus": gpus,
+        "gpu_source": source,
         "cuda": cuda,
         "nvidia_driver": _run(["nvidia-smi", "--query-gpu=driver_version",
                                "--format=csv,noheader"]),
@@ -190,6 +261,19 @@ def capture_dataset() -> dict:
             except Exception:
                 pass
         splits[name] = entry
+    # Which data selection this run consumed, when one is active.  Without it, two runs
+    # on different subsets of the corpus would look identical in the record.
+    experiment = {"name": config.active_experiment()} if config.active_experiment() else None
+    if experiment:
+        try:
+            with open(os.path.join(config.EXPERIMENTS_DIR, experiment["name"],
+                                   "selection.json")) as f:
+                payload = json.load(f)
+            experiment["checksum"] = payload.get("checksum")
+            experiment["selection"] = payload.get("selection")
+        except Exception:
+            pass
+
     return {
         "version": getattr(config, "DATASET_VERSION", None),
         "root": config.DATASET_ROOT,
@@ -197,6 +281,7 @@ def capture_dataset() -> dict:
         "crop_overlap": config.CROP_OVERLAP,
         "random_seed": config.RANDOM_SEED,
         "val_fraction": config.VAL_FRACTION,
+        "experiment": experiment,
         "splits": splits,
     }
 
@@ -227,9 +312,22 @@ class ExperimentRecord:
         self.data.setdefault("created_utc", now)
         self.data["updated_utc"] = now
         self.data["model"] = {"key": model, "label": label or model, "family": family}
-        self.data["code"] = capture_code()
-        self.data["hardware"] = capture_hardware()
-        self.data["dataset"] = capture_dataset()
+        # Provenance describes the run that *trained*, so the first capture wins.  A later
+        # phase re-opening this record (--eval, often days later, on a tree that has moved
+        # on) must not overwrite the commit, machine and split hashes the weights were
+        # actually produced under.  Where the re-opened context differs it is recorded
+        # separately, because that difference is itself the thing worth knowing: it says
+        # the numbers were computed under different code or different data than the
+        # weights were trained under.
+        for key, value in (("code", capture_code()),
+                           ("hardware", capture_hardware()),
+                           ("dataset", capture_dataset())):
+            if key not in self.data:
+                self.data[key] = value
+            elif self.data[key] != value:
+                drift = self.data.setdefault("reopened_context", {})
+                drift[key] = value
+                drift["captured_utc"] = now
         self.data.setdefault("inference", default_inference_config())
         self.data.setdefault("outputs", {})["run_dir"] = run_dir
         self.save()
@@ -244,37 +342,53 @@ class ExperimentRecord:
         return {}
 
     # ── section setters ───────────────────────────────────────────────────────
+    # Each setter persists immediately.  Training runs here last hours, and a record
+    # that only reached disk at the end would be lost exactly when it is most needed —
+    # a crashed or killed run still has to be identifiable.
     def set_pretrained(self, weights: str, **extra) -> "ExperimentRecord":
         self.data["pretrained"] = {"weights": weights,
                                    "sha256": sha256(weights, limit_mb=64), **extra}
+        self.save()
         return self
 
     def set_training(self, cfg: dict) -> "ExperimentRecord":
         self.data.setdefault("training", {}).update({"config": cfg})
+        self.save()
         return self
 
     def set_inference(self, cfg: dict) -> "ExperimentRecord":
         self.data["inference"] = {**default_inference_config(), **cfg}
+        self.save()
         return self
 
     def set_accuracy(self, metrics: dict) -> "ExperimentRecord":
         self.data["metrics_accuracy"] = metrics
+        self.save()
         return self
 
     def set_efficiency(self, metrics: dict) -> "ExperimentRecord":
         self.data.setdefault("metrics_efficiency", {}).update(metrics)
+        self.save()
         return self
 
     def set_outputs(self, **paths) -> "ExperimentRecord":
         self.data.setdefault("outputs", {}).update(paths)
+        self.save()
         return self
 
     # ── phase completion ──────────────────────────────────────────────────────
     def finish_training(self, checkpoint: str | None = None, duration_s: float | None = None,
-                        epochs_completed: int | None = None, peak_gpu_mb: float | None = None):
+                        epochs_completed: int | None = None, peak_gpu_mb: float | None = None,
+                        best_epoch: int | None = None):
+        """`epochs_completed` is how many epochs actually ran, which is not the configured
+        cap whenever early stopping fires; pass None rather than the cap when the real
+        number cannot be recovered.  `best_epoch` is which epoch the kept weights came
+        from, where the framework records it."""
         t = self.data.setdefault("training", {})
         t["completed_utc"] = datetime.now(timezone.utc).isoformat(timespec="seconds")
         t["epochs_completed"] = epochs_completed
+        if best_epoch is not None:
+            t["best_epoch"] = best_epoch
         if checkpoint:
             self.set_outputs(checkpoint=checkpoint)
             self.data.setdefault("training", {})["checkpoint_sha256"] = sha256(checkpoint, 64)

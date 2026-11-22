@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang='en'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width, initial-scale=1'><title>Bird counts — heldout_sample_3</title><style>
+:root { color-scheme: light dark; --ink:#1f2328; --muted:#59636e; --line:#d1d9e0; --bg:#fff;
+        --head:#f6f8fa; }
+@media (prefers-color-scheme: dark) {
+  :root { --ink:#e6edf3; --muted:#9198a1; --line:#3d444d; --bg:#0d1117; --head:#151b23; } }
+body { font: 15px/1.55 system-ui, -apple-system, "Segoe UI", sans-serif; color: var(--ink);
+       background: var(--bg); max-width: 1100px; margin: 2rem auto; padding: 0 1rem; }
+h1 { font-size: 1.7rem; margin-bottom: .2rem; } h2 { margin-top: 2.2rem; border-bottom:
+     1px solid var(--line); padding-bottom: .3rem; }
+table { border-collapse: collapse; margin: 1rem 0; font-variant-numeric: tabular-nums; }
+th, td { border: 1px solid var(--line); padding: .35rem .7rem; }
+th { background: var(--head); text-align: left; }
+td:not(:first-child) { text-align: right; }
+img { max-width: 100%; border: 1px solid var(--line); border-radius: 4px; }
+code { font-size: .9em; } p.muted, .muted { color: var(--muted); }
+</style></head><body>
+<h1>Bird counts — heldout_sample_3</h1>
+<p class='muted'>Waterfowl Workbench · generated 2026-09-30 12:16</p>
+
+<h2>Summary</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Photographs</td>
+<td>3</td>
+</tr>
+<tr>
+<td><strong>Birds counted</strong></td>
+<td><strong>128</strong></td>
+</tr>
+<tr>
+<td>Model count before review</td>
+<td>128</td>
+</tr>
+<tr>
+<td>Changed by review</td>
+<td>+0</td>
+</tr>
+<tr>
+<td>Reviewed by a person</td>
+<td>0 of 288 cells (0%)</td>
+</tr>
+<tr>
+<td>Model</td>
+<td>YOLOv5, run <code>2026-08-27_00-57-30</code> — on the test split: point AP 93.0%, F1 91.4%, counting MAE 0.368 birds per 512 px crop</td>
+</tr>
+<tr>
+<td>Threshold</td>
+<td>0.237 — the run's t*, the score cut that minimised counting error on the test split</td>
+</tr>
+<tr>
+<td>Notes</td>
+<td>held-out test photographs with their labels, sampled by the workbench</td>
+</tr>
+</tbody>
+</table>
+<h2>Accuracy against the survey's labels</h2>
+<p>This survey came with label files for 3 photograph(s), holding 113 annotated birds.  Detections were matched to annotated birds one-to-one within 40 px, highest score first (the project's point protocol).</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th style="text-align: right;">Model</th>
+<th style="text-align: right;">After review</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Birds counted</td>
+<td style="text-align: right;">128</td>
+<td style="text-align: right;">128</td>
+</tr>
+<tr>
+<td>Annotated birds</td>
+<td style="text-align: right;">113</td>
+<td style="text-align: right;">113</td>
+</tr>
+<tr>
+<td>Mean absolute error per photograph</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: right;">5.00</td>
+</tr>
+<tr>
+<td>Precision at the threshold</td>
+<td style="text-align: right;">88.3%</td>
+<td style="text-align: right;"></td>
+</tr>
+<tr>
+<td>Recall at the threshold</td>
+<td style="text-align: right;">100.0%</td>
+<td style="text-align: right;"></td>
+</tr>
+<tr>
+<td>F1 at the threshold</td>
+<td style="text-align: right;">93.8%</td>
+<td style="text-align: right;"></td>
+</tr>
+<tr>
+<td>Point AP (threshold-free)</td>
+<td style="text-align: right;">98.4%</td>
+<td style="text-align: right;"></td>
+</tr>
+</tbody>
+</table>
+<p>Annotations can be incomplete: the project found 1,639 detections that all eight models agree on but no label covers.  A "false positive" here may be an unlabelled bird — the reviewed column is the one to trust.</p>
+<h2>Per photograph</h2>
+<table>
+<thead>
+<tr>
+<th>Photograph</th>
+<th style="text-align: right;">Model</th>
+<th style="text-align: right;">Reviewed</th>
+<th style="text-align: right;">Change</th>
+<th style="text-align: right;">Cells reviewed</th>
+<th style="text-align: right;">Annotated</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bird_A_80_5.jpg</td>
+<td style="text-align: right;">54</td>
+<td style="text-align: right;">54</td>
+<td style="text-align: right;">+0</td>
+<td style="text-align: right;">0/96</td>
+<td style="text-align: right;">46</td>
+</tr>
+<tr>
+<td>Bird_B_DJI_0328.JPG</td>
+<td style="text-align: right;">63</td>
+<td style="text-align: right;">63</td>
+<td style="text-align: right;">+0</td>
+<td style="text-align: right;">0/96</td>
+<td style="text-align: right;">61</td>
+</tr>
+<tr>
+<td>Bird_C_DJI_0056_30m.JPG</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">+0</td>
+<td style="text-align: right;">0/96</td>
+<td style="text-align: right;">6</td>
+</tr>
+</tbody>
+</table>
+<p>Full table: <code>counts_heldout_sample_3.csv</code>; every detection with its score and decision: <code>detections.csv</code>.</p>
+<h2>Photographs</h2>
+<p>Amber: counted by the model, not reviewed · green: confirmed · red cross: rejected · cyan: added by the reviewer.</p>
+<p><strong>Bird_A_80_5.jpg</strong> — 54 birds</p>
+<p><img alt="Bird_A_80_5.jpg" src="images/Bird_A_80_5.jpg" /></p>
+<p><strong>Bird_B_DJI_0328.JPG</strong> — 63 birds</p>
+<p><img alt="Bird_B_DJI_0328.jpg" src="images/Bird_B_DJI_0328.jpg" /></p>
+<p><strong>Bird_C_DJI_0056_30m.JPG</strong> — 11 birds</p>
+<p><img alt="Bird_C_DJI_0056_30m.jpg" src="images/Bird_C_DJI_0056_30m.jpg" /></p>
+<h2>How these numbers were made</h2>
+<ul>
+<li>Each photograph was cut into 512 × 512 px tiles at a 460 px stride — the same tiling as the training and test crops — and every tile was scored the way the model's own evaluation scores a crop.</li>
+<li>Neighbouring tiles overlap, so each bird was counted once: a tile keeps only the detections in the part of the photograph it owns (bounded by the middle of each overlap), and a bird seen by two tiles near that boundary is merged.</li>
+<li>A detection counts when its score is at least the threshold (0.237), unless a reviewer marked it otherwise.  Birds a reviewer added count too.  Cells no one reviewed keep the model's verdict.</li>
+<li>The model's accuracy figures above were measured on 512 px test crops, and are a guide to — not a guarantee of — its accuracy on these photographs.</li>
+</ul>
+</body></html>

@@ -1,0 +1,4 @@
+[2026-09-22 12:07:29] trainer for 2026-09-08_12-57-04 already running; nothing to do
+[2026-09-28 13:56:25] resuming at epoch 68 of 100 -> /home/zygfd/waterflow/rebuild/output/checkpoints/mdo_owl_d/2026-09-08_12-57-04/resume_20260928_135625_launch.log
+[2026-09-30 11:55:33] resuming at epoch 72 of 100 -> /home/zygfd/waterfowl/detection/output/checkpoints/mdo_owl_d/2026-09-08_12-57-04/resume_20260930_115533_launch.log
+[2026-10-09 01:13:05] trainer exited cleanly after 739052s

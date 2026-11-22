@@ -88,12 +88,28 @@ def main() -> None:
                         help="Override the epoch cap (default: config.NUM_EPOCHS)")
     parser.add_argument("--examples", type=int, default=40, metavar="N",
                         help="Example panels to save during --eval (default: 40, 0 to skip)")
+    parser.add_argument("--init-from", default=None, metavar="CHECKPOINT",
+                        help="--train: start from these weights (e.g. an earlier run's "
+                             "weights/best.pt) instead of the COCO-pretrained ones. A new run "
+                             "folder, a fresh optimiser and schedule; only the weights carry over")
+    parser.add_argument("--checkpoint", choices=["best", "last"], default="best",
+                        help="--eval: which weights of the run to score — best (default, "
+                             "weights/best.pt) or last (weights/last.pt). 'last' writes its "
+                             "results to <run>/eval_last/ and leaves the run's own scores untouched")
     args = parser.parse_args()
 
     if not (args.prepare or args.train or args.eval):
         parser.print_help()
         return
+    if args.init_from and not os.path.isfile(args.init_from):
+        print(f"--init-from: {args.init_from} is not a file")
+        return
 
+    # The data this run uses is whatever `config.DATASET_FOLDER` names (default
+    # dataset_full).  This makes it ready — filtering or tiling only if the folder
+    # changed — and points the paths below at it.  Nothing else to run.
+    from pipeline.auto import ensure_data
+    ensure_data(mirror="yolo")
     spec = config.ultralytics_model_spec(args.model)
     ckpt_dir = spec["ckpt_dir"]
     label = spec["label"]
@@ -127,28 +143,39 @@ def main() -> None:
               f"| Batch: {spec['batch_size']}  | LR: {spec['lr']}  "
               f"| Early-stop patience: {config.EARLY_STOP_PATIENCE}")
 
-        from data_prep.experiment_record import ExperimentRecord, Timer
+        from data_prep.experiment_record import (ExperimentRecord, Timer,
+                                                 epochs_from_results_csv)
 
         rec = ExperimentRecord(run_dir, model=args.model, label=label, family="ultralytics")
-        rec.set_pretrained(spec["weights"])
+        rec.set_pretrained(os.path.abspath(args.init_from) if args.init_from
+                           else spec["weights"])
         rec.set_training({"epochs": args.epochs or config.NUM_EPOCHS,
                           "patience": config.EARLY_STOP_PATIENCE,
                           "batch": spec["batch_size"], "lr0": spec["lr"],
                           "optimizer": "Adam", "imgsz": config.CROP_SIZE,
                           "seed": config.RANDOM_SEED, "end2end": spec["end2end"]})
+        if args.init_from:
+            print(f"Starting from: {os.path.abspath(args.init_from)}")
         with Timer() as t:
-            ckpt = run_training(args.model, run_dir, epochs=args.epochs)
+            ckpt = run_training(args.model, run_dir, epochs=args.epochs,
+                                init_from=os.path.abspath(args.init_from) if args.init_from
+                                else None)
+        # Ultralytics writes one results.csv row per epoch, so the real count survives
+        # early stopping; the configured cap does not.
         rec.finish_training(checkpoint=ckpt, duration_s=t.seconds,
-                            epochs_completed=args.epochs or config.NUM_EPOCHS,
+                            epochs_completed=epochs_from_results_csv(run_dir),
                             peak_gpu_mb=t.peak_gpu_mb)
         print(f"Best checkpoint: {ckpt}")
 
+        run_info = {"timestamp": os.path.basename(run_dir), "model": args.model,
+                    "weights": spec["weights"], "end2end": spec["end2end"],
+                    "n_train": n_train, "n_val": count_crops("val"),
+                    "n_test": count_crops("test"),
+                    "epochs": args.epochs or config.NUM_EPOCHS}
+        if args.init_from:
+            run_info["init_from"] = os.path.abspath(args.init_from)
         with open(os.path.join(run_dir, "run_info.json"), "w") as f:
-            json.dump({"timestamp": os.path.basename(run_dir), "model": args.model,
-                       "weights": spec["weights"], "end2end": spec["end2end"],
-                       "n_train": n_train, "n_val": count_crops("val"),
-                       "n_test": count_crops("test"),
-                       "epochs": args.epochs or config.NUM_EPOCHS}, f, indent=2)
+            json.dump(run_info, f, indent=2)
 
     # ── 3. Evaluation ─────────────────────────────────────────────────────────
     if args.eval:
@@ -168,8 +195,14 @@ def main() -> None:
             return
 
         best_ckpt = os.path.join(eval_dir, "weights", "best.pt")
-        ckpt = best_ckpt if os.path.exists(best_ckpt) \
-            else os.path.join(eval_dir, "weights", "last.pt")
+        last_ckpt = os.path.join(eval_dir, "weights", "last.pt")
+        if args.checkpoint == "best":
+            ckpt = best_ckpt if os.path.exists(best_ckpt) else last_ckpt
+            out_dir = eval_dir
+        else:
+            ckpt = last_ckpt if os.path.exists(last_ckpt) else best_ckpt
+            out_dir = os.path.join(eval_dir, "eval_last")
+            os.makedirs(out_dir, exist_ok=True)
         if not os.path.exists(ckpt):
             print(f"No checkpoint found in {eval_dir}. Run --train first.")
             return
@@ -188,10 +221,14 @@ def main() -> None:
         # NMS/max_det settings (iou is inert for the end-to-end YOLO26).
         from data_prep.experiment_record import ExperimentRecord, Timer
 
-        rec = ExperimentRecord(eval_dir, model=args.model, label=label, family="ultralytics")
-        rec.set_inference({"nms_iou": spec["nms_iou"], "max_det": spec["max_pred"],
-                           "imgsz": config.CROP_SIZE, "end2end": spec["end2end"],
-                           "checkpoint": ckpt})
+        # The run's record describes its best weights; a --checkpoint last evaluation is
+        # written beside it, to eval_last/, and leaves the record alone.
+        rec = None
+        if args.checkpoint == "best":
+            rec = ExperimentRecord(eval_dir, model=args.model, label=label, family="ultralytics")
+            rec.set_inference({"nms_iou": spec["nms_iou"], "max_det": spec["max_pred"],
+                               "imgsz": config.CROP_SIZE, "end2end": spec["end2end"],
+                               "checkpoint": ckpt})
         with Timer() as t:
             coco_results = predictions_to_coco(
                 model, test_json, conf=config.CONF_THRESHOLD,
@@ -204,30 +241,31 @@ def main() -> None:
             gt_points_from_coco(test_json), dets_from_coco_results(coco_results),
             tau=config.PAPER_TAU, bootstrap=config.PAPER_BOOTSTRAP,
         )
-        with open(os.path.join(eval_dir, "paper_point_metrics.json"), "w") as f:
+        with open(os.path.join(out_dir, "paper_point_metrics.json"), "w") as f:
             json.dump(pm, f, indent=2)
 
-        rec.set_accuracy({"map30": ap30, "mar30": ar30,
-                          "ap": pm["detection"]["ap"] * 100,
-                          "f1": pm["detection"]["f1_at_t_star"] * 100,
-                          "recall": pm["detection"]["recall_at_t_star"] * 100,
-                          "precision": pm["detection"]["precision_at_t_star"] * 100,
-                          "mae": pm["counting"]["mae"], "rmse": pm["counting"]["rmse"]})
-        with open(test_json) as f:
-            _n_test = len(json.load(f)["images"])
-        rec.finish_evaluation(duration_s=t.seconds, n_images=_n_test,
-                              n_detections=len(coco_results), peak_gpu_mb=t.peak_gpu_mb)
-        rec.set_outputs(eval_results=os.path.join(eval_dir, "eval_results.txt"),
-                        point_metrics=os.path.join(eval_dir, "paper_point_metrics.json")).save()
+        if rec is not None:
+            rec.set_accuracy({"map30": ap30, "mar30": ar30,
+                              "ap": pm["detection"]["ap"] * 100,
+                              "f1": pm["detection"]["f1_at_t_star"] * 100,
+                              "recall": pm["detection"]["recall_at_t_star"] * 100,
+                              "precision": pm["detection"]["precision_at_t_star"] * 100,
+                              "mae": pm["counting"]["mae"], "rmse": pm["counting"]["rmse"]})
+            with open(test_json) as f:
+                _n_test = len(json.load(f)["images"])
+            rec.finish_evaluation(duration_s=t.seconds, n_images=_n_test,
+                                  n_detections=len(coco_results), peak_gpu_mb=t.peak_gpu_mb)
+            rec.set_outputs(eval_results=os.path.join(eval_dir, "eval_results.txt"),
+                            point_metrics=os.path.join(eval_dir, "paper_point_metrics.json")).save()
 
-        text = write_eval_txt(os.path.join(eval_dir, "eval_results.txt"),
+        text = write_eval_txt(os.path.join(out_dir, "eval_results.txt"),
                               [format_map30_block(ap30, ar30), format_report(pm, label)])
         print("\n" + text)
-        print(f"\nSaved results to {os.path.join(eval_dir, 'eval_results.txt')}")
+        print(f"\nSaved results to {os.path.join(out_dir, 'eval_results.txt')}")
 
         if args.examples > 0:
             print(f"\nSaving {args.examples} example images...")
-            _save_examples(model, eval_dir=eval_dir, n=args.examples)
+            _save_examples(model, eval_dir=out_dir, n=args.examples)
 
 
 if __name__ == "__main__":

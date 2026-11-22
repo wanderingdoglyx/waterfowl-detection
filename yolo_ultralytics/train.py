@@ -35,7 +35,8 @@ from yolov5.dataset import build_yolo_dataset
 
 
 def train(model_key: str, run_dir: str, data_yaml: str | None = None,
-          pretrained: bool = True, epochs: int | None = None) -> str:
+          pretrained: bool = True, epochs: int | None = None,
+          init_from: str | None = None) -> str:
     """
     Build and run an Ultralytics training session for YOLO11 or YOLO26.
 
@@ -47,6 +48,8 @@ def train(model_key: str, run_dir: str, data_yaml: str | None = None,
                     mirror YOLOv5 uses, so no data is duplicated.
         pretrained: initialise from COCO-pretrained weights.
         epochs    : override the epoch cap (default: config.NUM_EPOCHS).
+        init_from : start from this checkpoint instead (an earlier run's best.pt, say) —
+                    its weights only; Ultralytics starts a fresh optimiser and schedule.
 
     Returns:
         Path to the best checkpoint (run_dir/weights/best.pt).
@@ -62,7 +65,7 @@ def train(model_key: str, run_dir: str, data_yaml: str | None = None,
     # Ultralytics auto-downloads "<model>.pt" (COCO-pretrained) from its GitHub
     # release assets; passing the bare ".yaml" arch instead trains from scratch.
     weights = f"{spec['weights']}.pt" if pretrained else f"{spec['weights']}.yaml"
-    model = YOLO(weights)
+    model = YOLO(init_from or weights)
 
     model.train(
         data=data_yaml,

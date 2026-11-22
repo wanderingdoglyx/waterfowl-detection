@@ -29,8 +29,10 @@ from pycocotools.cocoeval import COCOeval
 import data_prep.config as config
 
 
-def coco_map30(coco_gt_path: str, coco_results: list) -> tuple[float, float]:
-    """(AP30, AR30) as percentages — same extraction as yolov5/evaluate.py (IoU=0.30)."""
+def coco_map30(coco_gt_path: str, coco_results: list,
+               max_dets: int = config.MAX_DETECTIONS_PER_IMAGE) -> tuple[float, float]:
+    """(AP30, AR30) as percentages — same extraction and detection budget as
+    yolov5/evaluate.py (IoU=0.30, `max_dets` per image instead of COCOeval's 100)."""
     with open(os.devnull, "w") as devnull, redirect_stdout(devnull):
         coco_gt = COCO(coco_gt_path)
 
@@ -41,6 +43,7 @@ def coco_map30(coco_gt_path: str, coco_results: list) -> tuple[float, float]:
         coco_dt = coco_gt.loadRes(coco_results)
         coco_eval = COCOeval(coco_gt, coco_dt, "bbox")
         coco_eval.params.iouThrs = np.array([config.IOU_THRESHOLD_MAP])
+        coco_eval.params.maxDets = [1, 10, max_dets]
         coco_eval.evaluate()
         coco_eval.accumulate()
 

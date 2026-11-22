@@ -1,0 +1,153 @@
+model,decoy_type,altitude_m,n,recall_obs,recall_pred,size_pred_px,size_obs_px
+yolov5,american widgeon female,15,125,99.2,97.82,88.56,87.12
+yolov5,american widgeon female,30,31,100,91.28,44.73,44.54
+yolov5,american widgeon female,60,23,95.65,94.23,23.24,22.8
+yolov5,american widgeon male,15,109,94.5,97.94,90.2,88.54
+yolov5,american widgeon male,30,39,94.87,91.46,45.54,45.83
+yolov5,american widgeon male,60,44,90.91,94.13,23.63,22.65
+yolov5,american widgeon male,90,16,100,92.07,16.66,19.71
+yolov5,gadwall,15,207,98.07,97.66,86.01,83.99
+yolov5,gadwall,30,63,96.83,91.2,43.47,43.24
+yolov5,gadwall,60,63,90.48,94.27,22.63,22.05
+yolov5,gadwall,90,17,100,91.24,16.04,16.25
+yolov5,green winged teal,15,256,96.88,95.69,68.83,69.3
+yolov5,green winged teal,30,59,89.83,91.34,34.99,33.63
+yolov5,green winged teal,60,71,91.55,93.65,18.6,17.15
+yolov5,green winged teal,90,97,86.6,84.28,13.54,13
+yolov5,mallard female,15,118,94.07,98.54,99.51,97.38
+yolov5,mallard female,30,34,97.06,92.24,50.15,48.72
+yolov5,mallard female,60,33,96.97,93.6,25.86,24.82
+yolov5,mallard female,90,19,89.47,93.63,18.08,18.97
+yolov5,mallard male,15,110,96.36,98.62,102.3,99.79
+yolov5,mallard male,30,39,94.87,92.48,51.55,51.21
+yolov5,mallard male,60,68,85.29,93.42,26.54,25.89
+yolov5,mallard male,90,67,94.03,93.76,18.51,19.34
+yolov5,pintail female,15,105,93.33,98.42,99.72,95.1
+yolov5,pintail female,30,32,90.62,92.06,50.26,46.62
+yolov5,pintail female,60,19,89.47,93.73,25.91,23.69
+yolov5,pintail male,15,110,98.18,98.5,100,98.35
+yolov5,pintail male,30,42,100,92.28,50.4,48.55
+yolov5,pintail male,60,46,93.48,93.56,25.98,24.32
+yolov5,pintail male,90,42,97.62,93.43,18.15,19.58
+yolov5,shoveler female,15,110,95.45,97.95,89.9,88.73
+yolov5,shoveler female,30,46,97.83,91.48,45.39,46.53
+yolov5,shoveler female,60,29,86.21,94.09,23.56,22.2
+yolov5,shoveler female,90,19,89.47,92.09,16.62,18.71
+yolov5,shoveler male,15,115,97.39,97.84,89.41,87.77
+yolov5,shoveler male,30,45,91.11,91.38,45.15,44.9
+yolov5,shoveler male,60,62,87.1,94.18,23.44,22.62
+yolov5,shoveler male,90,72,93.06,91.77,16.54,17.96
+yolo11,american widgeon female,15,125,99.2,98.07,88.56,87.12
+yolo11,american widgeon female,30,31,100,91.2,44.73,44.54
+yolo11,american widgeon female,60,23,82.61,93.73,23.24,22.8
+yolo11,american widgeon male,15,109,95.41,98.18,90.2,88.54
+yolo11,american widgeon male,30,39,97.44,91.4,45.54,45.83
+yolo11,american widgeon male,60,44,90.91,93.63,23.63,22.65
+yolo11,american widgeon male,90,16,100,92.14,16.66,19.71
+yolo11,gadwall,15,207,98.07,97.91,86.01,83.99
+yolo11,gadwall,30,63,96.83,91.09,43.47,43.24
+yolo11,gadwall,60,63,90.48,93.76,22.63,22.05
+yolo11,gadwall,90,17,100,91.42,16.04,16.25
+yolo11,green winged teal,15,256,96.48,95.96,68.83,69.3
+yolo11,green winged teal,30,59,89.83,91,34.99,33.63
+yolo11,green winged teal,60,71,90.14,93.39,18.6,17.15
+yolo11,green winged teal,90,97,89.69,84.91,13.54,13
+yolo11,mallard female,15,118,94.07,98.74,99.51,97.38
+yolo11,mallard female,30,34,97.06,92.32,50.15,48.72
+yolo11,mallard female,60,33,96.97,93.11,25.86,24.82
+yolo11,mallard female,90,19,89.47,93.41,18.08,18.97
+yolo11,mallard male,15,110,96.36,98.82,102.3,99.79
+yolo11,mallard male,30,39,94.87,92.58,51.55,51.21
+yolo11,mallard male,60,68,85.29,92.94,26.54,25.89
+yolo11,mallard male,90,67,94.03,93.5,18.51,19.34
+yolo11,pintail female,15,105,94.29,98.64,99.72,95.1
+yolo11,pintail female,30,32,90.62,92.12,50.26,46.62
+yolo11,pintail female,60,19,73.68,93.25,25.91,23.69
+yolo11,pintail male,15,110,99.09,98.7,100,98.35
+yolo11,pintail male,30,42,100,92.36,50.4,48.55
+yolo11,pintail male,60,46,89.13,93.07,25.98,24.32
+yolo11,pintail male,90,42,90.48,93.22,18.15,19.58
+yolo11,shoveler female,15,110,95.45,98.19,89.9,88.73
+yolo11,shoveler female,30,46,95.65,91.43,45.39,46.53
+yolo11,shoveler female,60,29,86.21,93.59,23.56,22.2
+yolo11,shoveler female,90,19,84.21,92.15,16.62,18.71
+yolo11,shoveler male,15,115,97.39,98.09,89.41,87.77
+yolo11,shoveler male,30,45,93.33,91.31,45.15,44.9
+yolo11,shoveler male,60,62,88.71,93.68,23.44,22.62
+yolo11,shoveler male,90,72,90.28,91.87,16.54,17.96
+fasterrcnn,american widgeon female,15,125,96.8,95.96,88.56,87.12
+fasterrcnn,american widgeon female,30,31,90.32,93.64,44.73,44.54
+fasterrcnn,american widgeon female,60,23,78.26,90.25,23.24,22.8
+fasterrcnn,american widgeon male,15,109,95.41,95.99,90.2,88.54
+fasterrcnn,american widgeon male,30,39,92.31,93.75,45.54,45.83
+fasterrcnn,american widgeon male,60,44,90.91,90.35,23.63,22.65
+fasterrcnn,american widgeon male,90,16,93.75,85.48,16.66,19.71
+fasterrcnn,gadwall,15,207,99.03,95.92,86.01,83.99
+fasterrcnn,gadwall,30,63,88.89,93.51,43.47,43.24
+fasterrcnn,gadwall,60,63,87.3,90.35,22.63,22.05
+fasterrcnn,gadwall,90,17,94.12,83.81,16.04,16.25
+fasterrcnn,green winged teal,15,256,96.48,95.42,68.83,69.3
+fasterrcnn,green winged teal,30,59,79.66,92.1,34.99,33.63
+fasterrcnn,green winged teal,60,71,87.32,88.83,18.6,17.15
+fasterrcnn,green winged teal,90,97,79.38,71.2,13.54,13
+fasterrcnn,mallard female,15,118,98.31,96.15,99.51,97.38
+fasterrcnn,mallard female,30,34,97.06,94.29,50.15,48.72
+fasterrcnn,mallard female,60,33,96.97,90.39,25.86,24.82
+fasterrcnn,mallard female,90,19,89.47,88.76,18.08,18.97
+fasterrcnn,mallard male,15,110,96.36,96.18,102.3,99.79
+fasterrcnn,mallard male,30,39,97.44,94.39,51.55,51.21
+fasterrcnn,mallard male,60,68,82.35,90.47,26.54,25.89
+fasterrcnn,mallard male,90,67,94.03,89.03,18.51,19.34
+fasterrcnn,pintail female,15,105,95.24,96.12,99.72,95.1
+fasterrcnn,pintail female,30,32,75,94.19,50.26,46.62
+fasterrcnn,pintail female,60,19,68.42,90.35,25.91,23.69
+fasterrcnn,pintail male,15,110,98.18,96.14,100,98.35
+fasterrcnn,pintail male,30,42,97.62,94.27,50.4,48.55
+fasterrcnn,pintail male,60,46,93.48,90.48,25.98,24.32
+fasterrcnn,pintail male,90,42,92.86,88.41,18.15,19.58
+fasterrcnn,shoveler female,15,110,94.55,95.99,89.9,88.73
+fasterrcnn,shoveler female,30,46,91.3,93.77,45.39,46.53
+fasterrcnn,shoveler female,60,29,86.21,90.34,23.56,22.2
+fasterrcnn,shoveler female,90,19,94.74,85.51,16.62,18.71
+fasterrcnn,shoveler male,15,115,99.13,95.96,89.41,87.77
+fasterrcnn,shoveler male,30,45,93.33,93.67,45.15,44.9
+fasterrcnn,shoveler male,60,62,83.87,90.37,23.44,22.62
+fasterrcnn,shoveler male,90,72,87.5,84.9,16.54,17.96
+mdo_owl_t,american widgeon female,15,125,92.8,90.63,88.56,87.12
+mdo_owl_t,american widgeon female,30,31,96.77,87.09,44.73,44.54
+mdo_owl_t,american widgeon female,60,23,86.96,91.22,23.24,22.8
+mdo_owl_t,american widgeon male,15,109,94.5,90.79,90.2,88.54
+mdo_owl_t,american widgeon male,30,39,89.74,87.12,45.54,45.83
+mdo_owl_t,american widgeon male,60,44,88.64,91.11,23.63,22.65
+mdo_owl_t,american widgeon male,90,16,75,89.43,16.66,19.71
+mdo_owl_t,gadwall,15,207,93.72,90.46,86.01,83.99
+mdo_owl_t,gadwall,30,63,87.3,87.14,43.47,43.24
+mdo_owl_t,gadwall,60,63,88.89,91.3,22.63,22.05
+mdo_owl_t,gadwall,90,17,94.12,88.7,16.04,16.25
+mdo_owl_t,green winged teal,15,256,92.19,88.85,68.83,69.3
+mdo_owl_t,green winged teal,30,59,72.88,88.09,34.99,33.63
+mdo_owl_t,green winged teal,60,71,91.55,90.88,18.6,17.15
+mdo_owl_t,green winged teal,90,97,75.26,82.96,13.54,13
+mdo_owl_t,mallard female,15,118,87.29,91.55,99.51,97.38
+mdo_owl_t,mallard female,30,34,97.06,87.19,50.15,48.72
+mdo_owl_t,mallard female,60,33,96.97,90.51,25.86,24.82
+mdo_owl_t,mallard female,90,19,89.47,90.86,18.08,18.97
+mdo_owl_t,mallard male,15,110,91.82,91.7,102.3,99.79
+mdo_owl_t,mallard male,30,39,89.74,87.27,51.55,51.21
+mdo_owl_t,mallard male,60,68,82.35,90.33,26.54,25.89
+mdo_owl_t,mallard male,90,67,91.04,90.98,18.51,19.34
+mdo_owl_t,pintail female,15,105,82.86,91.4,99.72,95.1
+mdo_owl_t,pintail female,30,32,75,87.15,50.26,46.62
+mdo_owl_t,pintail female,60,19,100,90.65,25.91,23.69
+mdo_owl_t,pintail male,15,110,91.82,91.53,100,98.35
+mdo_owl_t,pintail male,30,42,92.86,87.24,50.4,48.55
+mdo_owl_t,pintail male,60,46,89.13,90.49,25.98,24.32
+mdo_owl_t,pintail male,90,42,85.71,90.7,18.15,19.58
+mdo_owl_t,shoveler female,15,110,79.09,90.8,89.9,88.73
+mdo_owl_t,shoveler female,30,46,91.3,87.12,45.39,46.53
+mdo_owl_t,shoveler female,60,29,86.21,91.08,23.56,22.2
+mdo_owl_t,shoveler female,90,19,78.95,89.44,16.62,18.71
+mdo_owl_t,shoveler male,15,115,95.65,90.68,89.41,87.77
+mdo_owl_t,shoveler male,30,45,84.44,87.13,45.15,44.9
+mdo_owl_t,shoveler male,60,62,85.48,91.18,23.44,22.62
+mdo_owl_t,shoveler male,90,72,93.06,89.18,16.54,17.96

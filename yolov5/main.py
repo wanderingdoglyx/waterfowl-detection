@@ -142,11 +142,28 @@ def main() -> None:
                         help="Run timestamp to evaluate (default: latest)")
     parser.add_argument("--examples", type=int, default=40, metavar="N",
                         help="Number of example images to save during --eval (default: 40, 0 to skip)")
+    parser.add_argument("--init-from", default=None, metavar="CHECKPOINT",
+                        help="--train: start from these weights (e.g. an earlier run's "
+                             "weights/best.pt) instead of the COCO-pretrained ones. A new run "
+                             "folder, a fresh optimiser and schedule; only the weights carry over")
+    parser.add_argument("--checkpoint", choices=["best", "last"], default="best",
+                        help="--eval: which weights of the run to score — best (default, "
+                             "weights/best.pt) or last (weights/last.pt). 'last' writes its "
+                             "results to <run>/eval_last/ and leaves the run's own scores untouched")
     args = parser.parse_args()
 
     if not (args.prepare or args.train or args.eval):
         parser.print_help()
         return
+    if args.init_from and not os.path.isfile(args.init_from):
+        print(f"--init-from: {args.init_from} is not a file")
+        return
+
+    # The data this run uses is whatever `config.DATASET_FOLDER` names (default
+    # dataset_full).  This makes it ready — filtering or tiling only if the folder
+    # changed — and points the paths below at it.  Nothing else to run.
+    from pipeline.auto import ensure_data
+    ensure_data(mirror="yolo")
 
     # ── 1. Data preparation ────────────────────────────────────────────────────
     if args.prepare:
@@ -185,6 +202,8 @@ def main() -> None:
             "n_val":     counts.get("val", 0),
             "n_test":    counts.get("test", 0),
         }
+        if args.init_from:
+            run_info["init_from"] = os.path.abspath(args.init_from)
         with open(os.path.join(run_dir, "run_info.json"), "w") as f:
             json.dump(run_info, f, indent=2)
 
@@ -192,18 +211,26 @@ def main() -> None:
               f"| Max epochs: {config.NUM_EPOCHS}  "
               f"| Early-stop patience: {config.EARLY_STOP_PATIENCE}")
 
-        from data_prep.experiment_record import ExperimentRecord, Timer
+        from data_prep.experiment_record import (ExperimentRecord, Timer,
+                                                 epochs_from_results_csv)
 
         rec = ExperimentRecord(run_dir, model="yolov5", label="YOLOv5", family="ultralytics")
-        rec.set_pretrained(config.YOLOV5_MODEL)
+        rec.set_pretrained(os.path.abspath(args.init_from) if args.init_from
+                           else config.YOLOV5_MODEL)
         rec.set_training({"epochs": config.NUM_EPOCHS, "patience": config.EARLY_STOP_PATIENCE,
                           "batch": config.YOLOV5_BATCH_SIZE, "lr0": config.YOLOV5_LR,
                           "optimizer": "Adam", "imgsz": config.CROP_SIZE,
                           "seed": config.RANDOM_SEED})
+        if args.init_from:
+            print(f"Starting from: {os.path.abspath(args.init_from)}")
         with Timer() as _t:
-            ckpt = run_training(run_dir, data_yaml=data_yaml)
+            ckpt = run_training(run_dir, data_yaml=data_yaml,
+                                init_from=os.path.abspath(args.init_from) if args.init_from
+                                else None)
+        # One results.csv row per epoch — the real count, not the configured cap.
         rec.finish_training(checkpoint=ckpt, duration_s=_t.seconds,
-                            epochs_completed=config.NUM_EPOCHS, peak_gpu_mb=_t.peak_gpu_mb)
+                            epochs_completed=epochs_from_results_csv(run_dir),
+                            peak_gpu_mb=_t.peak_gpu_mb)
         print(f"Best checkpoint: {ckpt}")
 
     # ── 3. Evaluation on the test set (mAP30) ──────────────────────────────────
@@ -220,8 +247,14 @@ def main() -> None:
             return
 
         best_ckpt = os.path.join(eval_dir, "weights", "best.pt")
-        ckpt = best_ckpt if os.path.exists(best_ckpt) \
-            else os.path.join(eval_dir, "weights", "last.pt")
+        last_ckpt = os.path.join(eval_dir, "weights", "last.pt")
+        if args.checkpoint == "best":
+            ckpt = best_ckpt if os.path.exists(best_ckpt) else last_ckpt
+            out_dir = eval_dir
+        else:
+            ckpt = last_ckpt if os.path.exists(last_ckpt) else best_ckpt
+            out_dir = os.path.join(eval_dir, "eval_last")
+            os.makedirs(out_dir, exist_ok=True)
         if not os.path.exists(ckpt):
             print(f"No checkpoint found in {eval_dir}. Run --train first.")
             return
@@ -252,16 +285,16 @@ def main() -> None:
             gt_points_from_coco(test_json), dets_from_coco_results(coco_results),
             tau=config.PAPER_TAU, bootstrap=config.PAPER_BOOTSTRAP,
         )
-        with open(os.path.join(eval_dir, "paper_point_metrics.json"), "w") as f:
+        with open(os.path.join(out_dir, "paper_point_metrics.json"), "w") as f:
             json.dump(pm, f, indent=2)
-        text = write_eval_txt(os.path.join(eval_dir, "eval_results.txt"),
+        text = write_eval_txt(os.path.join(out_dir, "eval_results.txt"),
                               [format_map30_block(ap30, ar30), format_report(pm, "YOLOv5")])
         print("\n" + text)
-        print(f"\nSaved results to {os.path.join(eval_dir, 'eval_results.txt')}")
+        print(f"\nSaved results to {os.path.join(out_dir, 'eval_results.txt')}")
 
         if args.examples > 0:
             print(f"\nSaving {args.examples} example images...")
-            _save_examples(model, eval_dir=eval_dir, n=args.examples)
+            _save_examples(model, eval_dir=out_dir, n=args.examples)
 
 
 if __name__ == "__main__":

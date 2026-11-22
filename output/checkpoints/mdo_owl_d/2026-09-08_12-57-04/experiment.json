@@ -1,0 +1,175 @@
+{
+  "experiment_id": "OWLD_H__2026-09-08_12-57-04",
+  "created_utc": "2026-09-08T17:57:04+00:00",
+  "updated_utc": "2026-10-09T06:13:04+00:00",
+  "model": {
+    "key": "OWLD_H",
+    "label": "OWLD_H",
+    "family": "animaloc/OWL"
+  },
+  "code": {
+    "git_commit": "742b7fab6f9b0c6987dd2722a3136d74e42b2c67",
+    "git_commit_short": "742b7fa",
+    "git_branch": "main",
+    "git_dirty": true,
+    "git_dirty_files": 27,
+    "python": "3.14.6",
+    "libraries": {
+      "torch": null,
+      "ultralytics": null,
+      "super_gradients": null,
+      "detectron2": null,
+      "numpy": "2.4.6",
+      "cv2": null,
+      "pycocotools": null
+    }
+  },
+  "hardware": {
+    "hostname": "dslsrv4.eecs.missouri.edu",
+    "platform": "Linux-6.8.0-138-generic-x86_64-with-glibc2.39",
+    "cpu_count": 72,
+    "ram_gb": 187.5,
+    "gpus": [
+      {
+        "name": "Tesla PG500-216",
+        "memory_gb": 32.0,
+        "capability": "7.0"
+      }
+    ],
+    "gpu_source": "nvidia-smi (torch unavailable in this interpreter)",
+    "cuda": null,
+    "nvidia_driver": "565.57.01"
+  },
+  "dataset": {
+    "version": "full",
+    "root": "/home/zygfd/waterflow/rebuild/dataset_full",
+    "crop_size": 512,
+    "crop_overlap": 0.2,
+    "random_seed": 42,
+    "val_fraction": 0.25,
+    "splits": {
+      "train": {
+        "path": "/home/zygfd/waterflow/rebuild/output/crops_json/train/coco.json",
+        "sha256": "22e6d8841451d39f0bb33dcc414bac076682ca4cf34bac84302e5b30603ca7e0",
+        "images": 82827,
+        "annotations": 241730
+      },
+      "val": {
+        "path": "/home/zygfd/waterflow/rebuild/output/crops_json/val/coco.json",
+        "sha256": "541c5507f12f53fa1c35667e544f795098a6556787e57e52149d498e68b3944e",
+        "images": 27771,
+        "annotations": 89422
+      },
+      "test": {
+        "path": "/home/zygfd/waterflow/rebuild/output/crops_json/test/coco.json",
+        "sha256": "ba86397601c5f4e02b9838bbb56ec19e852e219b915d8d170c2d62f937b329dd",
+        "images": 28588,
+        "annotations": 89884
+      }
+    }
+  },
+  "inference": {
+    "score_threshold": 0.05,
+    "max_detections_per_image": 500,
+    "map_iou_threshold": 0.3,
+    "point_match_tau_px": 40,
+    "bootstrap_resamples": 1000
+  },
+  "outputs": {
+    "run_dir": "/home/zygfd/waterfowl/detection/output/checkpoints/mdo_owl_d/2026-09-08_12-57-04",
+    "checkpoint": "/home/zygfd/waterfowl/detection/output/checkpoints/mdo_owl_d/2026-09-08_12-57-04/weights/best.pth"
+  },
+  "pretrained": {
+    "weights": "/home/zygfd/waterfowl/detection/third_party/MegaDetector-Overhead/weights/OWL-D.pth",
+    "sha256": "bd5fc7d5bb02b66a3b0c1782d3a572b14a6a877c5dceb95199cb0cbe38a30b7c~first64MB"
+  },
+  "training": {
+    "config": {
+      "epochs": 100,
+      "batch": 8,
+      "lr": 0.0005,
+      "optimizer": "Adam",
+      "auto_lr": true,
+      "down_ratio": 2,
+      "seed": 42
+    },
+    "completed_utc": "2026-10-09T06:13:04+00:00",
+    "epochs_completed": null,
+    "best_epoch": 98,
+    "checkpoint_sha256": "521e3b3ab2cdfc72cc5713da7a5dc29c20f2385a2d169d43889a36a2754abc93~first64MB"
+  },
+  "reopened_context": {
+    "code": {
+      "git_commit": "742b7fab6f9b0c6987dd2722a3136d74e42b2c67",
+      "git_commit_short": "742b7fa",
+      "git_branch": "main",
+      "git_dirty": true,
+      "git_dirty_files": 44,
+      "python": "3.10.21",
+      "libraries": {
+        "torch": "2.1.2+cu121",
+        "ultralytics": "8.4.82",
+        "super_gradients": "3.7.1",
+        "detectron2": "0.6",
+        "numpy": "1.23.0",
+        "cv2": "4.11.0",
+        "pycocotools": "unknown"
+      }
+    },
+    "captured_utc": "2026-09-30T16:56:06+00:00",
+    "hardware": {
+      "hostname": "dslsrv4.eecs.missouri.edu",
+      "platform": "Linux-6.8.0-142-generic-x86_64-with-glibc2.39",
+      "cpu_count": 72,
+      "ram_gb": 187.5,
+      "gpus": [
+        {
+          "name": "Tesla PG500-216",
+          "memory_gb": 31.7,
+          "capability": "7.0"
+        },
+        {
+          "name": "Tesla PG500-216",
+          "memory_gb": 31.7,
+          "capability": "7.0"
+        }
+      ],
+      "gpu_source": "torch",
+      "cuda": "12.1",
+      "nvidia_driver": "565.57.01\n565.57.01"
+    },
+    "dataset": {
+      "version": "full",
+      "root": "/home/zygfd/waterfowl/detection/dataset_full",
+      "crop_size": 512,
+      "crop_overlap": 0.2,
+      "random_seed": 42,
+      "val_fraction": 0.25,
+      "experiment": null,
+      "splits": {
+        "train": {
+          "path": "/home/zygfd/waterfowl/detection/output/crops_json/train/coco.json",
+          "sha256": "22e6d8841451d39f0bb33dcc414bac076682ca4cf34bac84302e5b30603ca7e0",
+          "images": 82827,
+          "annotations": 241730
+        },
+        "val": {
+          "path": "/home/zygfd/waterfowl/detection/output/crops_json/val/coco.json",
+          "sha256": "541c5507f12f53fa1c35667e544f795098a6556787e57e52149d498e68b3944e",
+          "images": 27771,
+          "annotations": 89422
+        },
+        "test": {
+          "path": "/home/zygfd/waterfowl/detection/output/crops_json/test/coco.json",
+          "sha256": "ba86397601c5f4e02b9838bbb56ec19e852e219b915d8d170c2d62f937b329dd",
+          "images": 28588,
+          "annotations": 89884
+        }
+      }
+    }
+  },
+  "metrics_efficiency": {
+    "train_seconds": 738997.64,
+    "train_peak_gpu_mb": 0.0
+  }
+}

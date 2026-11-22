@@ -1,0 +1,7 @@
+{
+  "timestamp": "2026-08-27_00-57-30",
+  "model": "yolov5mu",
+  "n_train": 82827,
+  "n_val": 27771,
+  "n_test": 28588
+}

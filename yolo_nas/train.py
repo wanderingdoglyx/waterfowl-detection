@@ -43,7 +43,8 @@ def find_checkpoint(run_dir: str, name: str = "ckpt_best.pth") -> str | None:
     return None
 
 
-def train(run_dir: str, train_loader, val_loader, pretrained: bool = True) -> str:
+def train(run_dir: str, train_loader, val_loader, pretrained: bool = True,
+          init_from: str | None = None) -> str:
     """
     Build and run a YOLO-NAS training session.
 
@@ -55,15 +56,23 @@ def train(run_dir: str, train_loader, val_loader, pretrained: bool = True) -> st
         train_loader : DataLoader from yolo_nas.dataset.build_dataloaders()["train"]
         val_loader   : …["val"]
         pretrained   : initialise from COCO-pretrained weights.
+        init_from    : start from this checkpoint instead (an earlier run's ckpt_best.pth,
+                       say) — its weights only; the optimiser and schedule start afresh.
 
     Returns:
         Path to the best checkpoint (run_dir/ckpt_best.pth).
     """
+    from super_gradients.training import models
+
     ckpt_root   = os.path.dirname(run_dir)
     experiment  = os.path.basename(run_dir)
 
     trainer = Trainer(experiment_name=experiment, ckpt_root_dir=ckpt_root)
-    model   = build_model(num_classes=NUM_CLASSES, pretrained=pretrained)
+    if init_from:
+        model = models.get(config.YOLONAS_MODEL, num_classes=NUM_CLASSES,
+                           checkpoint_path=init_from)
+    else:
+        model = build_model(num_classes=NUM_CLASSES, pretrained=pretrained)
     params  = build_training_params(num_classes=NUM_CLASSES)
 
     trainer.train(

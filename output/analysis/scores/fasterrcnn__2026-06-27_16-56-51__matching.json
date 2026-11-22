@@ -1,0 +1,12 @@
+{
+  "t_star": 0.5706299403134515,
+  "tau": 40.0,
+  "n_gt": 89884,
+  "false_alarms": 11499,
+  "swaps": 221,
+  "tp_greedy": 77175,
+  "tp_optimal": 77295,
+  "tp_lost": 120,
+  "recall_greedy": 85.8606648569267,
+  "recall_optimal": 85.99417026389568
+}

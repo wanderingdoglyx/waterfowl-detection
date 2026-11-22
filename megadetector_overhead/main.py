@@ -227,12 +227,33 @@ def main() -> None:
                         help="Run timestamp to evaluate (default: latest)")
     parser.add_argument("--epochs", type=int, default=None,
                         help="Override number of training epochs (default: config.MDO_EPOCHS)")
+    parser.add_argument("--resume", nargs="?", const="latest", default=None, metavar="TIMESTAMP",
+                        help="Continue --train inside an existing run directory instead of "
+                             "starting a new one: bare --resume takes the newest run for "
+                             "--model, or give a run timestamp. Picks up from that run's "
+                             "latest_model.pth at the following epoch, restoring the optimizer "
+                             "state and best-so-far score.")
     parser.add_argument("--examples", type=int, default=40, metavar="N",
                         help="Example panels to save during --eval (default: 40, 0 to skip)")
+    parser.add_argument("--init-from", default=None, metavar="CHECKPOINT",
+                        help="--train: start a new run from these weights (e.g. an earlier "
+                             "run's weights/best.pth) instead of the released checkpoint. A "
+                             "fresh optimiser and schedule; only the weights carry over")
+    parser.add_argument("--checkpoint", choices=["best", "last"], default="best",
+                        help="--eval: which weights of the run to score — best (default, "
+                             "weights/best.pth, or best_model.pth for a run that has not "
+                             "finished) or last (latest_model.pth). 'last' writes to "
+                             "<run>/eval_last/ and leaves the run's own scores untouched")
     args = parser.parse_args()
 
     if not (args.prepare or args.train or args.eval or args.fetch_weights):
         parser.print_help()
+        return
+    if args.init_from and not os.path.isfile(args.init_from):
+        print(f"--init-from: {args.init_from} is not a file")
+        return
+    if args.init_from and args.resume:
+        print("--init-from starts a new run and --resume continues one; use one or the other.")
         return
 
     model_spec = config.mdo_model_spec(args.model)
@@ -277,7 +298,7 @@ def main() -> None:
 
         # Each variant fine-tunes from its released Zenodo checkpoint; fail early (with the
         # exact fetch command) if it hasn't been downloaded yet.
-        needed = model_spec.get("requires_weights")
+        needed = None if args.init_from else model_spec.get("requires_weights")
         if needed and not os.path.exists(needed):
             print(f"Model {model_spec['name']} needs its start checkpoint, which is missing:")
             print(f"  {needed}")
@@ -285,9 +306,32 @@ def main() -> None:
                   f"--model {args.model}")
             return
 
-        run_dir = make_run_dir(ckpt_dir)
-        print(f"Run directory: {run_dir}")
-        start_from = model_spec.get("load_from")
+        from data_prep.experiment_record import epoch_from_checkpoint as _ckpt_epoch
+
+        resume_from, resume_epoch = None, None
+        if args.resume:
+            run_dir = (latest_run_dir(ckpt_dir) if args.resume == "latest"
+                       else os.path.join(ckpt_dir, args.resume))
+            if not run_dir or not os.path.isdir(run_dir):
+                print(f"Cannot resume: no run directory for '{args.resume}' under {ckpt_dir}")
+                return
+            resume_from = os.path.join(run_dir, "latest_model.pth")
+            if not os.path.exists(resume_from):
+                print(f"Cannot resume: {resume_from} is missing.")
+                return
+            resume_epoch = _ckpt_epoch(resume_from)
+            if resume_epoch is None:
+                print(f"Cannot resume: {resume_from} records no epoch.")
+                return
+            print(f"Resuming run: {run_dir}")
+            print(f"  from latest_model.pth (epoch {resume_epoch} done) "
+                  f"-> continuing at epoch {resume_epoch + 1}")
+        else:
+            run_dir = make_run_dir(ckpt_dir)
+            print(f"Run directory: {run_dir}")
+
+        start_from = os.path.abspath(args.init_from) if args.init_from \
+            else model_spec.get("load_from")
         run_info = {
             "timestamp": os.path.basename(run_dir),
             "model": model_spec["name"],
@@ -297,26 +341,56 @@ def main() -> None:
             "n_test": counts.get("test", 0),
             "epochs": args.epochs if args.epochs is not None else config.MDO_EPOCHS,
         }
+        if args.init_from:
+            run_info["init_from"] = start_from
+        if resume_from is not None:
+            # Keep an append-only trail: a run may be interrupted more than once, and the
+            # epoch each leg started from is what explains the gaps in the training log.
+            info_path = os.path.join(run_dir, "run_info.json")
+            prior = {}
+            if os.path.exists(info_path):
+                try:
+                    with open(info_path) as f:
+                        prior = json.load(f)
+                except Exception:
+                    prior = {}
+            run_info["timestamp"] = prior.get("timestamp", run_info["timestamp"])
+            if prior.get("init_from"):            # a resumed fine-tune keeps its lineage
+                run_info["init_from"] = prior["init_from"]
+                run_info["pretrained"] = prior.get("pretrained")
+            run_info["resumes"] = list(prior.get("resumes", [])) + [{
+                "at": datetime.now().strftime("%Y-%m-%d_%H-%M-%S"),
+                "from_checkpoint": os.path.basename(resume_from),
+                "epochs_done": resume_epoch,
+                "to_epoch": run_info["epochs"],
+            }]
         with open(os.path.join(run_dir, "run_info.json"), "w") as f:
             json.dump(run_info, f, indent=2)
 
         print(f"Training crops: {n_train}  | Model: {model_spec['name']}  "
-              f"| Epochs: {run_info['epochs']}  | Batch: {config.MDO_BATCH_SIZE}")
-        from data_prep.experiment_record import ExperimentRecord, Timer
+              f"| Epochs: {run_info['epochs']}"
+              + (f" (resuming at {resume_epoch + 1})" if resume_epoch is not None else "")
+              + f"  | Batch: {config.MDO_BATCH_SIZE}")
+        from data_prep.experiment_record import (ExperimentRecord, Timer,
+                                                 epoch_from_checkpoint)
 
         rec = ExperimentRecord(run_dir, model=args.model, label=model_spec["name"],
                                family="animaloc/OWL")
-        rec.set_pretrained(model_spec.get("load_from") or "")
+        rec.set_pretrained(start_from or "")
         rec.set_training({"epochs": args.epochs or config.MDO_EPOCHS,
                           "batch": config.MDO_BATCH_SIZE, "lr": config.MDO_LR,
                           "optimizer": "Adam", "auto_lr": True,
                           "down_ratio": config.MDO_DOWN_RATIO,
                           "seed": config.RANDOM_SEED})
         with Timer() as _t:
-            ckpt = run_training(run_dir, epochs=args.epochs, model_key=args.model)
+            ckpt = run_training(run_dir, epochs=args.epochs, model_key=args.model,
+                                resume_from=resume_from,
+                                init_from=start_from if args.init_from else None)
+        # animaloc reports no completed-epoch count, so that stays null rather than being
+        # filled with the cap; its checkpoint does record which epoch won.
         rec.finish_training(checkpoint=ckpt, duration_s=_t.seconds,
-                            epochs_completed=args.epochs or config.MDO_EPOCHS,
-                            peak_gpu_mb=_t.peak_gpu_mb)
+                            epochs_completed=None, peak_gpu_mb=_t.peak_gpu_mb,
+                            best_epoch=epoch_from_checkpoint(ckpt))
         print(f"Best checkpoint: {ckpt}")
 
     # ── 3. Evaluation on the test set ───────────────────────────────────────────
@@ -334,7 +408,16 @@ def main() -> None:
                   f"(for --model {args.model}).")
             return
 
-        ckpt = os.path.join(eval_dir, "weights", "best.pth")
+        best_ckpt = os.path.join(eval_dir, "weights", "best.pth")
+        if not os.path.exists(best_ckpt):      # a run whose training has not finished
+            best_ckpt = os.path.join(eval_dir, "best_model.pth")
+        if args.checkpoint == "best":
+            ckpt, eval_out_dir, examples_dir = best_ckpt, os.path.join(eval_dir, "eval"), eval_dir
+        else:
+            ckpt = os.path.join(eval_dir, "latest_model.pth")
+            if not os.path.exists(ckpt):
+                ckpt = best_ckpt
+            eval_out_dir = examples_dir = os.path.join(eval_dir, "eval_last")
         if not os.path.exists(ckpt):
             print(f"No checkpoint found in {eval_dir}. Run --train first.")
             return
@@ -347,7 +430,6 @@ def main() -> None:
         print(f"Evaluating run: {eval_dir}")
         print(f"Loading checkpoint: {ckpt}")
 
-        eval_out_dir = os.path.join(eval_dir, "eval")
         os.makedirs(eval_out_dir, exist_ok=True)
         owl_eval_json = os.path.join(eval_out_dir, "owl_eval.json")
 
@@ -382,7 +464,7 @@ def main() -> None:
 
         if args.examples > 0:
             print(f"\nSaving {args.examples} example images...")
-            _save_examples(owl_eval_json, eval_dir=eval_dir, n=args.examples)
+            _save_examples(owl_eval_json, eval_dir=examples_dir, n=args.examples)
 
 
 if __name__ == "__main__":

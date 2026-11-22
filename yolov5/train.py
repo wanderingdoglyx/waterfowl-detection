@@ -26,7 +26,8 @@ import data_prep.config as config
 from yolov5.dataset import build_yolo_dataset
 
 
-def train(run_dir: str, data_yaml: str | None = None, pretrained: bool = True) -> str:
+def train(run_dir: str, data_yaml: str | None = None, pretrained: bool = True,
+          init_from: str | None = None) -> str:
     """
     Build and run a YOLOv5 training session.
 
@@ -37,6 +38,8 @@ def train(run_dir: str, data_yaml: str | None = None, pretrained: bool = True) -
         data_yaml : path to the Ultralytics data.yaml.  If None, the YOLO-format
                     mirror is (re)built from the shared COCO crops.
         pretrained: initialise from COCO-pretrained weights.
+        init_from : start from this checkpoint instead (an earlier run's best.pt, say) —
+                    its weights only; Ultralytics starts a fresh optimiser and schedule.
 
     Returns:
         Path to the best checkpoint (run_dir/weights/best.pt).
@@ -50,7 +53,7 @@ def train(run_dir: str, data_yaml: str | None = None, pretrained: bool = True) -
     # Ultralytics auto-downloads "<model>.pt" (COCO-pretrained) from its GitHub
     # release assets; passing the bare ".yaml" arch instead trains from scratch.
     weights = f"{config.YOLOV5_MODEL}.pt" if pretrained else f"{config.YOLOV5_MODEL}.yaml"
-    model = YOLO(weights)
+    model = YOLO(init_from or weights)
 
     model.train(
         data=data_yaml,

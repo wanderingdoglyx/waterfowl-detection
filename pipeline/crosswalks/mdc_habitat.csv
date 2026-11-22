@@ -1,0 +1,17 @@
+raw,canonical,notes
+Trees,forest,Bird_H background_info column
+Wooded,forest,"Bird_H column and Bird_J file-name token; Bird_H uses both Trees and Wooded"
+StandingCorn,cropland,
+HarvestedCrop,cropland,
+WaterCorn,cropland,flooded corn
+MoistSoil,moist_soil,managed moist-soil unit
+OpenWater,open_water,
+Ice,open_water,"frozen open water; crops are ~4x denser than any other habitat, so report it separately as well"
+WaterVegetation,emergent_vegetation,
+WaterSubVeg,emergent_vegetation,
+WaterSubVege,emergent_vegetation,Bird_G spelling variant of WaterSubVeg
+Lotus,emergent_vegetation,
+ShrubScrub,emergent_vegetation,
+Land,bare_ground,
+Rocks,bare_ground,Bird_G only; absent from the test split
+Dense,,"describes bird density, not habitat: Bird_J puts it in the habitat token position"

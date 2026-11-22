@@ -17,6 +17,8 @@ from pycocotools.cocoeval import COCOeval
 from detectron2.evaluation import COCOEvaluator
 from detectron2.utils.logger import create_small_table
 
+import data_prep.config as config
+
 
 class MAP30Evaluator(COCOEvaluator):
     """Evaluates detections at IoU threshold = 0.30 (mAP30)."""
@@ -76,6 +78,9 @@ class MAP30Evaluator(COCOEvaluator):
 
         coco_eval = COCOeval(self._coco_api, coco_dt, "bbox")
         coco_eval.params.iouThrs = np.array([self._iou_thresh])
+        # COCOeval keeps only the top 100 detections per image by default, below the
+        # 422 birds in the densest crop; score up to the project-wide detection limit.
+        coco_eval.params.maxDets = [1, 10, config.MAX_DETECTIONS_PER_IMAGE]
         if img_ids is not None:
             coco_eval.params.imgIds = img_ids
 
@@ -89,7 +94,7 @@ class MAP30Evaluator(COCOEvaluator):
         #   T=1 (our single IoU thresh), R=101 recall pts,
         #   K=num_categories, A=4 area ranges, M=3 max-det levels
         # recall shape: [T, K, A, M]
-        # area index 0 = "all";  maxDets index 2 = 100 detections
+        # area index 0 = "all";  maxDets index 2 = MAX_DETECTIONS_PER_IMAGE
         precision = coco_eval.eval.get("precision")  # [1, 101, K, 4, 3]
         recall    = coco_eval.eval.get("recall")      # [1, K, 4, 3]
 

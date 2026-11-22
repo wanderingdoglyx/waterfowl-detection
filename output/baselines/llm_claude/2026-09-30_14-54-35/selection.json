@@ -1,0 +1,81 @@
+{
+  "seed": 42,
+  "strata": [
+    [
+      "41-100",
+      41,
+      100,
+      1
+    ],
+    [
+      "16-40",
+      16,
+      40,
+      2
+    ],
+    [
+      "6-15",
+      6,
+      15,
+      3
+    ],
+    [
+      "1-5",
+      1,
+      5,
+      4
+    ]
+  ],
+  "crops": [
+    {
+      "image_id": 12779,
+      "file_name": "Bird_D/D_G377_11Nov2016_0497_460_1380.JPG",
+      "stratum": "16-40"
+    },
+    {
+      "image_id": 2071,
+      "file_name": "Bird_A/A_70_2_1840_2760.JPG",
+      "stratum": "16-40"
+    },
+    {
+      "image_id": 14186,
+      "file_name": "Bird_F/F_DJI_0093_1380_1380.JPG",
+      "stratum": "1-5"
+    },
+    {
+      "image_id": 3219,
+      "file_name": "Bird_B/B_DJI_0123_1840_920.JPG",
+      "stratum": "1-5"
+    },
+    {
+      "image_id": 23269,
+      "file_name": "Bird_I/I_DJI_0384_2760_920.JPG",
+      "stratum": "6-15"
+    },
+    {
+      "image_id": 15816,
+      "file_name": "Bird_G/G_Cloud_WaterSubVeg_60m_test2_460_460.JPG",
+      "stratum": "1-5"
+    },
+    {
+      "image_id": 17295,
+      "file_name": "Bird_H/H_EagleBluffs_03082022_Trees_Spot3_90meters_DJI_0126_1840_1840.JPG",
+      "stratum": "6-15"
+    },
+    {
+      "image_id": 4637,
+      "file_name": "Bird_C/C_DJI_0148_120m_920_1840.JPG",
+      "stratum": "6-15"
+    },
+    {
+      "image_id": 23887,
+      "file_name": "Bird_J/J_Cloud_MoistSoil_90m_DJI_0443_1840_2300.JPG",
+      "stratum": "41-100"
+    },
+    {
+      "image_id": 12776,
+      "file_name": "Bird_D/D_G377_11Nov2016_0497_460_0.JPG",
+      "stratum": "1-5"
+    }
+  ]
+}

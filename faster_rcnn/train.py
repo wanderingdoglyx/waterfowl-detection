@@ -111,12 +111,16 @@ class WaterfowlTrainer(DefaultTrainer):
 
 # ── Convenience train function ────────────────────────────────────────────────
 
-def train(cfg) -> None:
+def train(cfg) -> int:
     """
     Build and run the WaterfowlTrainer.
 
     Args:
         cfg : CfgNode produced by faster_rcnn.model.build_cfg()
+
+    Returns:
+        Iterations actually completed — fewer than SOLVER.MAX_ITER when EarlyStoppingHook
+        fired, which is what lets the caller record real epochs instead of the cap.
     """
     trainer = WaterfowlTrainer(cfg)
     trainer.resume_or_load(resume=False)
@@ -124,3 +128,4 @@ def train(cfg) -> None:
         trainer.train()
     except StopIteration:
         pass   # early stopping raised StopIteration — this is expected
+    return trainer.iter + 1

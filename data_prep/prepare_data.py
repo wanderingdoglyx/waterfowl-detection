@@ -241,6 +241,15 @@ def prepare(
     seed:          int = config.RANDOM_SEED,
 ) -> None:
 
+    # An experiment's COCO splits are a *filtered* view of the shared crops; re-running
+    # preparation into them would replace that view with the whole corpus, and every
+    # model reading the experiment would silently train on data the selection excluded.
+    if config.active_experiment() and crops_json_dir == config.CROPS_JSON_DIR:
+        raise SystemExit(
+            f"refusing to prepare data into experiment {config.active_experiment()!r}: "
+            "unset WATERFOWL_EXPERIMENT to rebuild the shared crops, then re-run "
+            "`python -m pipeline.cli select` to refresh the experiment")
+
     # Each middle crop overlaps both neighbours, so each side = overlap/2
     stride = int(crop_size * (1 - overlap / 2))  # 0.20 → 460 px
 

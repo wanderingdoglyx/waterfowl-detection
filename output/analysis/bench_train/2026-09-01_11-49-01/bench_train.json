@@ -1,0 +1,171 @@
+{
+  "generated": "2026-09-01_11-49-01",
+  "steps": 12,
+  "repeats": 3,
+  "batch_sizes": [
+    1,
+    2,
+    4,
+    8,
+    16,
+    32
+  ],
+  "crop_size": 512,
+  "measures": "forward + backward + optimiser step; excludes data loading and the detector's real loss",
+  "results": {
+    "yolov5": {
+      "batch_sweep": {
+        "1": {
+          "crops_per_second": 99.6,
+          "crops_per_second_std": 2.3,
+          "ms_per_step": 10.04,
+          "peak_gpu_mb": 609.8
+        },
+        "2": {
+          "crops_per_second": 119.2,
+          "crops_per_second_std": 0.4,
+          "ms_per_step": 16.78,
+          "peak_gpu_mb": 1009.1
+        },
+        "4": {
+          "crops_per_second": 140.5,
+          "crops_per_second_std": 0.3,
+          "ms_per_step": 28.46,
+          "peak_gpu_mb": 1796.1
+        },
+        "8": {
+          "crops_per_second": 145.3,
+          "crops_per_second_std": 0.9,
+          "ms_per_step": 55.05,
+          "peak_gpu_mb": 3323.6
+        },
+        "16": {
+          "crops_per_second": 141.8,
+          "crops_per_second_std": 1.9,
+          "ms_per_step": 112.83,
+          "peak_gpu_mb": 6407.3
+        },
+        "32": {
+          "crops_per_second": 135.4,
+          "crops_per_second_std": 0.7,
+          "ms_per_step": 236.28,
+          "peak_gpu_mb": 12587.6
+        }
+      }
+    },
+    "yolo11": {
+      "batch_sweep": {
+        "1": {
+          "crops_per_second": 76.0,
+          "crops_per_second_std": 2.8,
+          "ms_per_step": 13.16,
+          "peak_gpu_mb": 822.4
+        },
+        "2": {
+          "crops_per_second": 115.2,
+          "crops_per_second_std": 0.3,
+          "ms_per_step": 17.36,
+          "peak_gpu_mb": 1372.3
+        },
+        "4": {
+          "crops_per_second": 126.7,
+          "crops_per_second_std": 0.2,
+          "ms_per_step": 31.57,
+          "peak_gpu_mb": 2472.9
+        },
+        "8": {
+          "crops_per_second": 126.1,
+          "crops_per_second_std": 0.0,
+          "ms_per_step": 63.43,
+          "peak_gpu_mb": 4668.0
+        },
+        "16": {
+          "crops_per_second": 120.4,
+          "crops_per_second_std": 0.1,
+          "ms_per_step": 132.87,
+          "peak_gpu_mb": 8997.7
+        },
+        "32": {
+          "error": "CUDA out of memory"
+        }
+      }
+    },
+    "yolo26": {
+      "batch_sweep": {
+        "1": {
+          "crops_per_second": 56.1,
+          "crops_per_second_std": 0.8,
+          "ms_per_step": 17.83,
+          "peak_gpu_mb": 904.1
+        },
+        "2": {
+          "crops_per_second": 101.7,
+          "crops_per_second_std": 0.6,
+          "ms_per_step": 19.66,
+          "peak_gpu_mb": 1531.4
+        },
+        "4": {
+          "crops_per_second": 114.4,
+          "crops_per_second_std": 0.1,
+          "ms_per_step": 34.97,
+          "peak_gpu_mb": 2787.6
+        },
+        "8": {
+          "crops_per_second": 114.2,
+          "crops_per_second_std": 0.1,
+          "ms_per_step": 70.06,
+          "peak_gpu_mb": 5290.4
+        },
+        "16": {
+          "crops_per_second": 107.9,
+          "crops_per_second_std": 0.0,
+          "ms_per_step": 148.33,
+          "peak_gpu_mb": 10235.2
+        },
+        "32": {
+          "error": "CUDA out of memory"
+        }
+      }
+    },
+    "yolonas": {
+      "batch_sweep": {
+        "1": {
+          "crops_per_second": 47.1,
+          "crops_per_second_std": 1.1,
+          "ms_per_step": 21.21,
+          "peak_gpu_mb": 876.5
+        },
+        "2": {
+          "crops_per_second": 79.5,
+          "crops_per_second_std": 0.6,
+          "ms_per_step": 25.16,
+          "peak_gpu_mb": 1294.8
+        },
+        "4": {
+          "crops_per_second": 95.2,
+          "crops_per_second_std": 0.0,
+          "ms_per_step": 42.02,
+          "peak_gpu_mb": 2135.6
+        },
+        "8": {
+          "crops_per_second": 92.4,
+          "crops_per_second_std": 0.1,
+          "ms_per_step": 86.55,
+          "peak_gpu_mb": 3826.9
+        },
+        "16": {
+          "crops_per_second": 87.3,
+          "crops_per_second_std": 0.1,
+          "ms_per_step": 183.2,
+          "peak_gpu_mb": 7159.3
+        },
+        "32": {
+          "crops_per_second": 81.3,
+          "crops_per_second_std": 0.1,
+          "ms_per_step": 393.74,
+          "peak_gpu_mb": 13851.7
+        }
+      }
+    }
+  }
+}

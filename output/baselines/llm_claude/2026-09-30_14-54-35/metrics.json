@@ -1,0 +1,62 @@
+{
+  "model": "llm_claude",
+  "label": "Claude Opus 5.5 (LLM, zero-shot)",
+  "family": "llm",
+  "weights": "claude-opus-5-5",
+  "zero_shot": true,
+  "class_filter": null,
+  "timestamp": "2026-09-30_14-54-35",
+  "limit": 10,
+  "n_test": 10,
+  "n_detections": 199,
+  "selection": "stratified by bird count (1-5 x4, 6-15 x3, 16-40 x2, 41-100 x1), one sub-dataset per crop where possible, seed 42; crops with birds only",
+  "protocol": {
+    "how": "Detections produced by Claude Opus 5.5 inside an interactive Claude Code session (no API call; no ANTHROPIC_API_KEY on this machine), crop by crop, before the ground truth was read.",
+    "inputs": "Each 512x512 crop shown upscaled 2x, plain and with a coordinate grid labelled in crop pixels (llm_inputs/). Where birds were tiny or clustered, 4x zooms of sub-regions with an 8-px grid were also viewed (crops 2, 6, 7, 8 and all four quadrants of crop 9). Views were shown as PNG; llm_inputs/ stores them as JPEG q95.",
+    "prompt": "Find every bird; give its box in crop pixels and a confidence.",
+    "scores": "Three levels, not a calibrated probability: 0.9 clearly a bird, 0.6 likely, 0.3 possible.",
+    "boxes": "Read off the grid by eye. In the densest crop (J_..._0443) every bird was marked as a fixed 12x12 box around its centre."
+  },
+  "map30": 85.83260584071033,
+  "mar30": 87.36842105263159,
+  "paper_point_metrics": {
+    "protocol": {
+      "tau_px": 40,
+      "bootstrap_B": 1000,
+      "n_images": 10,
+      "n_gt_points": 190,
+      "n_detections": 199,
+      "score_grid_size": 5,
+      "matching": "score-ordered greedy NN, one-to-one"
+    },
+    "detection": {
+      "ap": 0.9016241015454083,
+      "auc_pr": 0.8963211691626349,
+      "precision_at_t_star": 0.864321608040201,
+      "recall_at_t_star": 0.9052631578947369,
+      "f1_at_t_star": 0.8843187660668381
+    },
+    "counting": {
+      "t_star": 0.3,
+      "mae": 1.9,
+      "rmse": 2.3021728866442674,
+      "total_gt": 190,
+      "total_pred_at_t_star": 199,
+      "signed_pct_error": 4.7368421052631575
+    },
+    "ci95": {
+      "mae": [
+        1.1,
+        2.7
+      ],
+      "rmse": [
+        1.51657508881031,
+        2.9664793948382653
+      ],
+      "ap": [
+        0.810087349618679,
+        0.9429782054659577
+      ]
+    }
+  }
+}

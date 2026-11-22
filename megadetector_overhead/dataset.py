@@ -23,14 +23,20 @@ globally unique; flattening into one folder per split is collision-free.
 
 from __future__ import annotations
 
+import contextlib
 import csv
+import errno
 import json
 import os
-import shutil
+import time
 
 from data_prep import config
 
 SPLITS = ("train", "val", "test")
+
+# How long to wait for another process's rebuild of the same split before giving up.
+LOCK_TIMEOUT_S = 900
+LOCK_POLL_S = 0.5
 
 
 def _relink(src_abs: str, dst_abs: str) -> None:
@@ -38,6 +44,91 @@ def _relink(src_abs: str, dst_abs: str) -> None:
     if os.path.islink(dst_abs) or os.path.exists(dst_abs):
         os.remove(dst_abs)
     os.symlink(src_abs, dst_abs)
+
+
+@contextlib.contextmanager
+def _split_lock(split_dir: str, timeout: float = LOCK_TIMEOUT_S):
+    """Serialise rebuilds of one split across processes.
+
+    Two trainers starting at once (a second OWL variant, say) would otherwise
+    interleave their rebuilds of the same shared directory. O_CREAT|O_EXCL is
+    atomic on a local filesystem, which is all this needs.
+    """
+    os.makedirs(split_dir, exist_ok=True)
+    lock_path = os.path.join(split_dir, ".rebuild.lock")
+    deadline = time.time() + timeout
+    fd = None
+    while fd is None:
+        try:
+            fd = os.open(lock_path, os.O_CREAT | os.O_EXCL | os.O_WRONLY, 0o644)
+        except FileExistsError:
+            # Reclaim a lock left behind by a killed process.
+            try:
+                if time.time() - os.path.getmtime(lock_path) > timeout:
+                    os.unlink(lock_path)
+                    continue
+            except FileNotFoundError:
+                continue
+            if time.time() > deadline:
+                raise TimeoutError(
+                    f"timed out waiting for another process to finish rebuilding "
+                    f"{split_dir} (stale lock? remove {lock_path})")
+            time.sleep(LOCK_POLL_S)
+    try:
+        os.write(fd, f"{os.getpid()}\n".encode())
+        os.close(fd)
+        yield
+    finally:
+        with contextlib.suppress(FileNotFoundError):
+            os.unlink(lock_path)
+
+
+def _reconcile_links(img_dir: str, wanted: dict[str, str]) -> dict[str, int]:
+    """Make img_dir hold exactly `wanted` (basename -> absolute source), in place.
+
+    Deliberately NOT a wipe-and-rebuild. This directory is shared by every OWL
+    variant, and FolderDataset scans it wholesale, so removing it out from under
+    a running trainer empties its dataset mid-epoch — and a rebuild that is
+    interrupted leaves a silently truncated training set with no error at all.
+    Reconciling means a concurrent reader only ever sees the old state, the new
+    state, or a superset of both; never an empty or half-built directory.
+    """
+    os.makedirs(img_dir, exist_ok=True)
+    stats = {"added": 0, "retargeted": 0, "removed": 0, "kept": 0}
+
+    existing = {}
+    with os.scandir(img_dir) as it:
+        for entry in it:
+            if entry.name.startswith("."):
+                continue
+            existing[entry.name] = entry.path
+
+    for base, src in wanted.items():
+        dst = os.path.join(img_dir, base)
+        if base in existing:
+            try:
+                if os.readlink(dst) == src:
+                    stats["kept"] += 1
+                    continue
+            except OSError:
+                pass  # a real file, or an unreadable link: replace it
+            _relink(src, dst)
+            stats["retargeted"] += 1
+        else:
+            try:
+                os.symlink(src, dst)
+                stats["added"] += 1
+            except FileExistsError:
+                _relink(src, dst)
+                stats["retargeted"] += 1
+
+    for base, path in existing.items():
+        if base not in wanted:
+            with contextlib.suppress(FileNotFoundError):
+                os.remove(path)
+            stats["removed"] += 1
+
+    return stats
 
 
 def build_mdo_dataset(
@@ -49,7 +140,19 @@ def build_mdo_dataset(
     Build the OWL point-CSV mirror for every split that has a coco.json.
 
     Returns (out_dir, counts) where counts maps split -> number of images (crops).
+
+    Safe to call while another process is training from the same directory: the
+    image folder is reconciled in place under a per-split lock rather than
+    deleted and rebuilt, and gt.csv is swapped in atomically.
     """
+    if not os.path.isdir(crops_img_dir):
+        # os.symlink happily creates links to nothing, so a wrong crops root
+        # yields a full set of dangling links and a training run that fails one
+        # crop at a time. Refuse up front instead.
+        raise FileNotFoundError(
+            f"crops directory does not exist: {crops_img_dir} — refusing to build "
+            "a mirror of dangling symlinks")
+
     counts: dict[str, int] = {}
 
     for split in SPLITS:
@@ -61,20 +164,17 @@ def build_mdo_dataset(
         with open(coco_path) as f:
             coco = json.load(f)
 
-        # Rebuild the flat image folder fresh — FolderDataset scans it wholesale, so a
-        # stale symlink from a previous prepare would silently enter the dataset.
-        img_dir = os.path.join(out_dir, split, "images")
-        if os.path.isdir(img_dir):
-            shutil.rmtree(img_dir)
-        os.makedirs(img_dir, exist_ok=True)
+        split_dir = os.path.join(out_dir, split)
+        img_dir = os.path.join(split_dir, "images")
 
-        # image_id -> (basename, width, height); symlink each crop into the flat folder
+        # image_id -> (basename, width, height), and the links the split should hold
         id_to_meta: dict[int, tuple[str, int, int]] = {}
+        wanted: dict[str, str] = {}
         for img in coco["images"]:
             rel = img["file_name"]                       # e.g. "Bird_A/A_DJI_0001_0_0.JPG"
             base = os.path.basename(rel)
             id_to_meta[img["id"]] = (base, img["width"], img["height"])
-            _relink(os.path.join(crops_img_dir, rel), os.path.join(img_dir, base))
+            wanted[base] = os.path.join(crops_img_dir, rel)
 
         # one point per box (box centre).  Clamp to [0, w-1] × [0, h-1]: a box flush
         # against the crop edge can round to exactly w/h, which albumentations rejects
@@ -90,11 +190,22 @@ def build_mdo_dataset(
             cy = min(h_img - 1, max(0, int(round(y + bh / 2.0))))
             rows.append((base, cx, cy, 1))
 
-        gt_csv = os.path.join(out_dir, split, "gt.csv")
-        with open(gt_csv, "w", newline="") as f:
-            writer = csv.writer(f)
-            writer.writerow(["images", "x", "y", "labels"])
-            writer.writerows(rows)
+        gt_csv = os.path.join(split_dir, "gt.csv")
+        with _split_lock(split_dir):
+            _reconcile_links(img_dir, wanted)
+
+            # Write then rename: open(gt_csv, "w") truncates in place, so a reader
+            # mid-write sees an empty or half-written CSV. os.replace is atomic.
+            tmp_csv = gt_csv + f".tmp.{os.getpid()}"
+            try:
+                with open(tmp_csv, "w", newline="") as f:
+                    writer = csv.writer(f)
+                    writer.writerow(["images", "x", "y", "labels"])
+                    writer.writerows(rows)
+                os.replace(tmp_csv, gt_csv)
+            finally:
+                with contextlib.suppress(FileNotFoundError):
+                    os.remove(tmp_csv)
 
         counts[split] = len(coco["images"])
 

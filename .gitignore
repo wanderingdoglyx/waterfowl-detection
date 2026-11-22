@@ -6,6 +6,12 @@ dataset_full/*
 !dataset_full/DATASET_INVENTORY.md
 dataset_v1/
 dataset/
+# Data-selection folders: dataset_<name>/ holds symlinks to the collections one experiment
+# uses (`python -m pipeline.cli folder`). The selection itself is recorded in
+# output/experiments/<name>/selection.json, so the folder is convenience, not state.
+dataset_*/
+!dataset_full/
+!dataset_full/DATASET_INVENTORY.md
 crops/
 yolov5_data/
 
@@ -15,8 +21,21 @@ yolov5_data/
 # must be listed here explicitly.  Check before committing new runs:
 #   find output -type f -size +100M ! -name "*.pth" ! -name "*.pt"
 output/checkpoints/mdo_owl_c/2026-07-21_22-59-50/20260722_validation.log
+output/checkpoints/mdo_owl_c/2026-08-30_19-47-18/20260831_validation.log
+# Cross-model analysis detection cache: ~68 MB, and regenerable from the checkpoints
+# by re-running `./analysis/main.py --tasks --conditions`. The re-scored metrics
+# (output/analysis/scores/), the benchmark runs — which need an idle GPU and so cannot
+# be reproduced on demand — and the tables, CSVs and figures under
+# output/analysis/<manifest stem>/ all stay versioned: they are the results.
+output/analysis/predictions/
 # OWL point-CSV mirror of the crops (symlinks + gt.csv)
 mdo_data/
+# Experiment data selections (pipeline/selection.py): filtered COCO splits and the
+# framework mirrors, derived from the committed crops and rebuilt in seconds by
+# `python -m pipeline.cli select`. Only the selection itself — what was chosen, its
+# checksum and what it resolved to — is versioned.
+output/experiments/*/*
+!output/experiments/*/selection.json
 
 # ── Third-party research repos cloned locally (MegaDetector-Overhead + its .venv,
 #    vendored DINOv3, and multi-GB Zenodo weights) ──────────────────────────────
@@ -25,6 +44,8 @@ third_party/
 # ── Model weights (downloaded pretrained or trained checkpoints) ───────────────
 *.pt
 *.pth
+*.pt.bak
+*.pth.bak
 
 # ── Reference paper / large binaries ──────────────────────────────────────────
 *.pdf

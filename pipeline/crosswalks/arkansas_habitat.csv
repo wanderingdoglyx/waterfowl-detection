@@ -1,0 +1,10 @@
+raw,canonical,notes
+# Template. One row per label AGFC actually writes; add rows when the first delivery
+# arrives, and leave a row's canonical term empty (with a note) if it has none.
+bottomland hardwood,forest,expected from the proposal
+rice,cropland,expected from the proposal
+soybean,cropland,expected from the proposal
+moist soil,moist_soil,expected from the proposal
+open water,open_water,expected from the proposal
+emergent marsh,emergent_vegetation,expected from the proposal
+levee,bare_ground,expected from the proposal

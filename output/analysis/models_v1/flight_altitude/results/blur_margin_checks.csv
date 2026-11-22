@@ -1,0 +1,17 @@
+fit,b_px,rms_px,max_px,groups
+"Bird_H decoys, per type, all splits",7.295,0.6121,1.351,38
+"Bird_H decoys, per type, train+val only",7.183,0.6741,1.604,38
+"Bird_H decoys, per type, additive margin",1.317,0.8138,1.895,38
+Bird_H decoy type: american widgeon female,4.921,0.4979,1.304,4
+Bird_H decoy type: american widgeon male,8.154,0.4979,1.304,4
+Bird_H decoy type: gadwall,6.331,0.4979,1.304,4
+Bird_H decoy type: green winged teal,6.386,0.4979,1.304,4
+Bird_H decoy type: mallard female,7.656,0.4979,1.304,4
+Bird_H decoy type: mallard male,8.166,0.4979,1.304,4
+Bird_H decoy type: pintail female,-0.000879,0.4979,1.304,4
+Bird_H decoy type: pintail male,6.526,0.4979,1.304,4
+Bird_H decoy type: shoveler female,9.012,0.4979,1.304,4
+Bird_H decoy type: shoveler male,8.843,0.4979,1.304,4
+"Bird_A ladder, all birds pooled",4.145,0.3464,0.9007,12
+"Bird_C ladder, all birds pooled",1.302,0.2828,0.4655,4
+"Bird_H ladder, all birds pooled",8.012,0.4608,0.8638,4

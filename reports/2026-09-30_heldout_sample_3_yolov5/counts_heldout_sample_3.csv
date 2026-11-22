@@ -1,0 +1,4 @@
+photo,width,height,cells,cells_reviewed,model_count,rejected,promoted,added,reviewed_count,annotated_count
+Bird_A_80_5.jpg,5120,3584,96,0,54,0,0,0,54,46
+Bird_B_DJI_0328.JPG,5472,3648,96,0,63,0,0,0,63,61
+Bird_C_DJI_0056_30m.JPG,5472,3648,96,0,11,0,0,0,11,6

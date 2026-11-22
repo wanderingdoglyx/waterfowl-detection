@@ -1,0 +1,7 @@
+{
+  "timestamp": "2026-08-26_13-30-40",
+  "model": "yolo_nas_m",
+  "n_train": 82827,
+  "n_val": 27771,
+  "n_test": 28588
+}

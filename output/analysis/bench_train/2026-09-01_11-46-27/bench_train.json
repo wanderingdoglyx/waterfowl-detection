@@ -1,0 +1,29 @@
+{
+  "generated": "2026-09-01_11-46-27",
+  "steps": 12,
+  "repeats": 3,
+  "batch_sizes": [
+    1,
+    2,
+    4,
+    8,
+    16,
+    32
+  ],
+  "crop_size": 512,
+  "measures": "forward + backward + optimiser step; excludes data loading and the detector's real loss",
+  "results": {
+    "yolov5": {
+      "error": "RuntimeError: model produced no differentiable output"
+    },
+    "yolo11": {
+      "error": "RuntimeError: model produced no differentiable output"
+    },
+    "yolo26": {
+      "error": "RuntimeError: model produced no differentiable output"
+    },
+    "yolonas": {
+      "error": "RuntimeError: unhandled output type <class 'int'>"
+    }
+  }
+}

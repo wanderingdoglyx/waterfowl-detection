@@ -1,0 +1,106 @@
+{
+  "experiment_id": "fasterrcnn__2026-08-25_21-22-01",
+  "created_utc": "2026-08-26T02:22:02+00:00",
+  "updated_utc": "2026-08-26T18:24:22+00:00",
+  "model": {
+    "key": "fasterrcnn",
+    "label": "Faster R-CNN",
+    "family": "detectron2"
+  },
+  "code": {
+    "git_commit": "742b7fab6f9b0c6987dd2722a3136d74e42b2c67",
+    "git_commit_short": "742b7fa",
+    "git_branch": "main",
+    "git_dirty": true,
+    "git_dirty_files": 7,
+    "python": "3.10.20",
+    "libraries": {
+      "torch": "2.1.2+cu121",
+      "ultralytics": "8.4.82",
+      "super_gradients": "3.7.1",
+      "detectron2": "0.6",
+      "numpy": "1.23.0",
+      "cv2": "4.11.0",
+      "pycocotools": "unknown"
+    }
+  },
+  "hardware": {
+    "hostname": "cengr-dp6smw3.engineering.missouri.edu",
+    "platform": "Linux-6.8.0-90-generic-x86_64-with-glibc2.35",
+    "cpu_count": 32,
+    "ram_gb": 62.5,
+    "gpus": [
+      {
+        "name": "NVIDIA GeForce RTX 4080 SUPER",
+        "memory_gb": 15.6,
+        "capability": "8.9"
+      }
+    ],
+    "cuda": "12.1",
+    "nvidia_driver": "570.195.03"
+  },
+  "dataset": {
+    "version": "full",
+    "root": "/home/zygfd/waterflow/rebuild/dataset_full",
+    "crop_size": 512,
+    "crop_overlap": 0.2,
+    "random_seed": 42,
+    "val_fraction": 0.25,
+    "splits": {
+      "train": {
+        "path": "/home/zygfd/waterflow/rebuild/output/crops_json/train/coco.json",
+        "sha256": "22e6d8841451d39f0bb33dcc414bac076682ca4cf34bac84302e5b30603ca7e0",
+        "images": 82827,
+        "annotations": 241730
+      },
+      "val": {
+        "path": "/home/zygfd/waterflow/rebuild/output/crops_json/val/coco.json",
+        "sha256": "541c5507f12f53fa1c35667e544f795098a6556787e57e52149d498e68b3944e",
+        "images": 27771,
+        "annotations": 89422
+      },
+      "test": {
+        "path": "/home/zygfd/waterflow/rebuild/output/crops_json/test/coco.json",
+        "sha256": "ba86397601c5f4e02b9838bbb56ec19e852e219b915d8d170c2d62f937b329dd",
+        "images": 28588,
+        "annotations": 89884
+      }
+    }
+  },
+  "inference": {
+    "score_threshold": 0.05,
+    "max_detections_per_image": 500,
+    "map_iou_threshold": 0.3,
+    "point_match_tau_px": 40,
+    "bootstrap_resamples": 1000
+  },
+  "outputs": {
+    "run_dir": "/home/zygfd/waterflow/rebuild/output/checkpoints/fasterrcnn/2026-08-25_21-22-01",
+    "checkpoint": "/home/zygfd/waterflow/rebuild/output/checkpoints/fasterrcnn/2026-08-25_21-22-01/model_best.pth"
+  },
+  "pretrained": {
+    "weights": "COCO-Detection/faster_rcnn_R_50_FPN_3x.yaml",
+    "sha256": null
+  },
+  "training": {
+    "config": {
+      "epochs": 100,
+      "patience": 30,
+      "batch": 4,
+      "lr": 0.001,
+      "optimizer": "SGD",
+      "momentum": 0.9,
+      "weight_decay": 0.0001,
+      "anchor_sizes": "((8,), (16,), (32,), (64,), (128,))",
+      "seed": 42
+    },
+    "completed_utc": "2026-08-26T18:24:22+00:00",
+    "epochs_completed": 100,
+    "checkpoint_sha256": "2b009ea4630a82e4060832b5c3590326488ada3616059def388bbf1f1426a2ab~first64MB"
+  },
+  "metrics_efficiency": {
+    "train_seconds": 57738.8,
+    "train_peak_gpu_mb": 1802.2,
+    "seconds_per_epoch": 577.4
+  }
+}

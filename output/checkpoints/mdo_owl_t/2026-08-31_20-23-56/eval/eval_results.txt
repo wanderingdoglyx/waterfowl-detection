@@ -1,0 +1,20 @@
+── Point metric (native; TP within 20.0 px of a GT point) ──
+  Precision : 83.31%
+  Recall    : 87.10%
+  F1        : 85.16%
+
+── Pseudo-box mAP30 (points → 28px boxes, COCOeval@IoU=0.30) ──
+  mAP30 : 46.47%
+  mAR30 : 56.18%
+
+── OWL-paper point metrics — OWLT (τ = 40 px, 28588 images, 89884 GT points) ──
+  AP        :  86.58%  [95% CI 85.75–87.27]
+  AUC-PR    :  86.57%
+  Precision :  91.36%   (at t* = 0.247)
+  Recall    :  86.16%
+  F1        :  88.68%
+  MAE       :  0.477  [95% CI 0.457–0.499]
+  RMSE      :  1.826  [95% CI 1.605–2.112]
+  Count     : 84765 predicted vs 89884 GT (-5.7%)
+
+  (93979 detections total)

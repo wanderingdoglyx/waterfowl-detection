@@ -40,8 +40,8 @@
     "nvidia_driver": "570.195.03"
   },
   "dataset": {
-    "version": "full",
-    "root": "/home/zygfd/waterflow/rebuild/dataset_full",
+    "version": "v1",
+    "root": "/home/zygfd/waterflow/rebuild/dataset_v1",
     "crop_size": 512,
     "crop_overlap": 0.2,
     "random_seed": 42,
@@ -104,5 +104,24 @@
     "eval_peak_gpu_mb": 284.2,
     "images_per_second": 220.4,
     "ms_per_image": 4.54
-  }
+  },
+  "corrections": [
+    {
+      "corrected_utc": "2026-08-27T15:08:54+00:00",
+      "fields": [
+        "dataset.version",
+        "dataset.root"
+      ],
+      "from": {
+        "version": "full",
+        "root": "/home/zygfd/waterflow/rebuild/dataset_full"
+      },
+      "to": {
+        "version": "v1",
+        "root": "/home/zygfd/waterflow/rebuild/dataset_v1"
+      },
+      "reason": "This record was created during --eval on 2026-08-25, not during training on 2026-08-14, and ExperimentRecord's constructor captured the dataset section at re-open time. It therefore named the corpus configured in August rather than the one this run consumed. The split hashes in this same section were always correct and identify the v1 corpus unambiguously: test sha256 d1e97a04... = 25,708 crops / 88,195 birds, matching the committed output/crops_json/test/coco.json at HEAD and Baseline v1. The overwriting behaviour has since been fixed; a re-opened record now preserves the training-time capture and reports any difference under reopened_context.",
+      "not_corrected": "code and hardware still describe the evaluation phase. code.git_commit 9484535 does bound the training code correctly (no commits fell between 2026-08-13 and 2026-08-25), but code.git_dirty_files = 349 is the August working tree, and the training-time value is unrecoverable. It is left as recorded rather than guessed."
+    }
+  ]
 }
